@@ -11,12 +11,18 @@ Trait::Trait(void)
 /*virtual*/ Trait::~Trait(void)
 {}
 
-unsigned int Trait::getScore(void)
+int Trait::getScore(void)
 {
     return m_score;
 }
 
-void Trait::setScore(unsigned int sc)
+void Trait::setScore(int sc)
 {
     m_score = sc;
 }
+
+void Trait::increaseScore(int i)
+{
+    m_score += i;
+}
+

@@ -10,8 +10,9 @@ class Trait
 
         virtual ~Trait(void);
 
-        unsigned int getScore(void);
-        void setScore(unsigned int sc);
+        int getScore(void);
+        void setScore(int sc);
+        void increaseScore(int i);
 
     protected:
         int m_score;

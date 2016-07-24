@@ -1,7 +1,6 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include "Alignment.h"
 #include "AttributesSet.h"
 #include "Class.h"
 #include "Race.h"
@@ -24,10 +23,8 @@ class Character
         void setRace(Race* rc);
         void setGender(Gender gd);
         void setClass(Class* cl);
-        void setAlignment(Alignment* al);
 
         std::vector<Class*> getAvailableClass(void);
-        std::vector<Alignment*> getAvailableAlignment(void);
 
     protected:
         std::string m_name;
@@ -37,7 +34,6 @@ class Character
         Race* m_race;
         Gender m_gender;
         Class* m_class;
-        Alignment* m_alignment;
         AttributesSet m_attributes_set;
         TraitsSet m_traits_set;
 };
