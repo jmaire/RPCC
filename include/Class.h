@@ -15,6 +15,7 @@ class Class
 
         virtual ~Class(void);
 
+        std::vector<Alignment*> getAvailableAlignment(void);
         std::pair<unsigned int,unsigned int> getAttributeBounds(unsigned int ind);
 
         void addAvailableAlignment(Alignment* al);

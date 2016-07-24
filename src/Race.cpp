@@ -19,6 +19,11 @@ Race::Race()
 /*virtual*/ Race::~Race()
 {}
 
+std::vector<Class*> Race::getAvailableClass(void)
+{
+    return m_class_restriction;
+}
+
 std::pair<unsigned int,unsigned int> Race::getAttributeBounds(unsigned int ind)
 {
     return ma_attributesBounds[ind];

@@ -20,6 +20,11 @@ Class::Class(void)
 /*virtual*/ Class::~Class(void)
 {}
 
+std::vector<Alignment*> Class::getAvailableAlignment(void)
+{
+    return m_alignment_restriction;
+}
+
 std::pair<unsigned int,unsigned int> Class::getAttributeBounds(unsigned int ind)
 {
     return ma_attributesBounds[ind];

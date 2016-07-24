@@ -1,14 +1,14 @@
 #include "Attribute.h"
 
-Attribute::Attribute(unsigned int s)
-: m_score(s)
+Attribute::Attribute(unsigned int sc)
+: m_score(sc)
 {}
 
-Attribute::Attribute()
+Attribute::Attribute(void)
 : Attribute(0)
 {}
 
-/*virtual*/ Attribute::~Attribute()
+/*virtual*/ Attribute::~Attribute(void)
 {}
 
 unsigned int Attribute::getScore(void)
@@ -16,9 +16,9 @@ unsigned int Attribute::getScore(void)
     return m_score;
 }
 
-void Attribute::setScore(unsigned int s)
+void Attribute::setScore(unsigned int sc)
 {
-    m_score = s;
+    m_score = sc;
 }
 
 void Attribute::incrementScore(void)

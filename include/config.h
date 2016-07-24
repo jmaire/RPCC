@@ -18,4 +18,9 @@ static std::string ATTRIBUTES_SET_ATTRIBUTE_NAME[ATTRIBUTES_SET_SIZE] =
 static const int ATTRIBUTE_DEFAULT_LOW_BOUNDARY = 3;
 static const int ATTRIBUTE_DEFAULT_HIGH_BOUNDARY = 18;
 
+static const int TRAITS_SET_SIZE = 2;
+static std::pair<std::string,std::string> TRAITS_SET_TRAIT_NAMES[TRAITS_SET_SIZE] =
+    {std::make_pair("Lawful","Chaotic")
+    ,std::make_pair("Good","Evil")};
+
 #endif // CONFIG_H

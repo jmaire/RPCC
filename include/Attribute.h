@@ -9,13 +9,13 @@
 class Attribute
 {
     public:
-        Attribute(unsigned int s);
-        Attribute();
+        Attribute(unsigned int sc);
+        Attribute(void);
 
-        virtual ~Attribute();
+        virtual ~Attribute(void);
 
         unsigned int getScore(void);
-        void setScore(unsigned int s);
+        void setScore(unsigned int sc);
 
         void incrementScore(void);
         void decrementScore(void);
