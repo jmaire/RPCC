@@ -16,7 +16,7 @@ class Race
         virtual ~Race(void);
 
         std::string* getName(void);
-        std::vector<Class*> getAvailableClass(void);
+        std::vector<Class*>* getAvailableClass(void);
         std::pair<unsigned int,unsigned int> getAttributeBounds(unsigned int ind);
 
         void addAvailableClass(Class* cl);

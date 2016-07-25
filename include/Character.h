@@ -24,7 +24,7 @@ class Character
         void setGender(Gender gd);
         void setClass(Class* cl);
 
-        std::vector<Class*> getAvailableClass(void);
+        std::vector<Class*>* getAvailableClass(void);
 
         std::string toString(void);
 

@@ -24,9 +24,9 @@ std::string* Race::getName(void)
     return &m_name;
 }
 
-std::vector<Class*> Race::getAvailableClass(void)
+std::vector<Class*>* Race::getAvailableClass(void)
 {
-    return m_class_restriction;
+    return &m_class_restriction;
 }
 
 std::pair<unsigned int,unsigned int> Race::getAttributeBounds(unsigned int ind)

@@ -33,15 +33,13 @@ void Character::setClass(Class* cl)
     m_class = cl;
 }
 
-std::vector<Class*> Character::getAvailableClass(void)
+std::vector<Class*>* Character::getAvailableClass(void)
 {
     if(m_race!=nullptr)
     {
         return m_race->getAvailableClass();
     }
-    std::vector<Class*> noClass;
-    noClass.clear();
-    return noClass;
+    return nullptr;
 }
 
 std::string Character::toString(void)

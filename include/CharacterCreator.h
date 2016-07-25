@@ -1,19 +1,20 @@
 #ifndef CHARACTERCREATOR_H
 #define CHARACTERCREATOR_H
 
+#include "data.h"
 #include "Character.h"
 
 class CharacterCreator
 {
     public:
-        CharacterCreator(void);
-
         virtual ~CharacterCreator(void);
 
-        void createCharacter(void);
+        //static Character* createCharacter(void);
+        static Character* createRandomCharacter(void);
 
-    protected:
-        Character* m_character;
+    private:
+        CharacterCreator(void);
+
 };
 
 #endif // CHARACTERCREATOR_H
