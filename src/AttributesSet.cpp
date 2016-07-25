@@ -64,13 +64,14 @@ void AttributesSet::randomAssignment(void)
     }
 }
 
-void AttributesSet::display(void)
+std::string AttributesSet::toString(void)
 {
+    std::string str = "";
     for(int i=0; i<ATTRIBUTES_SET_SIZE; i++)
     {
-        std::cout << "[" << ATTRIBUTES_SET_ATTRIBUTE_NAME[i] << "] : " << ma_attributes[i].getScore() << " [" << ma_attributesBounds[i].first << ":" << ma_attributesBounds[i].second << "]\n";
+        str += "  " + ATTRIBUTES_SET_ATTRIBUTE_NAME[i] + ": " + /*std::to_string(ma_attributes[i].getScore())*/ + "\n";
     }
-    std::cout << "---\n[Unassigned] : " << m_unassignedPoints << "\n";
-
+    return str + "   Unassigned: " /*+ m_unassignedPoints*/;
 }
+
 

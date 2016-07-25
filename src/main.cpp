@@ -2,19 +2,18 @@
 #include <stdlib.h>
 #include <iostream>
 
-#include "AttributesSet.h"
+#include "Character.h"
 #include "Dice.h"
-
 
 int main(int argc, char* argv[])
 {
-    Race rc1 = Race("Humain");
-    Race rc2 = Race("Elfe");
-    Race rc3 = Race("Nain");
+    Race rc1 = Race("Human");
+    Race rc2 = Race("Elf");
+    Race rc3 = Race("Dwarf");
 
-    Class cl1 = Class("Guerrier");
+    Class cl1 = Class("Fighter");
     Class cl2 = Class("Mage");
-    Class cl3 = Class("Voleur");
+    Class cl3 = Class("Thief");
 
     cl1.setAttributeBounds(0,9,18);
     cl2.setAttributeBounds(3,9,18);
@@ -40,7 +39,11 @@ int main(int argc, char* argv[])
 
     //AttributesSet as1 = AttributesSet(&rc1,&cl2);
     //AttributesSet as2 = AttributesSet(&rc3,&cl1);
-    AttributesSet as3 = AttributesSet(&rc2,&cl3);
-    as3.randomAssignment();
-    as3.display();
+
+    Character ch1 = Character();
+    ch1.setName("Julien");
+    ch1.setRace(&rc1);
+    ch1.setGender(Gender::MALE);
+    ch1.setClass(&cl1);
+    std::cout << ch1.toString();
 }

@@ -18,7 +18,7 @@ class AttributesSet
 
         void randomAssignment(void);
 
-        void display(void);
+        std::string toString(void);
 
     protected:
         int m_unassignedPoints;

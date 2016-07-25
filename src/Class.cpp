@@ -19,6 +19,11 @@ Class::Class(void)
 /*virtual*/ Class::~Class(void)
 {}
 
+std::string* Class::getName(void)
+{
+    return &m_name;
+}
+
 std::pair<unsigned int,unsigned int> Class::getAttributeBounds(unsigned int ind)
 {
     return ma_attributesBounds[ind];

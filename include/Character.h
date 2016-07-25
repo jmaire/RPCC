@@ -26,6 +26,8 @@ class Character
 
         std::vector<Class*> getAvailableClass(void);
 
+        std::string toString(void);
+
     protected:
         std::string m_name;
         unsigned int m_level;

@@ -19,6 +19,11 @@ Race::Race()
 /*virtual*/ Race::~Race()
 {}
 
+std::string* Race::getName(void)
+{
+    return &m_name;
+}
+
 std::vector<Class*> Race::getAvailableClass(void)
 {
     return m_class_restriction;

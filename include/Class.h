@@ -12,6 +12,7 @@ class Class
 
         virtual ~Class(void);
 
+        std::string* getName(void);
         std::pair<unsigned int,unsigned int> getAttributeBounds(unsigned int ind);
 
         void setAttributeBounds(unsigned int ind, unsigned int lb, unsigned int hb);

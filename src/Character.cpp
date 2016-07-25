@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "Character.h"
 
 Character::Character(void)
@@ -40,4 +42,17 @@ std::vector<Class*> Character::getAvailableClass(void)
     noClass.clear();
     return noClass;
 }
+
+std::string Character::toString(void)
+{
+    std::string str = "Name: " + m_name
+        + "\nRace: " + *m_race->getName()
+        + "\nGender: " + ((int)m_gender==0 ? "Female" : "Male")
+        + "\nClass: " + *m_class->getName()
+        //+ "\nLevel: " + m_level + "(" + m_experience + ")"
+        + "\nAttributes \n" + m_attributes_set.toString();
+
+    return str;
+}
+
 
