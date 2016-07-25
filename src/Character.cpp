@@ -3,7 +3,8 @@
 #include "Character.h"
 
 Character::Character(void)
-: m_level(1)
+: m_portraitPath(nullptr)
+, m_level(1)
 , m_experience(0)
 , m_race(nullptr)
 , m_class(nullptr)

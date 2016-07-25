@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "config.h"
-#include "Attribute.h"
+#include "AttributeScore.h"
 #include "Race.h"
 #include "Class.h"
 
@@ -22,7 +22,7 @@ class AttributesSet
 
     protected:
         int m_unassignedPoints;
-        Attribute ma_attributes[ATTRIBUTES_SET_SIZE];
+        AttributeScore ma_attributes[ATTRIBUTES_SET_SIZE];
         std::pair<unsigned int,unsigned int> ma_attributesBounds[ATTRIBUTES_SET_SIZE];
 
 };

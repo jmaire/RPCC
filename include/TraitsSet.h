@@ -2,17 +2,18 @@
 #define TRAITSSET_H
 
 #include "config.h"
-#include "Trait.h"
+#include "TraitScore.h"
 
 class TraitsSet
 {
     public:
+        TraitsSet(std::vector<Trait*> trts);
         TraitsSet(void);
 
         virtual ~TraitsSet(void);
 
     protected:
-        Trait ma_traits[TRAITS_SET_SIZE];
+        std::vector<TraitScore> m_traits;
 
 };
 

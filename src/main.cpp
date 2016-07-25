@@ -7,43 +7,24 @@
 
 int main(int argc, char* argv[])
 {
-    Race rc1 = Race("Human");
-    Race rc2 = Race("Elf");
-    Race rc3 = Race("Dwarf");
+    Ability ab1 = Ability("Bravoure");
+    Ability ab2 = Ability("Fuyard");
+    Ability ab3 = Ability("Témérité");
+    Ability ab4 = Ability("Lâcheté");
 
-    Class cl1 = Class("Fighter");
-    Class cl2 = Class("Mage");
-    Class cl3 = Class("Thief");
+    Trait tr1 = Trait("Courageux","Prudent");
+    tr1.addAbility(-25,&ab1);
+    tr1.addAbility(25,&ab2);
+    tr1.addAbility(-75,&ab3);
+    tr1.addAbility(75,&ab4);
 
-    cl1.setAttributeBounds(0,9,18);
-    cl2.setAttributeBounds(3,9,18);
-    cl3.setAttributeBounds(1,9,18);
+    TraitScore ts1 = TraitScore(&tr1,50);
 
-    rc1.addAvailableClass(&cl1);
-    rc1.addAvailableClass(&cl2);
-    rc1.addAvailableClass(&cl3);
+    std::vector<Ability*> abs = ts1.getKnownAbilities();
 
-    rc2.addAvailableClass(&cl2);
-    rc2.addAvailableClass(&cl3);
-    rc2.setAttributeBounds(1,7,18);
-    rc2.setAttributeBounds(2,6,18);
-    rc2.setAttributeBounds(3,8,18);
-    rc2.setAttributeBounds(5,8,18);
+    for(std::vector<Ability*>::iterator it = abs.begin() ; it != abs.end(); ++it)
+    {
+        std::cout << (*it)->getName() << "\n";
+    }
 
-    rc3.addAvailableClass(&cl1);
-    rc3.addAvailableClass(&cl3);
-    rc3.setAttributeBounds(0,8,18);
-    rc3.setAttributeBounds(1,4,18);
-    rc3.setAttributeBounds(2,11,18);
-    rc3.setAttributeBounds(5,4,18);
-
-    //AttributesSet as1 = AttributesSet(&rc1,&cl2);
-    //AttributesSet as2 = AttributesSet(&rc3,&cl1);
-
-    Character ch1 = Character();
-    ch1.setName("Julien");
-    ch1.setRace(&rc1);
-    ch1.setGender(Gender::MALE);
-    ch1.setClass(&cl1);
-    std::cout << ch1.toString();
 }

@@ -31,7 +31,7 @@ AttributesSet::AttributesSet(void)
 {
     for(int i=0; i<ATTRIBUTES_SET_SIZE; i++)
     {
-        ma_attributes[i] = Attribute();
+        ma_attributes[i] = AttributeScore();
         ma_attributesBounds[i].first = ATTRIBUTE_DEFAULT_LOW_BOUNDARY;
         ma_attributesBounds[i].second = ATTRIBUTE_DEFAULT_HIGH_BOUNDARY;
     }

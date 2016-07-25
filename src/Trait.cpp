@@ -1,28 +1,28 @@
 #include "Trait.h"
 
-Trait::Trait(int sc)
-: m_score(sc)
+Trait::Trait(std::string ll, std::string rl)
+: m_leftLabel(ll)
+, m_rightLabel(rl)
 {}
 
 Trait::Trait(void)
-: Trait(0)
+: Trait(nullptr,nullptr)
 {}
 
-/*virtual*/ Trait::~Trait(void)
+Trait::~Trait(void)
 {}
 
-int Trait::getScore(void)
+void Trait::addAbility(int sc, Ability* ab)
 {
-    return m_score;
+    m_abilityMap.push_back(std::make_pair(sc,ab));
 }
 
-void Trait::setScore(int sc)
+std::vector<Ability*> Trait::getAvailableAbilties(int sc)
 {
-    m_score = sc;
-}
+    std::vector<Ability*> availableAbility;
+    for(std::vector<std::pair<int,Ability*>>::iterator it = m_abilityMap.begin() ; it != m_abilityMap.end(); ++it)
+        if((double)sc/(*it).first>=1.f)
+            availableAbility.push_back((*it).second);
 
-void Trait::increaseScore(int i)
-{
-    m_score += i;
+    return availableAbility;
 }
-

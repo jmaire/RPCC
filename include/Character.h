@@ -30,6 +30,7 @@ class Character
 
     protected:
         std::string m_name;
+        std::string m_portraitPath;
         unsigned int m_level;
         unsigned int m_experience;
 

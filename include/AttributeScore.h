@@ -1,18 +1,18 @@
-#ifndef ATTRIBUTE_H
-#define ATTRIBUTE_H
+#ifndef ATTRIBUTESCORE_H
+#define ATTRIBUTESCORE_H
 
 #include <string>
 
 #define ATTRIBUTE_SCORE_MIN 3
 #define ATTRIBUTE_SCORE_MAX 18
 
-class Attribute
+class AttributeScore
 {
     public:
-        Attribute(unsigned int sc);
-        Attribute(void);
+        AttributeScore(unsigned int sc);
+        AttributeScore(void);
 
-        virtual ~Attribute(void);
+        virtual ~AttributeScore(void);
 
         unsigned int getScore(void);
         void setScore(unsigned int sc);
@@ -24,4 +24,4 @@ class Attribute
         unsigned int m_score;
 };
 
-#endif // ATTRIBUTE_H
+#endif // ATTRIBUTESCORE_H

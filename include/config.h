@@ -32,4 +32,9 @@ static std::pair<std::string,std::string> TRAITS_SET_TRAIT_NAMES[TRAITS_SET_SIZE
     ,std::make_pair("Thoughtful","Impulsive")
     };
 
+//static std::vector<Trait*> TRAITS_LIST;
+
+static const int TRAIT_SCORE_ABSOLUTE_BOUNDARY = 100;
+
+
 #endif // CONFIG_H
