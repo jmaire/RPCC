@@ -1,9 +1,12 @@
+#include <algorithm>
 #include <iostream>
 
 #include "Character.h"
 
 Character::Character(void)
-: m_portraitPath(nullptr)
+: m_creationStep(START)
+, m_name(UNDEFINED_STRING)
+, m_portraitPath(UNDEFINED_STRING)
 , m_level(1)
 , m_experience(0)
 , m_race(nullptr)
@@ -12,6 +15,37 @@ Character::Character(void)
 
 /*virtual*/ Character::~Character(void)
 {}
+
+CharacterCreationStep Character::getCreationStep(void)
+{
+    return m_creationStep;
+}
+
+void Character::goToNextCreationStep(void)
+{
+    if(DONE != m_creationStep)
+        m_creationStep = (CharacterCreationStep)((int)(m_creationStep+1));
+}
+
+bool Character::isRaceValid(void)
+{
+    return nullptr != m_race;
+}
+
+bool Character::isGenderValid(void)
+{
+    return  Gender::FEMALE == m_gender || Gender::MALE == m_gender;
+}
+
+bool Character::isClassValid(void)
+{
+    if(nullptr != m_class && nullptr != m_race)
+    {
+        std::vector<Class*>* availableClass = getAvailableClass();
+        return std::find(availableClass->begin(),availableClass->end(),m_class) != availableClass->end();
+    }
+    return false;
+}
 
 void Character::setName(std::string nm)
 {

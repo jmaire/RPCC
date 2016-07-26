@@ -1,13 +1,17 @@
-#include "DataLoader.h"
+#include "DataManager.h"
+#include "tools.h"
 
-DataLoader::DataLoader(void)
+/*static*/ std::map<unsigned int,Race*> DataManager::m_raceMap;
+/*static*/ std::map<unsigned int,Class*> DataManager::m_classMap;
+
+DataManager::DataManager(void)
 {}
 
-/*virtual*/ DataLoader::~DataLoader(void)
+DataManager::~DataManager(void)
 {}
 
-/*static*/ void DataLoader::load(void)
-{/*
+/*static*/ void DataManager::load(void)
+{
     Class* c1 = new Class("Fighter");
     Class* c2 = new Class("Mage");
     Class* c3 = new Class("Thief");
@@ -29,11 +33,12 @@ DataLoader::DataLoader(void)
 
     r4->addAvailableClass(c1);
 
-    allClassList.push_back(c1);
-    allClassList.push_back(c2);
-    allClassList.push_back(c3);
-    allRaceList.push_back(r1);
-    allRaceList.push_back(r2);
-    allRaceList.push_back(r3);
-    allRaceList.push_back(r4);*/
+    m_classMap[0] = c1;
+    m_classMap[1] = c2;
+    m_classMap[10] = c3;
+    m_raceMap[0] = r1;
+    m_raceMap[1] = r2;
+    m_raceMap[4] = r3;
+    m_raceMap[57] = r4;
 }
+

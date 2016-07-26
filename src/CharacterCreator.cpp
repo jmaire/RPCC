@@ -1,28 +1,53 @@
 #include <time.h>
 #include "CharacterCreator.h"
+#include "DataManager.h"
+
+#include "iostream"
 
 CharacterCreator::CharacterCreator(void)
-{
-    srand(time(nullptr));
-}
+{}
 
 /*virtual*/ CharacterCreator::~CharacterCreator(void)
 {}
 
-/*static*/ Character* CharacterCreator::createRandomCharacter(void)
+/*static*/ bool CharacterCreator::validStep(Character* ch)
 {
-    Character *ch = new Character();
-    //
-    Race *race = allRaceList[rand() % allRaceList.size()];
-    ch->setRace(race);
-    //
-    ch->setGender((Gender)(rand()%2));
-    //
-    std::vector<Class*>* availableClass = race->getAvailableClass();
-    Class *cla = availableClass->at(rand() % availableClass->size());
-    ch->setClass(cla);
-    //
-    ch->setName("Juju");
+    bool isValid;
 
-    return ch;
+    switch(ch->getCreationStep())
+    {
+    case START:
+        isValid = true;
+        break;
+
+    case RACE_SELECTION:
+        isValid = ch->isRaceValid();
+        break;
+
+    case GENDER_SELECTION:
+        isValid = ch->isGenderValid();
+        break;
+
+    case CLASS_SELECTION:
+        isValid = ch->isClassValid();
+        break;
+
+    case DONE:
+        isValid = true;
+        break;
+
+    default:
+        isValid = false;
+        break;
+    }
+
+    if(isValid)
+        ch->goToNextCreationStep();
+    return isValid;
+}
+
+
+/*static*/ void CharacterCreator::nextStep(Character* ch)
+{
+
 }

@@ -8,6 +8,24 @@
 #define MY_MAX(x,y) ((x)>(y)?(x):(y))
 #define MY_MIN(x,y) ((x)<(y)?(x):(y))
 
+static const std::string UNDEFINED_STRING = "#UNDEFINED";
+
+///////////////////////////////////////////////////////
+
+enum CharacterCreationStep
+{
+    START,
+    RACE_SELECTION,
+    GENDER_SELECTION,
+    CLASS_SELECTION,
+    //
+    NAME_SELECTION,
+    //PORTRAIT_SELECTION,
+    DONE
+};
+
+///////////////////////////////////////////////////////
+
 static const int ATTRIBUTES_SET_SIZE = 6;
 static std::string ATTRIBUTES_SET_ATTRIBUTE_NAME[ATTRIBUTES_SET_SIZE] =
     {"Strength"

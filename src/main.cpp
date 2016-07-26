@@ -3,13 +3,12 @@
 #include <iostream>
 
 #include "CharacterCreator.h"
-#include "DataLoader.h"
+#include "DataManager.h"
 #include "Dice.h"
 
 int main(int argc, char* argv[])
 {
-    DataLoader::load();
-
+    DataManager::load();
     /*
     Ability ab1 = Ability("Bravoure");
     Ability ab2 = Ability("Fuyard");
@@ -31,7 +30,4 @@ int main(int argc, char* argv[])
         std::cout << (*it)->getName() << "\n";
     }
     */
-
-    Character *ch = CharacterCreator::createRandomCharacter();
-    std::cout << ch->toString();
 }

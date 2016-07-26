@@ -71,7 +71,7 @@ std::string AttributesSet::toString(void)
     {
         str += "  " + ATTRIBUTES_SET_ATTRIBUTE_NAME[i] + ": " + /*std::to_string(ma_attributes[i].getScore())*/ + "\n";
     }
-    return str + "   Unassigned: " /*+ m_unassignedPoints*/;
+    return str + "  >Unassigned: " /*+ m_unassignedPoints*/;
 }
 
 

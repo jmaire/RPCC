@@ -9,15 +9,21 @@
 enum class Gender
 {
 	FEMALE = 0,
-	MALE = 1,
-	GENDER_COUNT
+	MALE = 1
 };
 
 class Character
 {
     public:
         Character(void);
+
         virtual ~Character(void);
+
+        CharacterCreationStep getCreationStep(void);
+        void goToNextCreationStep(void);
+        bool isRaceValid(void);
+        bool isGenderValid(void);
+        bool isClassValid(void);
 
         void setName(std::string nm);
         void setRace(Race* rc);
@@ -29,6 +35,8 @@ class Character
         std::string toString(void);
 
     protected:
+        CharacterCreationStep m_creationStep;
+
         std::string m_name;
         std::string m_portraitPath;
         unsigned int m_level;

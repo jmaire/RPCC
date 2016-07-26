@@ -1,7 +1,6 @@
 #ifndef CHARACTERCREATOR_H
 #define CHARACTERCREATOR_H
 
-#include "data.h"
 #include "Character.h"
 
 class CharacterCreator
@@ -10,7 +9,8 @@ class CharacterCreator
         virtual ~CharacterCreator(void);
 
         //static Character* createCharacter(void);
-        static Character* createRandomCharacter(void);
+        static bool validStep(Character* ch);
+        static void nextStep(Character* ch);
 
     private:
         CharacterCreator(void);
