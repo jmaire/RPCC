@@ -10,7 +10,34 @@ CharacterCreator::CharacterCreator(void)
 /*virtual*/ CharacterCreator::~CharacterCreator(void)
 {}
 
-/*static*/ bool CharacterCreator::validStep(Character* ch)
+/*static*/ void doStep(Character *ch)
+{
+    switch(ch->getCreationStep())
+    {
+    case START:
+        break;
+
+    case RACE_SELECTION:
+
+        break;
+
+    case GENDER_SELECTION:
+        break;
+
+    case CLASS_SELECTION:
+        break;
+
+    case DONE:
+        break;
+
+    default:
+        break;
+    }
+
+
+}
+
+/*static*/ bool CharacterCreator::validStep(Character *ch)
 {
     bool isValid;
 
@@ -47,7 +74,7 @@ CharacterCreator::CharacterCreator(void)
 }
 
 
-/*static*/ void CharacterCreator::nextStep(Character* ch)
+/*static*/ void CharacterCreator::nextStep(Character *ch)
 {
 
 }

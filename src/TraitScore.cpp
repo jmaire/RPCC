@@ -33,5 +33,5 @@ void TraitScore::increaseScore(int i)
 
 std::vector<Ability*> TraitScore::getKnownAbilities(void)
 {
-    return m_trait->getAvailableAbilties(m_score);
+    return m_trait->getAvailableAbilities(m_score);
 }

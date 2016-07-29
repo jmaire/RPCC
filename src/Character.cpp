@@ -39,12 +39,11 @@ bool Character::isGenderValid(void)
 
 bool Character::isClassValid(void)
 {
-    if(nullptr != m_class && nullptr != m_race)
-    {
-        std::vector<Class*>* availableClass = getAvailableClass();
-        return std::find(availableClass->begin(),availableClass->end(),m_class) != availableClass->end();
-    }
-    return false;
+    if(nullptr == m_class || nullptr == m_race)
+        return false;
+
+    std::vector<Class*>* availableClass = getAvailableClass();
+    return std::find(availableClass->begin(),availableClass->end(),m_class) != availableClass->end();
 }
 
 void Character::setName(std::string nm)

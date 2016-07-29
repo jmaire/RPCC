@@ -1,27 +1,30 @@
 #ifndef ATTRIBUTESCORE_H
 #define ATTRIBUTESCORE_H
 
-#include <string>
-
-#define ATTRIBUTE_SCORE_MIN 3
-#define ATTRIBUTE_SCORE_MAX 18
+#include "config.h"
 
 class AttributeScore
 {
     public:
-        AttributeScore(unsigned int sc);
-        AttributeScore(void);
+        AttributeScore();
 
-        virtual ~AttributeScore(void);
+        virtual ~AttributeScore();
 
-        unsigned int getScore(void);
-        void setScore(unsigned int sc);
+        int getActualScore();
+        int getPointCost();
 
-        void incrementScore(void);
-        void decrementScore(void);
+        void setBonus(int b);
+        void setBounds(int min, int max);
+
+        bool isIncreasable();
+        bool isDecreasable();
+
+        void increasePoint(int p);
 
     protected:
-        unsigned int m_score;
+        int m_score, m_bonus;
+        std::pair<int,int> m_bounds;
+
 };
 
 #endif // ATTRIBUTESCORE_H

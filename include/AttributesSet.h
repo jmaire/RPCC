@@ -3,7 +3,6 @@
 
 #include <vector>
 
-#include "config.h"
 #include "AttributeScore.h"
 #include "Race.h"
 #include "Class.h"
@@ -12,18 +11,22 @@ class AttributesSet
 {
     public:
         AttributesSet(Race* rc, Class* cl);
-        AttributesSet(void);
+        AttributesSet();
 
-        virtual ~AttributesSet(void);
+        virtual ~AttributesSet();
 
-        void randomAssignment(void);
+        bool isIncreasable(unsigned int ind);
 
-        std::string toString(void);
+        void addPoint(unsigned int ind);
+        void removePoint(unsigned int ind);
+
+        //void randomAssignment();
+
+        std::string toString();
 
     protected:
-        int m_unassignedPoints;
         AttributeScore ma_attributes[ATTRIBUTES_SET_SIZE];
-        std::pair<unsigned int,unsigned int> ma_attributesBounds[ATTRIBUTES_SET_SIZE];
+        int m_unassignedPoints;
 
 };
 

@@ -6,48 +6,60 @@
 #include "AttributesSet.h"
 
 AttributesSet::AttributesSet(Race* rc, Class* cl)
-: m_unassignedPoints(0)
+: m_unassignedPoints(ATTRIBUTE_STARTING_UNASSIGNED_POINTS)
 {
     for(int i=0; i<ATTRIBUTES_SET_SIZE; i++)
     {
-        unsigned int lb = ATTRIBUTE_DEFAULT_LOW_BOUNDARY;
-        unsigned int hb = ATTRIBUTE_DEFAULT_HIGH_BOUNDARY;
+        //ma_attributes[i] = AttributeScore();
+        int lb = ATTRIBUTE_DEFAULT_LOW_BOUNDARY;
+        int hb = ATTRIBUTE_DEFAULT_HIGH_BOUNDARY;
         if(rc!=nullptr && cl!=nullptr)
         {
-            std::pair<unsigned int,unsigned int> rcBounds = rc->getAttributeBounds(i);
-            std::pair<unsigned int,unsigned int> clBounds = cl->getAttributeBounds(i);
+            std::pair<int,int> rcBounds = rc->getAttributeBounds(i);
+            std::pair<int,int> clBounds = cl->getAttributeBounds(i);
             lb = MY_MAX(rcBounds.first,clBounds.first);
             hb = MY_MIN(rcBounds.second,clBounds.second);
         }
 
-        ma_attributesBounds[i].first = lb;
-        ma_attributesBounds[i].second = hb;
+        ma_attributes[i].setBounds(lb,hb);
     }
 }
 
 
-AttributesSet::AttributesSet(void)
+AttributesSet::AttributesSet()
 : AttributesSet(nullptr, nullptr)
-{
-    for(int i=0; i<ATTRIBUTES_SET_SIZE; i++)
-    {
-        ma_attributes[i] = AttributeScore();
-        ma_attributesBounds[i].first = ATTRIBUTE_DEFAULT_LOW_BOUNDARY;
-        ma_attributesBounds[i].second = ATTRIBUTE_DEFAULT_HIGH_BOUNDARY;
-    }
-}
-
-/*virtual*/ AttributesSet::~AttributesSet(void)
 {}
 
-void AttributesSet::randomAssignment(void)
+/*virtual*/ AttributesSet::~AttributesSet()
+{}
+
+bool AttributesSet::isIncreasable(unsigned int ind)
+{
+    return ma_attributes[ind].isIncreasable();
+}
+
+void AttributesSet::addPoint(unsigned int ind)
+{
+    AttributeScore as = ma_attributes[ind];
+    m_unassignedPoints -= abs(as.getPointCost());
+    as.increasePoint(1);
+}
+
+void AttributesSet::removePoint(unsigned int ind)
+{
+    AttributeScore as = ma_attributes[ind];
+    m_unassignedPoints += abs(as.getPointCost());
+    as.increasePoint(-1);
+}
+/*
+void AttributesSet::randomAssignment()
 {
     srand(time(nullptr));
 
     for(int i=0; i<ATTRIBUTES_SET_SIZE; i++)
     {
         unsigned int points = ma_attributesBounds[i].first;
-        ma_attributes[i].setScore(points);
+        ma_attributes[i].m_score = points;
         m_unassignedPoints -= points;
     }
 
@@ -56,22 +68,26 @@ void AttributesSet::randomAssignment(void)
     while(m_unassignedPoints>0)
     {
         unsigned int ind = rand() % ATTRIBUTES_SET_SIZE;
-        if(ma_attributes[ind].getScore() < ma_attributesBounds[ind].second)
+        if(ma_attributes[ind].m_score < ma_attributesBounds[ind].second)
         {
-            ma_attributes[ind].incrementScore();
+            ma_attributes[ind].m_score++;
             m_unassignedPoints--;
         }
     }
 }
-
-std::string AttributesSet::toString(void)
+*/
+std::string AttributesSet::toString()
 {
+    char buff[16];
+
     std::string str = "";
     for(int i=0; i<ATTRIBUTES_SET_SIZE; i++)
     {
-        str += "  " + ATTRIBUTES_SET_ATTRIBUTE_NAME[i] + ": " + /*std::to_string(ma_attributes[i].getScore())*/ + "\n";
+        sprintf(buff,"%d",ma_attributes[i].getActualScore());
+        str += "  " + ATTRIBUTES_SET_ATTRIBUTE_NAME[i] + ": " + buff + "\n";
     }
-    return str + "  >Unassigned: " /*+ m_unassignedPoints*/;
+    sprintf(buff,"%d",m_unassignedPoints);
+    return str + "  >Unassigned: " + buff;
 }
 
 

@@ -5,7 +5,7 @@ Ability::Ability(std::string nm)
 {}
 
 Ability::Ability(void)
-: m_name(nullptr)
+: m_name("")
 {}
 
 Ability::~Ability(void)

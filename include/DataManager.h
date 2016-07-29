@@ -7,16 +7,19 @@
 class DataManager
 {
     public:
-        virtual ~DataManager(void);
+        virtual ~DataManager();
 
-        static void load(void);
+        static void load();
+
+        static Race* getRaceByKey(std::string key);
+        static Class* getClassByKey(std::string key);
 
     protected:
-        static std::map<unsigned int,Race*> m_raceMap;
-        static std::map<unsigned int,Class*> m_classMap;
+        static std::map<std::string,Race*> m_raceMap;
+        static std::map<std::string,Class*> m_classMap;
 
     private:
-        DataManager(void);
+        DataManager();
 };
 
 #endif // DATAMANAGER_H

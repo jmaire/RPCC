@@ -1,33 +1,45 @@
 #include "AttributeScore.h"
 
-AttributeScore::AttributeScore(unsigned int sc)
-: m_score(sc)
+AttributeScore::AttributeScore()
+: m_score(ATTRIBUTE_NEUTRAL_SCORE)
+, m_bonus(0)
+, m_bounds(std::make_pair(ATTRIBUTE_DEFAULT_LOW_BOUNDARY,ATTRIBUTE_DEFAULT_HIGH_BOUNDARY))
 {}
 
-AttributeScore::AttributeScore(void)
-: AttributeScore(0)
+/*virtual*/ AttributeScore::~AttributeScore()
 {}
 
-/*virtual*/ AttributeScore::~AttributeScore(void)
-{}
-
-unsigned int AttributeScore::getScore(void)
+int AttributeScore::getActualScore()
 {
-    return m_score;
+    return m_score + m_bonus;
 }
 
-void AttributeScore::setScore(unsigned int sc)
+int AttributeScore::getPointCost()
 {
-    m_score = sc;
+    #if ATTRIBUTES_NON_CONSTANT_COST == 1
+        return ATTRIBUTES_COST[m_score-ATTRIBUTE_DEFAULT_LOW_BOUNDARY];
+    #else
+        return 1;
+    #endif // ATTRIBUTES_NON_CONSTANT_COST
 }
 
-void AttributeScore::incrementScore(void)
+void AttributeScore::setBonus(int b)
 {
-    m_score++;
+    m_bonus = b;
 }
 
-void AttributeScore::decrementScore(void)
+void AttributeScore::setBounds(int min, int max)
 {
-    m_score--;
+    m_bounds.first = min;
+    m_bounds.second = max;
 }
 
+bool AttributeScore::isIncreasable()
+{
+    return m_score<m_bounds.second;
+}
+
+void AttributeScore::increasePoint(int p)
+{
+    m_score += p;
+}

@@ -9,25 +9,17 @@
 int main(int argc, char* argv[])
 {
     DataManager::load();
-    /*
-    Ability ab1 = Ability("Bravoure");
-    Ability ab2 = Ability("Fuyard");
-    Ability ab3 = Ability("Témérité");
-    Ability ab4 = Ability("Lâcheté");
 
-    Trait tr1 = Trait("Courageux","Prudent");
-    tr1.addAbility(-25,&ab1);
-    tr1.addAbility(25,&ab2);
-    tr1.addAbility(-75,&ab3);
-    tr1.addAbility(75,&ab4);
+    Race* r = DataManager::getRaceByKey("elf");
+    Class* c = DataManager::getClassByKey("thief");
 
-    TraitScore ts1 = TraitScore(&tr1,50);
+    AttributesSet ass = AttributesSet(r,c);
 
-    std::vector<Ability*> abs = ts1.getKnownAbilities();
 
-    for(std::vector<Ability*>::iterator it = abs.begin() ; it != abs.end(); ++it)
+    for(int i=0; i<5; i++)
     {
-        std::cout << (*it)->getName() << "\n";
+        std::cout << "\n-----------------------------\n" << ass.toString();
+        std::cout << "\n augmentable? " << ass.isIncreasable(1);
+        ass.addPoint(1);
     }
-    */
 }

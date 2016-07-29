@@ -9,8 +9,9 @@ class CharacterCreator
         virtual ~CharacterCreator(void);
 
         //static Character* createCharacter(void);
-        static bool validStep(Character* ch);
-        static void nextStep(Character* ch);
+        static void doStep(Character *ch);
+        static bool validStep(Character *ch);
+        static void nextStep(Character *ch);
 
     private:
         CharacterCreator(void);

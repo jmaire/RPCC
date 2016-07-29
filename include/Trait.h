@@ -16,7 +16,7 @@ class Trait
 
         void addAbility(int sc, Ability* ab);
 
-        std::vector<Ability*> getAvailableAbilties(int sc);
+        std::vector<Ability*> getAvailableAbilities(int sc);
 
     protected:
         std::string m_leftLabel, m_rightLabel;
