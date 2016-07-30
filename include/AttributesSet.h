@@ -10,15 +10,17 @@
 class AttributesSet
 {
     public:
-        AttributesSet(Race* rc, Class* cl);
         AttributesSet();
 
         virtual ~AttributesSet();
 
-        bool isIncreasable(unsigned int ind);
+        void setAttributeBounds(Race* rc, Class* cl);
 
-        void addPoint(unsigned int ind);
-        void removePoint(unsigned int ind);
+        bool isIncrementable(unsigned int ind);
+        bool isDecrementable(unsigned int ind);
+
+        void incrementPoint(unsigned int ind);
+        void decrementPoint(unsigned int ind);
 
         //void randomAssignment();
 

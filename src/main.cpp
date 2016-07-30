@@ -10,16 +10,27 @@ int main(int argc, char* argv[])
 {
     DataManager::load();
 
-    Race* r = DataManager::getRaceByKey("elf");
-    Class* c = DataManager::getClassByKey("thief");
+    //Race* r = DataManager::getRaceByKey("elf");
+    //Class* c = DataManager::getClassByKey("thief");
 
-    AttributesSet ass = AttributesSet(r,c);
+    /*
+    AttributeScore as = AttributeScore();
+    for(int i=0; i<10; i++)
+    {
+        char buff[16];
+        sprintf(buff,"%d",as.getActualScore());
+        std::cout << "\n-----------------------------\nValue: " << buff;
+        std::cout << "\n augmentable? " << as.isIncreasable();
+        as.increasePoint(1);
+    }
+    */
 
+    AttributesSet ass = AttributesSet();
 
     for(int i=0; i<5; i++)
     {
-        std::cout << "\n-----------------------------\n" << ass.toString();
-        std::cout << "\n augmentable? " << ass.isIncreasable(1);
-        ass.addPoint(1);
+        std::cout << "\n-----------------------------\n" << ass.toString() << "\n";
+        //std::cout << "\n augmentable? " << ass.isIncreasable(1);
+        ass.incrementPoint(1);
     }
 }

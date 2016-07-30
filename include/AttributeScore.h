@@ -11,13 +11,16 @@ class AttributeScore
         virtual ~AttributeScore();
 
         int getActualScore();
-        int getPointCost();
+
+        int getPointsCost();
+        int getNextPointCost();
+        int getPreviousPointCost();
 
         void setBonus(int b);
         void setBounds(int min, int max);
 
-        bool isIncreasable();
-        bool isDecreasable();
+        bool isIncrementable();
+        bool isDecrementable();
 
         void increasePoint(int p);
 

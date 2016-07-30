@@ -1,8 +1,10 @@
 #ifndef DATALOADER_H
 #define DATALOADER_H
 
+#include "Attribute.h"
 #include "Class.h"
 #include "Race.h"
+
 
 class DataLoader
 {

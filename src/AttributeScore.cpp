@@ -14,14 +14,25 @@ int AttributeScore::getActualScore()
     return m_score + m_bonus;
 }
 
-int AttributeScore::getPointCost()
+int AttributeScore::getPointsCost()
+{
+    return 1;
+}
+
+int AttributeScore::getNextPointCost()
+{
+    return 1;
+}
+
+int AttributeScore::getPreviousPointCost()
 {
     #if ATTRIBUTES_NON_CONSTANT_COST == 1
-        return ATTRIBUTES_COST[m_score-ATTRIBUTE_DEFAULT_LOW_BOUNDARY];
+        return -1;//TODO
     #else
-        return 1;
+        return -1;
     #endif // ATTRIBUTES_NON_CONSTANT_COST
 }
+
 
 void AttributeScore::setBonus(int b)
 {
@@ -34,9 +45,14 @@ void AttributeScore::setBounds(int min, int max)
     m_bounds.second = max;
 }
 
-bool AttributeScore::isIncreasable()
+bool AttributeScore::isIncrementable()
 {
-    return m_score<m_bounds.second;
+    return getActualScore() < m_bounds.second;
+}
+
+bool AttributeScore::isDecrementable()
+{
+    return getActualScore() > m_bounds.first;
 }
 
 void AttributeScore::increasePoint(int p)
