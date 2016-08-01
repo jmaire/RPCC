@@ -2,22 +2,21 @@
 #define ATTRIBUTESCORE_H
 
 #include "config.h"
+#include "Class.h"
+#include "Race.h"
 
 class AttributeScore
 {
     public:
+        AttributeScore(std::string key);
         AttributeScore();
 
         virtual ~AttributeScore();
 
         int getActualScore();
 
-        int getPointsCost();
-        int getNextPointCost();
-        int getPreviousPointCost();
-
         void setBonus(int b);
-        void setBounds(int min, int max);
+        void setBounds(Race* rc, Class* cl);
 
         bool isIncrementable();
         bool isDecrementable();
@@ -27,6 +26,7 @@ class AttributeScore
     protected:
         int m_score, m_bonus;
         std::pair<int,int> m_bounds;
+        std::string m_key;
 
 };
 

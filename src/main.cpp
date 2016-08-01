@@ -26,11 +26,12 @@ int main(int argc, char* argv[])
     */
 
     AttributesSet ass = AttributesSet();
-
+    std::cout << ass.toString() << "\n";
+/*
     for(int i=0; i<5; i++)
     {
         std::cout << "\n-----------------------------\n" << ass.toString() << "\n";
         //std::cout << "\n augmentable? " << ass.isIncreasable(1);
-        ass.incrementPoint(1);
-    }
+        ass.incrementPoint("dex");
+    }*/
 }

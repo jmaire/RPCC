@@ -17,15 +17,16 @@ class Race
 
         std::string* getName(void);
         std::vector<Class*>* getAvailableClass(void);
-        std::pair<unsigned int,unsigned int> getAttributeBounds(unsigned int ind);
+        std::pair<int,int> getAttributeBounds(std::string key);
 
         void addAvailableClass(Class* cl);
-        void setAttributeBounds(unsigned int ind, unsigned int lb, unsigned int hb);
+        void setAttributeBounds(std::string key, int lb, int hb);
 
     protected:
         std::string m_name;
         std::vector<Class*> m_class_restriction;
-        std::pair<unsigned int,unsigned int> ma_attributesBounds[ATTRIBUTES_SET_SIZE];
+        std::map<std::string,std::pair<int,int>> m_attributesBounds;
+        //std::pair<unsigned int,unsigned int> ma_attributesBounds[ATTRIBUTES_SET_SIZE];
 
 };
 

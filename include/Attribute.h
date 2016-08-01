@@ -11,6 +11,8 @@ class Attribute
 
         virtual ~Attribute();
 
+        std::string getName();
+
     protected:
         std::string m_name, m_description;
 

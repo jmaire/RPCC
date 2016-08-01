@@ -1,11 +1,11 @@
 #include "DataManager.h"
 #include "tools.h"
 
-/*static*/ std::map<std::string,Race*> DataManager::m_raceMap;
-/*static*/ std::map<std::string,Class*> DataManager::m_classMap;
 /*static*/ std::map<std::string,Attribute*> DataManager::m_attributeMap;
+/*static*/ std::map<std::string,Class*> DataManager::m_classMap;
+/*static*/ std::map<std::string,Race*> DataManager::m_raceMap;
 
-DataManager::DataManager()
+/*private*/ DataManager::DataManager()
 {}
 
 DataManager::~DataManager()
@@ -20,25 +20,25 @@ void DataManager::load()
 
 void DataManager::loadAttribute()
 {
-    Attribute* at;
+    Attribute* att;
 
-    at = new Attribute("Strength");
-    m_attributeMap["str"] = at;
+    att = new Attribute("Strength");
+    m_attributeMap["str"] = att;
 
-    at = new Attribute("Dexterity");
-    m_attributeMap["dex"] = at;
+    att = new Attribute("Dexterity");
+    m_attributeMap["dex"] = att;
 
-    at = new Attribute("Constitution");
-    m_attributeMap["con"] = at;
+    att = new Attribute("Constitution");
+    m_attributeMap["con"] = att;
 
-    at = new Attribute("Intelligence");
-    m_attributeMap["int"] = at;
+    att = new Attribute("Intelligence");
+    m_attributeMap["int"] = att;
 
-    at = new Attribute("Wisdom");
-    m_attributeMap["wis"] = at;
+    att = new Attribute("Wisdom");
+    m_attributeMap["wis"] = att;
 
-    at = new Attribute("Charisma");
-    m_attributeMap["cha"] = at;
+    att = new Attribute("Charisma");
+    m_attributeMap["cha"] = att;
 }
 
 void DataManager::loadClass()
@@ -46,15 +46,15 @@ void DataManager::loadClass()
     Class* cl;
 
     cl = new Class("Fighter");
-    cl->setAttributeBounds(0,9,18);
+    cl->setAttributeBounds("str",9,18);
     m_classMap["fighter"] = cl;
 
     cl = new Class("Mage");
-    cl->setAttributeBounds(3,9,18);
+    cl->setAttributeBounds("int",9,18);
     m_classMap["mage"] = cl;
 
     cl = new Class("Thief");
-    cl->setAttributeBounds(1,9,18);
+    cl->setAttributeBounds("dex",9,18);
     m_classMap["thief"] = cl;
 }
 
@@ -69,20 +69,19 @@ void DataManager::loadRace()
     m_raceMap["human"] = rc;
 
     rc = new Race("Dwarf");
-    rc->setAttributeBounds(0,8,18);
-    rc->setAttributeBounds(1,3,17);
-    rc->setAttributeBounds(2,12,19);
-    rc->setAttributeBounds(5,2,16);
+    rc->setAttributeBounds("str",8,18);
+    rc->setAttributeBounds("dex",3,17);
+    rc->setAttributeBounds("con",12,19);
+    rc->setAttributeBounds("cha",2,16);
     rc->addAvailableClass(getClassByKey("fighter"));
     rc->addAvailableClass(getClassByKey("thief"));
-
     m_raceMap["dwarf"] = rc;
 
     rc = new Race("Elf");
-    rc->setAttributeBounds(1,7,19);
-    rc->setAttributeBounds(2,6,17);
-    rc->setAttributeBounds(3,8,18);
-    rc->setAttributeBounds(5,8,18);
+    rc->setAttributeBounds("dex",7,19);
+    rc->setAttributeBounds("con",6,17);
+    rc->setAttributeBounds("int",8,18);
+    rc->setAttributeBounds("cha",8,18);
     rc->addAvailableClass(getClassByKey("mage"));
     rc->addAvailableClass(getClassByKey("thief"));
     m_raceMap["elf"] = rc;

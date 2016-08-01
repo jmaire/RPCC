@@ -4,12 +4,6 @@
 Race::Race(std::string n)
 {
     m_name = n;
-    m_class_restriction.clear();
-    for(int i=0; i<ATTRIBUTES_SET_SIZE; i++)
-    {
-        ma_attributesBounds[i].first = ATTRIBUTE_DEFAULT_LOW_BOUNDARY;
-        ma_attributesBounds[i].second = ATTRIBUTE_DEFAULT_HIGH_BOUNDARY;
-    }
 }
 
 Race::Race()
@@ -29,9 +23,9 @@ std::vector<Class*>* Race::getAvailableClass(void)
     return &m_class_restriction;
 }
 
-std::pair<unsigned int,unsigned int> Race::getAttributeBounds(unsigned int ind)
+std::pair<int,int> Race::getAttributeBounds(std::string key)
 {
-    return ma_attributesBounds[ind];
+    return m_attributesBounds.at(key);
 }
 
 void Race::addAvailableClass(Class* cl)
@@ -42,9 +36,8 @@ void Race::addAvailableClass(Class* cl)
     }
 }
 
-void Race::setAttributeBounds(unsigned int ind, unsigned int lb, unsigned int hb)
+void Race::setAttributeBounds(std::string key, int lb, int hb)
 {
-    ma_attributesBounds[ind].first = lb;
-    ma_attributesBounds[ind].second = hb;
+    m_attributesBounds[key] = std::make_pair(lb,hb);
 }
 

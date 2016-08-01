@@ -1,7 +1,7 @@
 #ifndef CLASS_H
 #define CLASS_H
 
-#include <vector>
+#include <map>
 #include "config.h"
 
 class Class
@@ -13,13 +13,13 @@ class Class
         virtual ~Class(void);
 
         std::string* getName(void);
-        std::pair<unsigned int,unsigned int> getAttributeBounds(unsigned int ind);
+        std::pair<int,int> getAttributeBounds(std::string key);
 
-        void setAttributeBounds(unsigned int ind, unsigned int lb, unsigned int hb);
+        void setAttributeBounds(std::string key, int lb, int hb);
 
     protected:
         std::string m_name;
-        std::pair<unsigned int,unsigned int> ma_attributesBounds[ATTRIBUTES_SET_SIZE];
+        std::map<std::string,std::pair<int,int>> m_attributesBounds;
 
 };
 

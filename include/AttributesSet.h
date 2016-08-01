@@ -1,6 +1,7 @@
 #ifndef ATTRIBUTES_SET_H
 #define ATTRIBUTES_SET_H
 
+#include <map>
 #include <vector>
 
 #include "AttributeScore.h"
@@ -10,24 +11,26 @@
 class AttributesSet
 {
     public:
+        AttributesSet(std::vector<std::string> attributes);
         AttributesSet();
 
         virtual ~AttributesSet();
 
         void setAttributeBounds(Race* rc, Class* cl);
 
-        bool isIncrementable(unsigned int ind);
-        bool isDecrementable(unsigned int ind);
+        bool isIncrementable(std::string key);
+        bool isDecrementable(std::string key);
 
-        void incrementPoint(unsigned int ind);
-        void decrementPoint(unsigned int ind);
+        void incrementPoint(std::string key);
+        void decrementPoint(std::string key);
 
         //void randomAssignment();
 
         std::string toString();
 
     protected:
-        AttributeScore ma_attributes[ATTRIBUTES_SET_SIZE];
+        std::map<std::string,AttributeScore*> m_asMap;
+        //AttributeScore ma_attributes[ATTRIBUTES_SET_SIZE];
         int m_unassignedPoints;
 
 };

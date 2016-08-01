@@ -1,9 +1,14 @@
 #include "AttributeScore.h"
 
-AttributeScore::AttributeScore()
-: m_score(ATTRIBUTE_NEUTRAL_SCORE)
+AttributeScore::AttributeScore(std::string key)
+: m_key(key)
+, m_score(ATTRIBUTE_NEUTRAL_SCORE)
 , m_bonus(0)
 , m_bounds(std::make_pair(ATTRIBUTE_DEFAULT_LOW_BOUNDARY,ATTRIBUTE_DEFAULT_HIGH_BOUNDARY))
+{}
+
+AttributeScore::AttributeScore()
+: AttributeScore(nullptr)
 {}
 
 /*virtual*/ AttributeScore::~AttributeScore()
@@ -14,35 +19,17 @@ int AttributeScore::getActualScore()
     return m_score + m_bonus;
 }
 
-int AttributeScore::getPointsCost()
-{
-    return 1;
-}
-
-int AttributeScore::getNextPointCost()
-{
-    return 1;
-}
-
-int AttributeScore::getPreviousPointCost()
-{
-    #if ATTRIBUTES_NON_CONSTANT_COST == 1
-        return -1;//TODO
-    #else
-        return -1;
-    #endif // ATTRIBUTES_NON_CONSTANT_COST
-}
-
-
 void AttributeScore::setBonus(int b)
 {
     m_bonus = b;
 }
 
-void AttributeScore::setBounds(int min, int max)
+void AttributeScore::setBounds(Race* rc, Class* cl)
 {
-    m_bounds.first = min;
-    m_bounds.second = max;
+    std::pair<int,int> rcBounds = rc->getAttributeBounds(m_key);
+    std::pair<int,int> clBounds = cl->getAttributeBounds(m_key);
+    m_bounds.first = MY_MAX(rcBounds.first,clBounds.first);
+    m_bounds.second = MY_MIN(rcBounds.second,clBounds.second);
 }
 
 bool AttributeScore::isIncrementable()

@@ -14,16 +14,16 @@ class DataManager
         static void loadClass();
         static void loadRace();
 
-        static void destroy();
+        //static void destroy();
 
         static Attribute* getAttributeByKey(std::string key);
         static Class* getClassByKey(std::string key);
         static Race* getRaceByKey(std::string key);
 
     protected:
-        static std::map<std::string,Race*> m_raceMap;
-        static std::map<std::string,Class*> m_classMap;
         static std::map<std::string,Attribute*> m_attributeMap;
+        static std::map<std::string,Class*> m_classMap;
+        static std::map<std::string,Race*> m_raceMap;
 
     private:
         DataManager();

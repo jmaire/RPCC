@@ -4,13 +4,7 @@
 Class::Class(std::string n)
 {
     m_name = n;
-    for(int i=0; i<ATTRIBUTES_SET_SIZE; i++)
-    {
-        ma_attributesBounds[i].first = ATTRIBUTE_DEFAULT_LOW_BOUNDARY;
-        ma_attributesBounds[i].second = ATTRIBUTE_DEFAULT_HIGH_BOUNDARY;
-    }
 }
-
 
 Class::Class(void)
 : Class("#UNDEFINED")
@@ -24,14 +18,13 @@ std::string* Class::getName(void)
     return &m_name;
 }
 
-std::pair<unsigned int,unsigned int> Class::getAttributeBounds(unsigned int ind)
+std::pair<int,int> Class::getAttributeBounds(std::string key)
 {
-    return ma_attributesBounds[ind];
+    return m_attributesBounds.at(key);
 }
 
-void Class::setAttributeBounds(unsigned int ind, unsigned int lb, unsigned int hb)
+void Class::setAttributeBounds(std::string key, int lb, int hb)
 {
-    ma_attributesBounds[ind].first = lb;
-    ma_attributesBounds[ind].second = hb;
+    m_attributesBounds[key] = std::make_pair(lb,hb);
 }
 

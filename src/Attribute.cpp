@@ -11,3 +11,8 @@ Attribute::Attribute()
 
 Attribute::~Attribute()
 {}
+
+std::string Attribute::getName()
+{
+    return m_name;
+}

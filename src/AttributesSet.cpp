@@ -3,10 +3,23 @@
 #include <time.h>
 #include <iostream>
 
+#include "DataManager.h"
 #include "AttributesSet.h"
 
-AttributesSet::AttributesSet()
+
+AttributesSet::AttributesSet(std::vector<std::string> attributes)
 : m_unassignedPoints(ATTRIBUTE_STARTING_UNASSIGNED_POINTS)
+{
+    for(unsigned int i=0; i<attributes.size(); i++)
+    {
+        AttributeScore* as = new AttributeScore(attributes[i]);
+        m_asMap[attributes[i]] = as;
+    }
+
+}
+
+AttributesSet::AttributesSet()
+: AttributesSet({"str","dex","con","int","wis","cha"}) //TODO
 {}
 
 /*virtual*/ AttributesSet::~AttributesSet()
@@ -14,35 +27,32 @@ AttributesSet::AttributesSet()
 
 void AttributesSet::setAttributeBounds(Race* rc, Class* cl)
 {
-    for(int i=0; i<ATTRIBUTES_SET_SIZE; i++)
+    for(std::map<std::string,AttributeScore*>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
     {
-        std::pair<int,int> rcBounds = rc->getAttributeBounds(i);
-        std::pair<int,int> clBounds = cl->getAttributeBounds(i);
-        ma_attributes[i].setBounds(MY_MAX(rcBounds.first,clBounds.first),
-                                   MY_MIN(rcBounds.second,clBounds.second));
+        it->second->setBounds(rc,cl);
     }
 }
 
-bool AttributesSet::isIncrementable(unsigned int ind)
+bool AttributesSet::isIncrementable(std::string key)
 {
-    return ma_attributes[ind].isIncrementable();
+    return m_asMap.at(key)->isIncrementable();
 }
 
-bool AttributesSet::isDecrementable(unsigned int ind)
+bool AttributesSet::isDecrementable(std::string key)
 {
-    return ma_attributes[ind].isDecrementable();
+    return m_asMap.at(key)->isDecrementable();
 }
 
-void AttributesSet::incrementPoint(unsigned int ind)
+void AttributesSet::incrementPoint(std::string key)
 {
-    m_unassignedPoints -= ma_attributes[ind].getNextPointCost();
-    ma_attributes[ind].increasePoint(1);
+    m_unassignedPoints--;
+    m_asMap.at(key)->increasePoint(1);
 }
 
-void AttributesSet::decrementPoint(unsigned int ind)
+void AttributesSet::decrementPoint(std::string key)
 {
-    m_unassignedPoints += ma_attributes[ind].getPreviousPointCost();
-    ma_attributes[ind].increasePoint(-1);
+    m_unassignedPoints++;
+    m_asMap.at(key)->increasePoint(-1);
 }
 
 /*
@@ -75,11 +85,10 @@ std::string AttributesSet::toString()
     char buff[16];
 
     std::string str = "";
-    for(int i=0; i<ATTRIBUTES_SET_SIZE; i++)
+    for(std::map<std::string,AttributeScore*>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
     {
-        sprintf(buff,"%d",ma_attributes[i].getActualScore());
-        str += "  " + ATTRIBUTES_SET_ATTRIBUTE_NAME[i] + ": " + buff + "\n";
-        sprintf(buff,"%d",ma_attributes[i].getActualScore());
+        sprintf(buff,"%d",it->second->getActualScore());
+        str += "  " + DataManager::getAttributeByKey(it->first)->getName() + ": " + buff + "\n";
     }
     sprintf(buff,"%d",m_unassignedPoints);
     return str + "  >Unassigned: " + buff;
