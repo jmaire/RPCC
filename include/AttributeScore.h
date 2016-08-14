@@ -24,9 +24,9 @@ class AttributeScore
         void increasePoint(int p);
 
     protected:
+        std::string m_key;
         int m_score, m_bonus;
         std::pair<int,int> m_bounds;
-        std::string m_key;
 
 };
 

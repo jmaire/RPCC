@@ -16,6 +16,10 @@ class DataManager
 
         //static void destroy();
 
+        static void insereAttributeToMap(Attribute* att);
+        static void insereClassToMap(Class* cl);
+        static void insereRaceToMap(Race* rc);
+
         static Attribute* getAttributeByKey(std::string key);
         static Class* getClassByKey(std::string key);
         static Race* getRaceByKey(std::string key);

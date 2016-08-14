@@ -6,15 +6,18 @@
 class Attribute
 {
     public:
-        Attribute(std::string nm);
+        Attribute(std::string id, std::string name);
         Attribute();
 
         virtual ~Attribute();
 
+        std::string getID();
         std::string getName();
 
+        void setID(std::string id);
+
     protected:
-        std::string m_name, m_description;
+        std::string m_id, m_name, m_description;
 
 };
 

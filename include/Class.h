@@ -7,18 +7,20 @@
 class Class
 {
     public:
-        Class(std::string n);
-        Class(void);
+        Class(std::string id, std::string name);
+        Class();
 
-        virtual ~Class(void);
+        virtual ~Class();
 
-        std::string* getName(void);
+        std::string getID();
+        std::string getName();
         std::pair<int,int> getAttributeBounds(std::string key);
 
+        void setID(std::string id);
         void setAttributeBounds(std::string key, int lb, int hb);
 
     protected:
-        std::string m_name;
+        std::string m_id, m_name;
         std::map<std::string,std::pair<int,int>> m_attributesBounds;
 
 };

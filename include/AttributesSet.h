@@ -30,7 +30,6 @@ class AttributesSet
 
     protected:
         std::map<std::string,AttributeScore*> m_asMap;
-        //AttributeScore ma_attributes[ATTRIBUTES_SET_SIZE];
         int m_unassignedPoints;
 
 };

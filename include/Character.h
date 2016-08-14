@@ -15,24 +15,24 @@ enum class Gender
 class Character
 {
     public:
-        Character(void);
+        Character();
 
-        virtual ~Character(void);
+        virtual ~Character();
 
-        CharacterCreationStep getCreationStep(void);
-        void goToNextCreationStep(void);
-        bool isRaceValid(void);
-        bool isGenderValid(void);
-        bool isClassValid(void);
+        CharacterCreationStep getCreationStep();
+        void goToNextCreationStep();
+        bool isRaceValid();
+        bool isGenderValid();
+        bool isClassValid();
 
         void setName(std::string nm);
         void setRace(Race* rc);
         void setGender(Gender gd);
         void setClass(Class* cl);
 
-        std::vector<Class*>* getAvailableClass(void);
+        std::vector<Class*> getAvailableClass();
 
-        std::string toString(void);
+        std::string toString();
 
     protected:
         CharacterCreationStep m_creationStep;

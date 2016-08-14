@@ -11,7 +11,7 @@ class CharacterCreator
         //static Character* createCharacter(void);
         static void doStep(Character *ch);
         static bool validStep(Character *ch);
-        static void nextStep(Character *ch);
+        static void goToNextStep(Character *ch);
 
     private:
         CharacterCreator(void);

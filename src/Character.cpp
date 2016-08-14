@@ -3,8 +3,8 @@
 
 #include "Character.h"
 
-Character::Character(void)
-: m_creationStep(START)
+Character::Character()
+: m_creationStep(CREATION_START)
 , m_name(UNDEFINED_STRING)
 , m_portraitPath(UNDEFINED_STRING)
 , m_level(1)
@@ -13,37 +13,37 @@ Character::Character(void)
 , m_class(nullptr)
 {}
 
-/*virtual*/ Character::~Character(void)
+Character::~Character()
 {}
 
-CharacterCreationStep Character::getCreationStep(void)
+CharacterCreationStep Character::getCreationStep()
 {
     return m_creationStep;
 }
 
-void Character::goToNextCreationStep(void)
+void Character::goToNextCreationStep()
 {
-    if(DONE != m_creationStep)
+    if(CREATION_DONE != m_creationStep)
         m_creationStep = (CharacterCreationStep)((int)(m_creationStep+1));
 }
 
-bool Character::isRaceValid(void)
+bool Character::isRaceValid()
 {
     return nullptr != m_race;
 }
 
-bool Character::isGenderValid(void)
+bool Character::isGenderValid()
 {
     return  Gender::FEMALE == m_gender || Gender::MALE == m_gender;
 }
 
-bool Character::isClassValid(void)
+bool Character::isClassValid()
 {
     if(nullptr == m_class || nullptr == m_race)
         return false;
 
-    std::vector<Class*>* availableClass = getAvailableClass();
-    return std::find(availableClass->begin(),availableClass->end(),m_class) != availableClass->end();
+    std::vector<Class*> availableClass = getAvailableClass();
+    return std::find(availableClass.begin(),availableClass.end(),m_class) != availableClass.end();
 }
 
 void Character::setName(std::string nm)
@@ -66,21 +66,21 @@ void Character::setClass(Class* cl)
     m_class = cl;
 }
 
-std::vector<Class*>* Character::getAvailableClass(void)
+std::vector<Class*> Character::getAvailableClass()
 {
     if(m_race!=nullptr)
     {
         return m_race->getAvailableClass();
     }
-    return nullptr;
+    return std::vector<Class*>();
 }
 
-std::string Character::toString(void)
+std::string Character::toString()
 {
     std::string str = "Name: " + m_name
-        + "\nRace: " + *m_race->getName()
+        + "\nRace: " + m_race->getName()
         + "\nGender: " + ((int)m_gender==0 ? "Female" : "Male")
-        + "\nClass: " + *m_class->getName()
+        + "\nClass: " + m_class->getName()
         //+ "\nLevel: " + m_level + "(" + m_experience + ")"
         + "\nAttributes \n" + m_attributes_set.toString();
 

@@ -10,20 +10,22 @@
 class Race
 {
     public:
-        Race(std::string n);
-        Race(void);
+        Race(std::string id, std::string nm);
+        Race();
 
-        virtual ~Race(void);
+        virtual ~Race();
 
-        std::string* getName(void);
-        std::vector<Class*>* getAvailableClass(void);
+        std::string getID();
+        std::string getName();
+        std::vector<Class*> getAvailableClass();
         std::pair<int,int> getAttributeBounds(std::string key);
 
+        void setID(std::string id);
         void addAvailableClass(Class* cl);
         void setAttributeBounds(std::string key, int lb, int hb);
 
     protected:
-        std::string m_name;
+        std::string m_id, m_name;
         std::vector<Class*> m_class_restriction;
         std::map<std::string,std::pair<int,int>> m_attributesBounds;
         //std::pair<unsigned int,unsigned int> ma_attributesBounds[ATTRIBUTES_SET_SIZE];

@@ -1,31 +1,41 @@
 #include <algorithm>
 #include "Race.h"
 
-Race::Race(std::string n)
-{
-    m_name = n;
-}
+Race::Race(std::string id, std::string nm)
+: m_id(id)
+, m_name(nm)
+{}
 
 Race::Race()
-: Race("#UNDEFINED")
+: Race("","")
 {}
 
 /*virtual*/ Race::~Race()
 {}
 
-std::string* Race::getName(void)
+std::string Race::getID()
 {
-    return &m_name;
+    return m_id;
 }
 
-std::vector<Class*>* Race::getAvailableClass(void)
+std::string Race::getName()
 {
-    return &m_class_restriction;
+    return m_name;
+}
+
+std::vector<Class*> Race::getAvailableClass()
+{
+    return m_class_restriction;
 }
 
 std::pair<int,int> Race::getAttributeBounds(std::string key)
 {
     return m_attributesBounds.at(key);
+}
+
+void Race::setID(std::string id)
+{
+    m_id = id;
 }
 
 void Race::addAvailableClass(Class* cl)

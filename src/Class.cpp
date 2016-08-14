@@ -1,26 +1,36 @@
 #include <algorithm>
 #include "Class.h"
 
-Class::Class(std::string n)
+Class::Class(std::string id, std::string name)
+: m_id(id)
+, m_name(name)
+{}
+
+Class::Class()
+: Class("","")
+{}
+
+/*virtual*/ Class::~Class()
+{}
+
+std::string Class::getID()
 {
-    m_name = n;
+    return m_id;
 }
 
-Class::Class(void)
-: Class("#UNDEFINED")
-{}
-
-/*virtual*/ Class::~Class(void)
-{}
-
-std::string* Class::getName(void)
+std::string Class::getName()
 {
-    return &m_name;
+    return m_name;
 }
 
 std::pair<int,int> Class::getAttributeBounds(std::string key)
 {
     return m_attributesBounds.at(key);
+}
+
+void Class::setID(std::string id)
+{
+    m_id = id;
 }
 
 void Class::setAttributeBounds(std::string key, int lb, int hb)

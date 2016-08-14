@@ -24,14 +24,14 @@ static const std::string UNDEFINED_STRING = "#UNDEFINED";
 
 enum CharacterCreationStep
 {
-    START,
+    CREATION_START,
     RACE_SELECTION,
     GENDER_SELECTION,
     CLASS_SELECTION,
     //
     NAME_SELECTION,
     //PORTRAIT_SELECTION,
-    DONE
+    CREATION_DONE
 };
 
 ///////////////////////////////////////////////////////
@@ -47,17 +47,6 @@ static const int ATTRIBUTES_COST[ATTRIBUTE_POSSIBLE_VALUES] = {-4,-3,-2,-2,-1,-1
 static const int ATTRIBUTES_UNASSIGNED[ATTRIBUTE_POSSIBLE_VALUES];
 //static const int ATTRIBUTES_UNASSIGNED[ATTRIBUTE_POSSIBLE_VALUES] = {-14,-10,-7,-5,-3,-2,-1,0,1,2,3,5,7,10,14,19};
 #endif // ATTRIBUTES_NON_CONSTANT_COST
-
-static const int ATTRIBUTES_SET_SIZE = 6;
-static std::string ATTRIBUTES_SET_ATTRIBUTE_NAME[ATTRIBUTES_SET_SIZE] =
-    {"Strength"
-    ,"Dexterity"
-    ,"Constitution"
-    ,"Intelligence"
-    ,"Wisdom"
-    ,"Charisma"
-    };
-
 
 
 static const int TRAITS_SET_SIZE = 7;
