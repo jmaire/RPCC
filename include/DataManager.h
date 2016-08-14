@@ -2,17 +2,14 @@
 #define DATAMANAGER_H
 
 #include <map>
-#include "DataLoader.h"
+#include "Attribute.h"
+#include "Class.h"
+#include "Race.h"
 
 class DataManager
 {
     public:
         virtual ~DataManager();
-
-        static void load();
-        static void loadAttribute();
-        static void loadClass();
-        static void loadRace();
 
         //static void destroy();
 

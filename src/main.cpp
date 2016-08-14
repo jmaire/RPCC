@@ -3,14 +3,14 @@
 #include <iostream>
 
 #include "CharacterCreator.h"
-#include "DataManager.h"
-#include "Dice.h"
+#include "DataLoader.h"
+//#include "Dice.h"
 
 int main(int argc, char* argv[])
 {
-    DataManager::load();
+    DataLoader::load();
 
-    Race* r = DataManager::getRaceByKey("elf");
+    //Race* r = DataManager::getRaceByKey("elf");
     //std::cout << "::" << r->getName() << "\n";
     //Class* c = DataManager::getClassByKey("thief");
 

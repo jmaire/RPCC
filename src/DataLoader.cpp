@@ -1,39 +1,80 @@
 #include "DataLoader.h"
 
-DataLoader::DataLoader(void)
+/*private*/ DataLoader::DataLoader()
 {}
 
-/*virtual*/ DataLoader::~DataLoader(void)
+DataLoader::~DataLoader()
 {}
 
-/*static*/ void DataLoader::load(void)
-{/*
-    Class* c1 = new Class("Fighter");
-    Class* c2 = new Class("Mage");
-    Class* c3 = new Class("Thief");
+void DataLoader::load()
+{
+    loadAttribute();
+    loadClass();
+    loadRace();
+}
 
-    Race* r1 = new Race("Human");
-    Race* r2 = new Race("Dwarf");
-    Race* r3 = new Race("Elf");
-    Race* r4 = new Race("Orc");
+void DataLoader::loadAttribute()
+{
+    Attribute* att;
+    att = new Attribute("str","Strength");
+    DataManager::insereAttributeToMap(att);
 
-    r1->addAvailableClass(c1);
-    r1->addAvailableClass(c2);
-    r1->addAvailableClass(c3);
+    att = new Attribute("dex","Dexterity");
+    DataManager::insereAttributeToMap(att);
 
-    r2->addAvailableClass(c1);
-    r2->addAvailableClass(c3);
+    att = new Attribute("con","Constitution");
+    DataManager::insereAttributeToMap(att);
 
-    r3->addAvailableClass(c2);
-    r3->addAvailableClass(c3);
+    att = new Attribute("int","Intelligence");
+    DataManager::insereAttributeToMap(att);
 
-    r4->addAvailableClass(c1);
+    att = new Attribute("wis","Wisdom");
+    DataManager::insereAttributeToMap(att);
 
-    allClassList.push_back(c1);
-    allClassList.push_back(c2);
-    allClassList.push_back(c3);
-    allRaceList.push_back(r1);
-    allRaceList.push_back(r2);
-    allRaceList.push_back(r3);
-    allRaceList.push_back(r4);*/
+    att = new Attribute("cha","Charisma");
+    DataManager::insereAttributeToMap(att);
+}
+
+void DataLoader::loadClass()
+{
+    Class* cl;
+    cl = new Class("fighter","Fighter");
+    cl->setAttributeBounds("str",9,18);
+    DataManager::insereClassToMap(cl);
+
+    cl = new Class("mage","Mage");
+    cl->setAttributeBounds("int",9,18);
+    DataManager::insereClassToMap(cl);
+
+    cl = new Class("thief","Thief");
+    cl->setAttributeBounds("dex",9,18);
+    DataManager::insereClassToMap(cl);
+}
+
+void DataLoader::loadRace()
+{
+    Race* rc;
+    rc = new Race("human","Human");
+    rc->addAvailableClass(DataManager::getClassByKey("fighter"));
+    rc->addAvailableClass(DataManager::getClassByKey("mage"));
+    rc->addAvailableClass(DataManager::getClassByKey("thief"));
+    DataManager::insereRaceToMap(rc);
+
+    rc = new Race("dwarf","Dwarf");
+    rc->setAttributeBounds("str",8,18);
+    rc->setAttributeBounds("dex",3,17);
+    rc->setAttributeBounds("con",12,19);
+    rc->setAttributeBounds("cha",2,16);
+    rc->addAvailableClass(DataManager::getClassByKey("fighter"));
+    rc->addAvailableClass(DataManager::getClassByKey("thief"));
+    DataManager::insereRaceToMap(rc);
+
+    rc = new Race("elf","Elf");
+    rc->setAttributeBounds("dex",7,19);
+    rc->setAttributeBounds("con",6,17);
+    rc->setAttributeBounds("int",8,18);
+    rc->setAttributeBounds("cha",8,18);
+    rc->addAvailableClass(DataManager::getClassByKey("mage"));
+    rc->addAvailableClass(DataManager::getClassByKey("thief"));
+    DataManager::insereRaceToMap(rc);
 }
