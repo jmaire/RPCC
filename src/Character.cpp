@@ -5,8 +5,8 @@
 
 Character::Character()
 : m_creationStep(CREATION_START)
-, m_name(UNDEFINED_STRING)
-, m_portraitPath(UNDEFINED_STRING)
+, m_name("")
+, m_portraitPath("")
 , m_level(1)
 , m_experience(0)
 , m_race(nullptr)

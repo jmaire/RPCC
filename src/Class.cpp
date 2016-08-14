@@ -7,7 +7,7 @@ Class::Class(std::string id, std::string name)
 {}
 
 Class::Class()
-: Class("","")
+: Class(UNDEFINED_ID,"")
 {}
 
 Class::~Class()
@@ -28,9 +28,9 @@ std::pair<int,int> Class::getAttributeBounds(std::string key)
     return m_attributesBounds.at(key);
 }
 
-void Class::setID(std::string id)
+void Class::setIDToUndefined()
 {
-    m_id = id;
+    m_id = UNDEFINED_ID;
 }
 
 void Class::setAttributeBounds(std::string key, int lb, int hb)

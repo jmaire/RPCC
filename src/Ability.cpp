@@ -1,17 +1,18 @@
 #include "Ability.h"
 
-Ability::Ability(std::string nm)
-: m_name(nm)
+Ability::Ability(std::string id, std::string name)
+: m_id(id)
+, m_name(name)
 {}
 
-Ability::Ability(void)
-: m_name("")
+Ability::Ability()
+: m_name(UNDEFINED_ID,"")
 {}
 
-Ability::~Ability(void)
+Ability::~Ability()
 {}
 
-std::string Ability::getName(void)
+std::string Ability::getName()
 {
     return m_name;
 }

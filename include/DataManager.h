@@ -12,6 +12,7 @@ class DataManager
         virtual ~DataManager();
 
         static void clearAll();
+        //static bool checkDataIntegrity(); //TODO
 
         static void insereAttributeToMap(Attribute* att);
         static void insereClassToMap(Class* cl);

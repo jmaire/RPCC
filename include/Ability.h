@@ -6,15 +6,15 @@
 class Ability
 {
     public:
-        Ability(std::string nm);
-        Ability(void);
+        Ability(std::string id, std::string name);
+        Ability();
 
-        virtual ~Ability(void);
+        virtual ~Ability();
 
-        std::string getName(void);
+        std::string getName();
 
     protected:
-        std::string m_name, m_description;
+        std::string m_id, m_name, m_description;
 
 };
 

@@ -7,7 +7,7 @@ Attribute::Attribute(std::string id, std::string name)
 {}
 
 Attribute::Attribute()
-: Attribute("","")
+: Attribute(UNDEFINED_ID,"")
 {}
 
 Attribute::~Attribute()
@@ -23,8 +23,8 @@ std::string Attribute::getName()
     return m_name;
 }
 
-void Attribute::setID(std::string id)
+void Attribute::setIDToUndefined()
 {
-    m_id = id;
+    m_id = UNDEFINED_ID;
 }
 

@@ -30,7 +30,7 @@ void DataManager::insereAttributeToMap(Attribute* att)
         return;
 
     if(m_attributeMap.find(id) != m_attributeMap.end())
-        m_attributeMap[id]->setID("");
+        m_attributeMap[id]->setIDToUndefined();
 
     m_attributeMap[id] = att;
 }
@@ -42,7 +42,7 @@ void DataManager::insereClassToMap(Class* cl)
         return;
 
     if(m_classMap.find(id) != m_classMap.end())
-        m_classMap[id]->setID("");
+        m_classMap[id]->setIDToUndefined();
 
     m_classMap[id] = cl;
 }
@@ -54,7 +54,7 @@ void DataManager::insereRaceToMap(Race* rc)
         return;
 
     if(m_raceMap.find(id) != m_raceMap.end())
-        m_raceMap[id]->setID("");
+        m_raceMap[id]->setIDToUndefined();
 
     m_raceMap[id] = rc;
 }

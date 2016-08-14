@@ -2,6 +2,7 @@
 #define ATTRIBUTE_H
 
 #include <string>
+#include "config.h"
 
 class Attribute
 {
@@ -14,7 +15,7 @@ class Attribute
         std::string getID();
         std::string getName();
 
-        void setID(std::string id);
+        void setIDToUndefined();
 
     protected:
         std::string m_id, m_name, m_description;

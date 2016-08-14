@@ -16,7 +16,7 @@ class Class
         std::string getName();
         std::pair<int,int> getAttributeBounds(std::string key);
 
-        void setID(std::string id);
+        void setIDToUndefined();
         void setAttributeBounds(std::string key, int lb, int hb);
 
     protected:
