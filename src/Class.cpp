@@ -10,7 +10,7 @@ Class::Class()
 : Class("","")
 {}
 
-/*virtual*/ Class::~Class()
+Class::~Class()
 {}
 
 std::string Class::getID()

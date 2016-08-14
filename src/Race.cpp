@@ -1,9 +1,9 @@
 #include <algorithm>
 #include "Race.h"
 
-Race::Race(std::string id, std::string nm)
+Race::Race(std::string id, std::string name)
 : m_id(id)
-, m_name(nm)
+, m_name(name)
 {}
 
 Race::Race()
@@ -23,7 +23,7 @@ std::string Race::getName()
     return m_name;
 }
 
-std::vector<Class*> Race::getAvailableClass()
+std::vector<std::string> Race::getAvailableClass()
 {
     return m_class_restriction;
 }
@@ -38,11 +38,11 @@ void Race::setID(std::string id)
     m_id = id;
 }
 
-void Race::addAvailableClass(Class* cl)
+void Race::addAvailableClass(std::string key)
 {
-    if(std::find(m_class_restriction.begin(), m_class_restriction.end(), cl) == m_class_restriction.end())
+    if(std::find(m_class_restriction.begin(), m_class_restriction.end(), key) == m_class_restriction.end())
     {
-        m_class_restriction.push_back(cl);
+        m_class_restriction.push_back(key);
     }
 }
 

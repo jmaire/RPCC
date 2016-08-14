@@ -42,8 +42,8 @@ bool Character::isClassValid()
     if(nullptr == m_class || nullptr == m_race)
         return false;
 
-    std::vector<Class*> availableClass = getAvailableClass();
-    return std::find(availableClass.begin(),availableClass.end(),m_class) != availableClass.end();
+    std::vector<std::string> availableClass = getAvailableClass();
+    return std::find(availableClass.begin(),availableClass.end(),m_class->getID()) != availableClass.end();
 }
 
 void Character::setName(std::string nm)
@@ -66,13 +66,13 @@ void Character::setClass(Class* cl)
     m_class = cl;
 }
 
-std::vector<Class*> Character::getAvailableClass()
+std::vector<std::string> Character::getAvailableClass()
 {
     if(m_race!=nullptr)
     {
         return m_race->getAvailableClass();
     }
-    return std::vector<Class*>();
+    return std::vector<std::string>();
 }
 
 std::string Character::toString()

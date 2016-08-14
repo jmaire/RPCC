@@ -11,7 +11,7 @@ class DataManager
     public:
         virtual ~DataManager();
 
-        //static void destroy();
+        static void clearAll();
 
         static void insereAttributeToMap(Attribute* att);
         static void insereClassToMap(Class* cl);

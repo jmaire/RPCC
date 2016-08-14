@@ -30,7 +30,7 @@ class Character
         void setGender(Gender gd);
         void setClass(Class* cl);
 
-        std::vector<Class*> getAvailableClass();
+        std::vector<std::string> getAvailableClass();
 
         std::string toString();
 

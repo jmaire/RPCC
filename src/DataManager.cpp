@@ -5,11 +5,23 @@
 /*static*/ std::map<std::string,Class*> DataManager::m_classMap;
 /*static*/ std::map<std::string,Race*> DataManager::m_raceMap;
 
-/*private*/ DataManager::DataManager()
-{}
+/*private*/ DataManager::DataManager() {}
 
 DataManager::~DataManager()
 {}
+
+void DataManager::clearAll()
+{
+    //TODO
+    std::map<std::string,Attribute*>::iterator it;
+    while(!m_attributeMap.empty())
+    {
+        it = m_attributeMap.begin();
+        m_attributeMap.erase(it);
+        delete it->second;
+    }
+}
+
 
 void DataManager::insereAttributeToMap(Attribute* att)
 {
