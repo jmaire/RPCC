@@ -23,6 +23,8 @@ class AttributeScore
 
         void increasePoint(int p);
 
+        std::string toString();
+
     protected:
         std::string m_key;
         int m_score, m_bonus;

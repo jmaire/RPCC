@@ -1,4 +1,5 @@
 #include "AttributeScore.h"
+#include "DataManager.h"
 
 AttributeScore::AttributeScore(std::string key)
 : m_key(key)
@@ -11,7 +12,7 @@ AttributeScore::AttributeScore()
 : AttributeScore(nullptr)
 {}
 
-/*virtual*/ AttributeScore::~AttributeScore()
+AttributeScore::~AttributeScore()
 {}
 
 int AttributeScore::getActualScore()
@@ -29,7 +30,7 @@ void AttributeScore::setBounds(Race* rc, Class* cl)
     std::pair<int,int> rcBounds = rc->getAttributeBounds(m_key);
     std::pair<int,int> clBounds = cl->getAttributeBounds(m_key);
     m_bounds.first = MY_MAX(rcBounds.first,clBounds.first);
-    m_bounds.second = MY_MIN(rcBounds.second,clBounds.second);
+    m_bounds.second = MY_MAX(rcBounds.second,clBounds.second);
 }
 
 bool AttributeScore::isIncrementable()
@@ -46,3 +47,22 @@ void AttributeScore::increasePoint(int p)
 {
     m_score += p;
 }
+
+std::string AttributeScore::toString()
+{
+    Attribute* att = DataManager::getAttributeByKey(m_key);
+    if(nullptr == att)
+        return "";
+
+    std::string str = /*att->getName() +*/ " {" + m_key + "}";
+
+    char buff[16];
+    sprintf(buff," [%d;%d]",m_bounds.first,m_bounds.second);
+    str += buff;
+
+    sprintf(buff," (%d + %d) = %d",m_score,m_bonus,getActualScore());
+    str += buff;
+
+    return str;
+}
+

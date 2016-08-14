@@ -15,7 +15,6 @@ AttributesSet::AttributesSet(std::vector<std::string> attributes)
         AttributeScore* as = new AttributeScore(attributes[i]);
         m_asMap[attributes[i]] = as;
     }
-
 }
 
 AttributesSet::AttributesSet()
@@ -30,6 +29,14 @@ void AttributesSet::setAttributeBounds(Race* rc, Class* cl)
     for(std::map<std::string,AttributeScore*>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
     {
         it->second->setBounds(rc,cl);
+    }
+}
+
+void AttributesSet::setAttributeBonus(Race* rc)
+{
+    for(std::map<std::string,AttributeScore*>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
+    {
+        m_asMap.at(it->first)->setBonus(rc->getAttributeBonus(it->first));
     }
 }
 
@@ -82,16 +89,17 @@ void AttributesSet::randomAssignment()
 */
 std::string AttributesSet::toString()
 {
-    char buff[16];
-
     std::string str = "";
     for(std::map<std::string,AttributeScore*>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
     {
-        sprintf(buff,"%d",it->second->getActualScore());
-        str += "  " + DataManager::getAttributeByKey(it->first)->getName() + ": " + buff + "\n";
+        str += it->second->toString() + "\n";
     }
-    sprintf(buff,"%d",m_unassignedPoints);
-    return str + "  >Unassigned: " + buff;
+
+    char buff[16];
+    sprintf(buff,"\t|> Unassigned: %d",m_unassignedPoints);
+    str += buff;
+
+    return str;
 }
 
 

@@ -17,6 +17,7 @@ class AttributesSet
         virtual ~AttributesSet();
 
         void setAttributeBounds(Race* rc, Class* cl);
+        void setAttributeBonus(Race* rc);
 
         bool isIncrementable(std::string key);
         bool isDecrementable(std::string key);

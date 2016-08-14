@@ -22,7 +22,6 @@ void DataManager::clearAll()
     }
 }
 
-
 void DataManager::insereAttributeToMap(Attribute* att)
 {
     std::string id = att->getID();
@@ -61,16 +60,22 @@ void DataManager::insereRaceToMap(Race* rc)
 
 Attribute* DataManager::getAttributeByKey(std::string key)
 {
+    if(m_attributeMap.find(key) == m_attributeMap.end())
+        return nullptr;
     return m_attributeMap.at(key);
 }
 
 Class* DataManager::getClassByKey(std::string key)
 {
+    if(m_classMap.find(key) == m_classMap.end())
+        return nullptr;
     return m_classMap.at(key);
 }
 
 Race* DataManager::getRaceByKey(std::string key)
 {
+    if(m_raceMap.find(key) == m_raceMap.end())
+        return nullptr;
     return m_raceMap.at(key);
 }
 

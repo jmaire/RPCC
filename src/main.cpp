@@ -9,12 +9,15 @@
 int main(int argc, char* argv[])
 {
     DataLoader::load();
-    //Race* r = DataManager::getRaceByKey("elf");
-    //std::cout << "::" << r->getName() << "\n";
-    //Class* c = DataManager::getClassByKey("thief");
 
+    /////////////////////////////////////
+
+    Race* r = DataManager::getRaceByKey("elf");
+    Class* c = DataManager::getClassByKey("thief");
 
     AttributesSet ass = AttributesSet();
+    ass.setAttributeBonus(r);
+    ass.setAttributeBounds(r,c);
 
     for(int i=0; i<5; i++)
     {

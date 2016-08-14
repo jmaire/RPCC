@@ -30,11 +30,15 @@ std::vector<std::string> Race::getAvailableClass()
 
 std::pair<int,int> Race::getAttributeBounds(std::string key)
 {
+    if(m_attributesBounds.find(key) == m_attributesBounds.end())
+        return std::make_pair(ATTRIBUTE_DEFAULT_LOW_BOUNDARY,ATTRIBUTE_DEFAULT_HIGH_BOUNDARY);
     return m_attributesBounds.at(key);
 }
 
 int Race::getAttributeBonus(std::string key)
 {
+    if(m_attributesBonus.find(key) == m_attributesBonus.end())
+        return 0;
     return m_attributesBonus.at(key);
 }
 

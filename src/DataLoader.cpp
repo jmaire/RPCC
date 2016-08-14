@@ -64,6 +64,9 @@ void DataLoader::loadRace()
     rc->setAttributeBounds("dex",3,17);
     rc->setAttributeBounds("con",12,19);
     rc->setAttributeBounds("cha",2,16);
+    rc->setAttributeBonus("dex",-1);
+    rc->setAttributeBonus("con",1);
+    rc->setAttributeBonus("cha",-2);
     rc->addAvailableClass("fighter");
     rc->addAvailableClass("thief");
     DataManager::insereRaceToMap(rc);
@@ -73,6 +76,8 @@ void DataLoader::loadRace()
     rc->setAttributeBounds("con",6,17);
     rc->setAttributeBounds("int",8,18);
     rc->setAttributeBounds("cha",8,18);
+    rc->setAttributeBonus("dex",1);
+    rc->setAttributeBonus("con",-1);
     rc->addAvailableClass("mage");
     rc->addAvailableClass("thief");
     DataManager::insereRaceToMap(rc);

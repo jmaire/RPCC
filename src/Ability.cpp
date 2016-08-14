@@ -6,7 +6,7 @@ Ability::Ability(std::string id, std::string name)
 {}
 
 Ability::Ability()
-: m_name(UNDEFINED_ID,"")
+: Ability(UNDEFINED_ID,"")
 {}
 
 Ability::~Ability()

@@ -25,6 +25,8 @@ std::string Class::getName()
 
 std::pair<int,int> Class::getAttributeBounds(std::string key)
 {
+    if(m_attributesBounds.find(key) == m_attributesBounds.end())
+        return std::make_pair(ATTRIBUTE_DEFAULT_LOW_BOUNDARY,ATTRIBUTE_DEFAULT_HIGH_BOUNDARY);
     return m_attributesBounds.at(key);
 }
 
