@@ -15,6 +15,8 @@ class DataManager
         static void clearAll();
         //static bool checkDataIntegrity(); //TODO
 
+        static bool isKeyFormatValid(std::string key);
+
         static void insereAbilityToMap(Ability* ab);
         static void insereAttributeToMap(Attribute* att);
         static void insereClassToMap(Class* cl);

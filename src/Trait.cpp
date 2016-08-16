@@ -1,7 +1,7 @@
 #include "Trait.h"
 
 Trait::Trait(std::string id, std::string leftL, std::string rightL)
-: m_id(id)
+: Data(id)
 , m_leftLabel(leftL)
 , m_rightLabel(rightL)
 {}

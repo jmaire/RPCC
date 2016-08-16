@@ -9,9 +9,7 @@ Data::Data()
 {}
 
 Data::~Data()
-{
-    //dtor
-}
+{}
 
 std::string Data::getID()
 {

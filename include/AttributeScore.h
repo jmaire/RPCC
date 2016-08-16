@@ -8,7 +8,7 @@
 class AttributeScore
 {
     public:
-        AttributeScore(std::string key);
+        AttributeScore(std::string attributeID);
         AttributeScore();
 
         virtual ~AttributeScore();
@@ -26,7 +26,7 @@ class AttributeScore
         std::string toString();
 
     protected:
-        std::string m_key;
+        std::string m_attributeID;
         int m_score, m_bonus;
         std::pair<int,int> m_bounds;
 

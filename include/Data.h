@@ -6,9 +6,6 @@
 class Data
 {
     public:
-        Data(std::string id);
-        Data();
-
         virtual ~Data();
 
         std::string getID();
@@ -16,6 +13,9 @@ class Data
 
     protected:
         std::string m_id;
+
+        Data(std::string id);
+        Data();
 
 };
 

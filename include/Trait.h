@@ -2,11 +2,10 @@
 #define TRAIT_H
 
 #include <vector>
-#include "config.h"
+#include "Data.h"
 #include "Ability.h"
 
-
-class Trait
+class Trait : public Data
 {
     public:
         Trait(std::string id, std::string leftL, std::string rightL);
@@ -19,7 +18,7 @@ class Trait
         std::vector<Ability*> getAvailableAbilities(int score);
 
     protected:
-        std::string m_id, m_leftLabel, m_rightLabel;
+        std::string m_leftLabel, m_rightLabel;
         std::vector<std::pair<int,Ability*>> m_abilityMap;
 
 };

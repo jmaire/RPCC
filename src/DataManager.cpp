@@ -23,10 +23,15 @@ void DataManager::clearAll()
     }
 }
 
+bool DataManager::isKeyFormatValid(std::string key)
+{
+    return key != UNDEFINED_ID;
+}
+
 void DataManager::insereAbilityToMap(Ability* ab)
 {
     std::string id = ab->getID();
-    if("" == id)
+    if(!isKeyFormatValid(id))
         return;
 
     if(m_abilityMap.find(id) != m_abilityMap.end())
@@ -38,7 +43,7 @@ void DataManager::insereAbilityToMap(Ability* ab)
 void DataManager::insereAttributeToMap(Attribute* att)
 {
     std::string id = att->getID();
-    if("" == id)
+    if(!isKeyFormatValid(id))
         return;
 
     if(m_attributeMap.find(id) != m_attributeMap.end())
@@ -50,7 +55,7 @@ void DataManager::insereAttributeToMap(Attribute* att)
 void DataManager::insereClassToMap(Class* cl)
 {
     std::string id = cl->getID();
-    if("" == id)
+    if(!isKeyFormatValid(id))
         return;
 
     if(m_classMap.find(id) != m_classMap.end())
@@ -62,7 +67,7 @@ void DataManager::insereClassToMap(Class* cl)
 void DataManager::insereRaceToMap(Race* rc)
 {
     std::string id = rc->getID();
-    if("" == id)
+    if(!isKeyFormatValid(id))
         return;
 
     if(m_raceMap.find(id) != m_raceMap.end())

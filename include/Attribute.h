@@ -1,7 +1,6 @@
 #ifndef ATTRIBUTE_H
 #define ATTRIBUTE_H
 
-#include <string>
 #include "Data.h"
 
 class Attribute : public Data
