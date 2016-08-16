@@ -9,7 +9,7 @@ AttributeScore::AttributeScore(std::string key)
 {}
 
 AttributeScore::AttributeScore()
-: AttributeScore(nullptr)
+: AttributeScore("")
 {}
 
 AttributeScore::~AttributeScore()
@@ -50,11 +50,11 @@ void AttributeScore::increasePoint(int p)
 
 std::string AttributeScore::toString()
 {
-    Attribute* att = DataManager::getAttributeByKey(m_key);
-    if(nullptr == att)
-        return "";
+    std::string str = "{" + m_key + "}";
 
-    std::string str = /*att->getName() +*/ " {" + m_key + "}";
+    Attribute* att = DataManager::getAttributeByKey(m_key);
+    if(nullptr != att)
+        str += " " + att->getName();
 
     char buff[16];
     sprintf(buff," [%d;%d]",m_bounds.first,m_bounds.second);

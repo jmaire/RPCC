@@ -1,27 +1,28 @@
 #include "Trait.h"
 
-Trait::Trait(std::string ll, std::string rl)
-: m_leftLabel(ll)
-, m_rightLabel(rl)
+Trait::Trait(std::string id, std::string leftL, std::string rightL)
+: m_id(id)
+, m_leftLabel(leftL)
+, m_rightLabel(rightL)
 {}
 
-Trait::Trait(void)
-: Trait(nullptr,nullptr)
+Trait::Trait()
+: Trait("","","")
 {}
 
-Trait::~Trait(void)
+Trait::~Trait()
 {}
 
-void Trait::addAbility(int sc, Ability* ab)
+void Trait::addAbility(int requiredScore, Ability* ab)
 {
-    m_abilityMap.push_back(std::make_pair(sc,ab));
+    m_abilityMap.push_back(std::make_pair(requiredScore,ab));
 }
 
-std::vector<Ability*> Trait::getAvailableAbilities(int sc)
+std::vector<Ability*> Trait::getAvailableAbilities(int score)
 {
     std::vector<Ability*> availableAbility;
     for(std::vector<std::pair<int,Ability*>>::iterator it = m_abilityMap.begin() ; it != m_abilityMap.end(); ++it)
-        if((double)sc/(*it).first>=1.f)
+        if((double)score/(*it).first>=1.f)
             availableAbility.push_back((*it).second);
 
     return availableAbility;

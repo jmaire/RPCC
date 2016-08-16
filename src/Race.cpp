@@ -2,7 +2,7 @@
 #include "Race.h"
 
 Race::Race(std::string id, std::string name)
-: m_id(id)
+: Data(id)
 , m_name(name)
 {}
 
@@ -10,13 +10,8 @@ Race::Race()
 : Race(UNDEFINED_ID,"")
 {}
 
-/*virtual*/ Race::~Race()
+Race::~Race()
 {}
-
-std::string Race::getID()
-{
-    return m_id;
-}
 
 std::string Race::getName()
 {
@@ -40,11 +35,6 @@ int Race::getAttributeBonus(std::string key)
     if(m_attributesBonus.find(key) == m_attributesBonus.end())
         return 0;
     return m_attributesBonus.at(key);
-}
-
-void Race::setIDToUndefined()
-{
-    m_id = UNDEFINED_ID;
 }
 
 void Race::addAvailableClass(std::string key)

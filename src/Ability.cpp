@@ -1,7 +1,7 @@
 #include "Ability.h"
 
 Ability::Ability(std::string id, std::string name)
-: m_id(id)
+: Data(id)
 , m_name(name)
 {}
 

@@ -1,9 +1,9 @@
 #ifndef ABILITY_H
 #define ABILITY_H
 
-#include "config.h"
+#include "Data.h"
 
-class Ability
+class Ability : public Data
 {
     public:
         Ability(std::string id, std::string name);
@@ -14,7 +14,7 @@ class Ability
         std::string getName();
 
     protected:
-        std::string m_id, m_name, m_description;
+        std::string m_name, m_description;
 
 };
 

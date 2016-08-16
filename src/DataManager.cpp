@@ -1,6 +1,7 @@
 #include "DataManager.h"
 #include "tools.h"
 
+/*static*/ std::map<std::string,Ability*> DataManager::m_abilityMap;
 /*static*/ std::map<std::string,Attribute*> DataManager::m_attributeMap;
 /*static*/ std::map<std::string,Class*> DataManager::m_classMap;
 /*static*/ std::map<std::string,Race*> DataManager::m_raceMap;
@@ -20,6 +21,18 @@ void DataManager::clearAll()
         m_attributeMap.erase(it);
         delete it->second;
     }
+}
+
+void DataManager::insereAbilityToMap(Ability* ab)
+{
+    std::string id = ab->getID();
+    if("" == id)
+        return;
+
+    if(m_abilityMap.find(id) != m_abilityMap.end())
+        m_abilityMap[id]->setIDToUndefined();
+
+    m_abilityMap[id] = ab;
 }
 
 void DataManager::insereAttributeToMap(Attribute* att)
@@ -56,6 +69,13 @@ void DataManager::insereRaceToMap(Race* rc)
         m_raceMap[id]->setIDToUndefined();
 
     m_raceMap[id] = rc;
+}
+
+Ability* DataManager::getAbilityByKey(std::string key)
+{
+    if(m_abilityMap.find(key) == m_abilityMap.end())
+        return nullptr;
+    return m_abilityMap.at(key);
 }
 
 Attribute* DataManager::getAttributeByKey(std::string key)

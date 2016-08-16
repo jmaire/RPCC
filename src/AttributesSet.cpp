@@ -21,7 +21,7 @@ AttributesSet::AttributesSet()
 : AttributesSet({"str","dex","con","int","wis","cha"}) //TODO
 {}
 
-/*virtual*/ AttributesSet::~AttributesSet()
+AttributesSet::~AttributesSet()
 {}
 
 void AttributesSet::setAttributeBounds(Race* rc, Class* cl)

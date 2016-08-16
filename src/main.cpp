@@ -9,7 +9,6 @@
 int main(int argc, char* argv[])
 {
     DataLoader::load();
-
     /////////////////////////////////////
 
     Race* r = DataManager::getRaceByKey("elf");

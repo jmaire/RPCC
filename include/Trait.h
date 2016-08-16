@@ -9,17 +9,17 @@
 class Trait
 {
     public:
-        Trait(std::string ll, std::string rl);
-        Trait(void);
+        Trait(std::string id, std::string leftL, std::string rightL);
+        Trait();
 
-        virtual ~Trait(void);
+        virtual ~Trait();
 
-        void addAbility(int sc, Ability* ab);
+        void addAbility(int requiredScore, Ability* ab);
 
-        std::vector<Ability*> getAvailableAbilities(int sc);
+        std::vector<Ability*> getAvailableAbilities(int score);
 
     protected:
-        std::string m_leftLabel, m_rightLabel;
+        std::string m_id, m_leftLabel, m_rightLabel;
         std::vector<std::pair<int,Ability*>> m_abilityMap;
 
 };

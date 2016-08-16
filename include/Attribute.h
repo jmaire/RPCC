@@ -2,9 +2,9 @@
 #define ATTRIBUTE_H
 
 #include <string>
-#include "config.h"
+#include "Data.h"
 
-class Attribute
+class Attribute : public Data
 {
     public:
         Attribute(std::string id, std::string name);
@@ -12,13 +12,10 @@ class Attribute
 
         virtual ~Attribute();
 
-        std::string getID();
         std::string getName();
 
-        void setIDToUndefined();
-
     protected:
-        std::string m_id, m_name, m_description;
+        std::string m_name, m_description;
 
 };
 
