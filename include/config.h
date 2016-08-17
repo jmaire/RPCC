@@ -17,6 +17,7 @@
 
 static const std::string UNDEFINED_STRING = "#UNDEFINED";
 static const std::string UNDEFINED_ID = "";
+static const int NO_BOUNDARY = -1;
 
 ///////////////////////////////////////////////////////
 
@@ -26,6 +27,7 @@ enum CharacterCreationStep
     RACE_SELECTION,
     GENDER_SELECTION,
     CLASS_SELECTION,
+    ATTRIBUTES_SETTING,
     //
     NAME_SELECTION,
     //PORTRAIT_SELECTION,

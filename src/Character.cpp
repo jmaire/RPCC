@@ -75,6 +75,19 @@ std::vector<std::string> Character::getAvailableClass()
     return std::vector<std::string>();
 }
 
+void Character::initAttributes()
+{
+    if(nullptr != m_race)
+    {
+        m_attributes_set.setAttributeBonus(m_race);
+        if(nullptr != m_class)
+        {
+            m_attributes_set.setAttributeBounds(m_race,m_class);
+        }
+    }
+}
+
+
 std::string Character::toString()
 {
     std::string str = "Name: " + m_name

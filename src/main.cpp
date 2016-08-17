@@ -27,4 +27,11 @@ int main(int argc, char* argv[])
     Character ch = Character();
 
     CharacterCreatorConsoleUI::selectRace(&ch);
+    CharacterCreatorConsoleUI::selectGender(&ch);
+    CharacterCreatorConsoleUI::selectClass(&ch);
+    CharacterCreatorConsoleUI::selectName(&ch);
+
+    ch.initAttributes();
+
+    std::cout << ch.toString();
 }

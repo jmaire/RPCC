@@ -16,7 +16,7 @@ class AttributeScore
         int getActualScore();
 
         void setBonus(int b);
-        void setBounds(Race* rc, Class* cl);
+        void setBounds(int lowerBoundary, int higherBoundary);
 
         bool isIncrementable();
         bool isDecrementable();

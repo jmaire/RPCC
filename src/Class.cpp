@@ -18,15 +18,20 @@ std::string Class::getName()
     return m_name;
 }
 
-std::pair<int,int> Class::getAttributeBounds(std::string key)
+bool Class::haveAttributeLowBoundary(std::string key)
 {
-    if(m_attributesBounds.find(key) == m_attributesBounds.end())
-        return std::make_pair(ATTRIBUTE_DEFAULT_LOW_BOUNDARY,ATTRIBUTE_DEFAULT_HIGH_BOUNDARY);
-    return m_attributesBounds.at(key);
+    return m_attributesLowBoundary.find(key) != m_attributesLowBoundary.end();
 }
 
-void Class::setAttributeBounds(std::string key, int lb, int hb)
+int Class::getAttributeLowBoundary(std::string key)
 {
-    m_attributesBounds[key] = std::make_pair(lb,hb);
+    if(!haveAttributeLowBoundary(key))
+        return -1;
+    return m_attributesLowBoundary.at(key);
+}
+
+void Class::setAttributeLowBoundary(std::string key, int boundary)
+{
+    m_attributesLowBoundary[key] = boundary;
 }
 

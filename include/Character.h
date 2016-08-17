@@ -9,8 +9,11 @@
 enum class Gender
 {
 	FEMALE = 0,
-	MALE = 1
+	MALE = 1,
+	GENDER_SIZE
 };
+
+static const std::string GENDER_NAME[(unsigned int)Gender::GENDER_SIZE] = {"Female","Male"};
 
 class Character
 {
@@ -29,6 +32,7 @@ class Character
         void setRace(Race* rc);
         void setGender(Gender gd);
         void setClass(Class* cl);
+        void initAttributes();
 
         std::vector<std::string> getAvailableClass();
 

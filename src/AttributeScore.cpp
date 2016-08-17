@@ -26,12 +26,10 @@ void AttributeScore::setBonus(int b)
     m_bonus = b;
 }
 
-void AttributeScore::setBounds(Race* rc, Class* cl)
+void AttributeScore::setBounds(int lowerBoundary, int higherBoundary)
 {
-    std::pair<int,int> rcBounds = rc->getAttributeBounds(m_attributeID);
-    std::pair<int,int> clBounds = cl->getAttributeBounds(m_attributeID);
-    m_bounds.first = MY_MAX(rcBounds.first,clBounds.first);
-    m_bounds.second = MY_MAX(rcBounds.second,clBounds.second);
+    m_bounds.first = lowerBoundary;
+    m_bounds.second = higherBoundary;
 }
 
 bool AttributeScore::isIncrementable()

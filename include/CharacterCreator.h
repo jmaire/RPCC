@@ -9,8 +9,6 @@ class CharacterCreator
     public:
         virtual ~CharacterCreator();
 
-        std::vector<Race*> getAvailableRace();
-
         //static Character* createCharacter(void);
         static void doStep(Character *ch);
         static bool validStep(Character *ch);

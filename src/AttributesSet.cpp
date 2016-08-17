@@ -28,7 +28,17 @@ void AttributesSet::setAttributeBounds(Race* rc, Class* cl)
 {
     for(std::map<std::string,AttributeScore*>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
     {
-        it->second->setBounds(rc,cl);
+        int lowerBoundary = ATTRIBUTE_DEFAULT_LOW_BOUNDARY;
+        if(cl->haveAttributeLowBoundary(it->first))
+            lowerBoundary = cl->getAttributeLowBoundary(it->first);
+        else if(rc->haveAttributeLowerBoundary(it->first))
+            lowerBoundary = rc->getAttributeLowerBoundary(it->first);
+
+        int higherBoundary = ATTRIBUTE_DEFAULT_HIGH_BOUNDARY;
+        if(rc->haveAttributeHigherBoundary(it->first))
+            higherBoundary = rc->getAttributeHigherBoundary(it->first);
+
+        it->second->setBounds(lowerBoundary,higherBoundary);
     }
 }
 

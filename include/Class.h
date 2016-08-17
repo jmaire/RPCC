@@ -13,13 +13,14 @@ class Class : public Data
         virtual ~Class();
 
         std::string getName();
-        std::pair<int,int> getAttributeBounds(std::string key);
+        bool haveAttributeLowBoundary(std::string key);
+        int getAttributeLowBoundary(std::string key);
 
-        void setAttributeBounds(std::string key, int lb, int hb);
+        void setAttributeLowBoundary(std::string key, int boundary);
 
     protected:
         std::string m_name;
-        std::map<std::string,std::pair<int,int>> m_attributesBounds;
+        std::map<std::string,int> m_attributesLowBoundary;
 
 };
 

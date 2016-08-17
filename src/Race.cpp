@@ -14,14 +14,14 @@ Race::Race()
 Race::~Race()
 {}
 
-void Race::setRacePlayable(bool playable)
-{
-    m_playable = playable;
-}
-
 std::string Race::getName()
 {
     return m_name;
+}
+
+void Race::setRacePlayable(bool playable)
+{
+    m_playable = playable;
 }
 
 bool Race::isPlayable()
@@ -29,16 +29,44 @@ bool Race::isPlayable()
     return m_playable;
 }
 
-std::vector<std::string> Race::getAvailableClass()
+bool Race::haveAttributeLowerBoundary(std::string key)
 {
-    return m_class_restriction;
+    return m_attributesLowerBoundary.find(key) != m_attributesLowerBoundary.end();
 }
 
-std::pair<int,int> Race::getAttributeBounds(std::string key)
+bool Race::haveAttributeHigherBoundary(std::string key)
 {
-    if(m_attributesBounds.find(key) == m_attributesBounds.end())
-        return std::make_pair(ATTRIBUTE_DEFAULT_LOW_BOUNDARY,ATTRIBUTE_DEFAULT_HIGH_BOUNDARY);
-    return m_attributesBounds.at(key);
+    return m_attributesHigherBoundary.find(key) != m_attributesHigherBoundary.end();
+}
+
+int Race::getAttributeLowerBoundary(std::string key)
+{
+    if(!haveAttributeLowerBoundary(key))
+        return -1;
+    return m_attributesLowerBoundary.at(key);
+}
+
+int Race::getAttributeHigherBoundary(std::string key)
+{
+    if(!haveAttributeHigherBoundary(key))
+        return -1;
+    return m_attributesHigherBoundary.at(key);
+}
+
+void Race::setAttributeLowerBoundary(std::string key, int boundary)
+{
+    m_attributesLowerBoundary[key] = boundary;
+}
+
+void Race::setAttributeHigherBoundary(std::string key, int boundary)
+{
+    m_attributesHigherBoundary[key] = boundary;
+}
+
+void Race::setAttributeBounds(std::string key, int lowerBoundary, int higherBoundary)
+{
+    setAttributeLowerBoundary(key,lowerBoundary);
+    setAttributeHigherBoundary(key,higherBoundary);
 }
 
 int Race::getAttributeBonus(std::string key)
@@ -46,17 +74,6 @@ int Race::getAttributeBonus(std::string key)
     if(m_attributesBonus.find(key) == m_attributesBonus.end())
         return 0;
     return m_attributesBonus.at(key);
-}
-
-void Race::addAvailableClass(std::string key)
-{
-    if(std::find(m_class_restriction.begin(), m_class_restriction.end(), key) == m_class_restriction.end())
-        m_class_restriction.push_back(key);
-}
-
-void Race::setAttributeBounds(std::string key, int lb, int hb)
-{
-    m_attributesBounds[key] = std::make_pair(lb,hb);
 }
 
 void Race::setAttributeBonus(std::string key, int bonus)
@@ -70,3 +87,13 @@ void Race::setAttributeBonus(std::string key, int bonus)
         m_attributesBonus[key] = bonus;
 }
 
+std::vector<std::string> Race::getAvailableClass()
+{
+    return m_class_restriction;
+}
+
+void Race::addAvailableClass(std::string key)
+{
+    if(std::find(m_class_restriction.begin(), m_class_restriction.end(), key) == m_class_restriction.end())
+        m_class_restriction.push_back(key);
+}

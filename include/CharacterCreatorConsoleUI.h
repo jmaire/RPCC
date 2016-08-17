@@ -9,6 +9,11 @@ class CharacterCreatorConsoleUI : public CharacterCreatorBaseUI
         virtual ~CharacterCreatorConsoleUI();
 
         static void selectRace(Character* ch);
+        static void selectGender(Character* ch);
+        static void selectClass(Character* ch);
+        static void selectName(Character* ch);
+
+        static void setAttributesScore(Character* ch);
 
     private:
         CharacterCreatorConsoleUI();
