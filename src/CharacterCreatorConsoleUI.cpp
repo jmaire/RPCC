@@ -29,7 +29,7 @@ void CharacterCreatorConsoleUI::selectRace(Character* ch)
         std::cin >> ind;
     }
 
-    std::cout << "Vous avez choisi " << raceVector.at(ind)->getName() << ".\n";
+    std::cout << "Vous avez choisi la race " << raceVector.at(ind)->getName() << ".\n";
     ch->setRace(raceVector.at(ind));
 }
 
@@ -52,7 +52,7 @@ void CharacterCreatorConsoleUI::selectGender(Character* ch)
         std::cin >> ind;
     }
 
-    std::cout << "Vous avez choisi " << GENDER_NAME[ind] << ".\n";
+    std::cout << "Vous avez choisi le sexe " << GENDER_NAME[ind] << ".\n";
     ch->setGender((Gender)ind);
 }
 
@@ -79,7 +79,7 @@ void CharacterCreatorConsoleUI::selectClass(Character* ch)
         std::cin >> ind;
     }
 
-    std::cout << "Vous avez choisi " << classVector.at(ind)->getName() << ".\n";
+    std::cout << "Vous avez choisi la classe " << classVector.at(ind)->getName() << ".\n";
     ch->setClass(classVector.at(ind));
 }
 
@@ -89,6 +89,36 @@ void CharacterCreatorConsoleUI::selectName(Character* ch)
     std::string name;
     std::cin >> name;
 
-    std::cout << "Vous avez choisi " << name << ".\n";
+    std::cout << "Vous avez choisi le nom " << name << ".\n";
     ch->setName(name);
+}
+
+void CharacterCreatorConsoleUI::setAttributesScore(Character* ch)
+{
+    AttributesSet* ass = ch->getAttributesSet();
+    while(1)
+    {
+        std::cout << ass->toStringSettings();
+
+        std::cout << "\nEntrez: ";
+        std::string command;
+        std::cin >> command;
+
+        if("q" == command)
+            break;
+
+        if(command.size()!=4)
+            continue;
+
+        std::string key = command.substr(1,3);
+
+        if('-'==command.at(0))
+        {
+            if(ass->isDecrementable(key))
+                ass->decrementPoint(key);
+        }
+        else if('+'==command.at(0))
+            if(ass->isIncrementable(key))
+                ass->incrementPoint(key);
+    }
 }

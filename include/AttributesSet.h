@@ -19,6 +19,7 @@ class AttributesSet
         void setAttributeBounds(Race* rc, Class* cl);
         void setAttributeBonus(Race* rc);
 
+        bool isKeyUsed(std::string key);
         bool isIncrementable(std::string key);
         bool isDecrementable(std::string key);
 
@@ -28,6 +29,7 @@ class AttributesSet
         //void randomAssignment();
 
         std::string toString();
+        std::string toStringSettings();
 
     protected:
         std::map<std::string,AttributeScore*> m_asMap;

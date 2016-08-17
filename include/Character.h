@@ -32,7 +32,9 @@ class Character
         void setRace(Race* rc);
         void setGender(Gender gd);
         void setClass(Class* cl);
+
         void initAttributes();
+        AttributesSet* getAttributesSet();
 
         std::vector<std::string> getAvailableClass();
 
@@ -49,7 +51,7 @@ class Character
         Race* m_race;
         Gender m_gender;
         Class* m_class;
-        AttributesSet m_attributes_set;
+        AttributesSet m_attributesSet;
         TraitsSet m_traits_set;
 };
 

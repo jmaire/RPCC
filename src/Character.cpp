@@ -79,14 +79,18 @@ void Character::initAttributes()
 {
     if(nullptr != m_race)
     {
-        m_attributes_set.setAttributeBonus(m_race);
+        m_attributesSet.setAttributeBonus(m_race);
         if(nullptr != m_class)
         {
-            m_attributes_set.setAttributeBounds(m_race,m_class);
+            m_attributesSet.setAttributeBounds(m_race,m_class);
         }
     }
 }
 
+AttributesSet* Character::getAttributesSet()
+{
+    return &m_attributesSet;
+}
 
 std::string Character::toString()
 {
@@ -95,7 +99,7 @@ std::string Character::toString()
         + "\nGender: " + ((int)m_gender==0 ? "Female" : "Male")
         + "\nClass: " + m_class->getName()
         //+ "\nLevel: " + m_level + "(" + m_experience + ")"
-        + "\nAttributes \n" + m_attributes_set.toString();
+        + "\nAttributes \n" + m_attributesSet.toString();
 
     return str;
 }

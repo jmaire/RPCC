@@ -30,8 +30,8 @@ int main(int argc, char* argv[])
     CharacterCreatorConsoleUI::selectGender(&ch);
     CharacterCreatorConsoleUI::selectClass(&ch);
     CharacterCreatorConsoleUI::selectName(&ch);
-
     ch.initAttributes();
+    CharacterCreatorConsoleUI::setAttributesScore(&ch);
 
     std::cout << ch.toString();
 }

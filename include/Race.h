@@ -5,8 +5,6 @@
 #include "Data.h"
 #include "Class.h"
 
-#define RESTRICTED_CLASS_FROM_RACE 1
-
 class Race : public Data
 {
     public:

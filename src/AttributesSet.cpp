@@ -50,26 +50,37 @@ void AttributesSet::setAttributeBonus(Race* rc)
     }
 }
 
+bool AttributesSet::isKeyUsed(std::string key)
+{
+    return m_asMap.find(key) != m_asMap.end();
+}
+
 bool AttributesSet::isIncrementable(std::string key)
 {
-    return m_asMap.at(key)->isIncrementable();
+    return isKeyUsed(key) && m_asMap.at(key)->isIncrementable();
 }
 
 bool AttributesSet::isDecrementable(std::string key)
 {
-    return m_asMap.at(key)->isDecrementable();
+    return isKeyUsed(key) && m_asMap.at(key)->isDecrementable();
 }
 
 void AttributesSet::incrementPoint(std::string key)
 {
-    m_unassignedPoints--;
-    m_asMap.at(key)->increasePoint(1);
+    if(isKeyUsed(key))
+    {
+        m_asMap.at(key)->increasePoint(1);
+        m_unassignedPoints--;
+    }
 }
 
 void AttributesSet::decrementPoint(std::string key)
 {
-    m_unassignedPoints++;
-    m_asMap.at(key)->increasePoint(-1);
+    if(isKeyUsed(key))
+    {
+        m_asMap.at(key)->increasePoint(-1);
+        m_unassignedPoints++;
+    }
 }
 
 /*
@@ -103,6 +114,31 @@ std::string AttributesSet::toString()
     for(std::map<std::string,AttributeScore*>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
     {
         str += it->second->toString() + "\n";
+    }
+
+    char buff[16];
+    sprintf(buff,"\t|> Unassigned: %d",m_unassignedPoints);
+    str += buff;
+
+    return str;
+}
+
+std::string AttributesSet::toStringSettings()
+{
+    std::string str = "";
+    for(std::map<std::string,AttributeScore*>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
+    {
+        if(isDecrementable(it->first))
+            str += "[-]";
+        else
+            str += "   ";
+
+        if(isIncrementable(it->first))
+            str += "[+]";
+        else
+            str += "   ";
+
+        str += " " + it->second->toString() + "\n";
     }
 
     char buff[16];
