@@ -27,6 +27,8 @@ class Character
         bool isRaceValid();
         bool isGenderValid();
         bool isClassValid();
+        bool isAttributesSetValid();
+        bool isNameValid();
 
         void setName(std::string nm);
         void setRace(Race* rc);

@@ -65,3 +65,17 @@ std::string AttributeScore::toString()
     return str;
 }
 
+std::string AttributeScore::toStringCreation()
+{
+    std::string str = "{" + m_attributeID + "}:";
+
+    char buff[16];
+    sprintf(buff," %d -",m_score,m_bonus,getActualScore());
+    str += buff;
+
+    Attribute* att = DataManager::getAttributeByKey(m_attributeID);
+    if(nullptr != att)
+        str += att->getName();
+
+    return str;
+}

@@ -46,6 +46,17 @@ bool Character::isClassValid()
     return std::find(availableClass.begin(),availableClass.end(),m_class->getID()) != availableClass.end();
 }
 
+bool Character::isAttributesSetValid()
+{
+    return m_attributesSet.getNumberOfUnassignedPoints() == 0;
+}
+
+bool Character::isNameValid()
+{
+    // TODO
+    return true;
+}
+
 void Character::setName(std::string nm)
 {
     m_name = nm;

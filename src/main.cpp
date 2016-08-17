@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <iostream>
 
-#include "CharacterCreatorConsoleUI.h"
+#include "CharacterCreator.h"
 #include "DataLoader.h"
-//#include "Dice.h"
 
 int main(int argc, char* argv[])
 {
@@ -24,14 +23,7 @@ int main(int argc, char* argv[])
         //std::cout << "\n augmentable? " << ass.isIncreasable(1);
         ass.incrementPoint("dex");
     }*/
-    Character ch = Character();
+    Character *ch = CharacterCreator::createCharacter();
 
-    CharacterCreatorConsoleUI::selectRace(&ch);
-    CharacterCreatorConsoleUI::selectGender(&ch);
-    CharacterCreatorConsoleUI::selectClass(&ch);
-    CharacterCreatorConsoleUI::selectName(&ch);
-    ch.initAttributes();
-    CharacterCreatorConsoleUI::setAttributesScore(&ch);
-
-    std::cout << ch.toString();
+    std::cout << ch->toString();
 }

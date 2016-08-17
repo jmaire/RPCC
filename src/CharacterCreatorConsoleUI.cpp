@@ -96,9 +96,10 @@ void CharacterCreatorConsoleUI::selectName(Character* ch)
 void CharacterCreatorConsoleUI::setAttributesScore(Character* ch)
 {
     AttributesSet* ass = ch->getAttributesSet();
+
     while(1)
     {
-        std::cout << ass->toStringSettings();
+        std::cout << ass->toStringCreation();
 
         std::cout << "\nEntrez: ";
         std::string command;

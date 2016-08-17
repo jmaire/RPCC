@@ -65,9 +65,14 @@ bool AttributesSet::isDecrementable(std::string key)
     return isKeyUsed(key) && m_asMap.at(key)->isDecrementable();
 }
 
+int AttributesSet::getNumberOfUnassignedPoints()
+{
+    return m_unassignedPoints;
+}
+
 void AttributesSet::incrementPoint(std::string key)
 {
-    if(isKeyUsed(key))
+    if(isKeyUsed(key) && m_unassignedPoints>=1)
     {
         m_asMap.at(key)->increasePoint(1);
         m_unassignedPoints--;
@@ -123,22 +128,22 @@ std::string AttributesSet::toString()
     return str;
 }
 
-std::string AttributesSet::toStringSettings()
+std::string AttributesSet::toStringCreation()
 {
     std::string str = "";
     for(std::map<std::string,AttributeScore*>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
     {
         if(isDecrementable(it->first))
-            str += "[-]";
+            str += "[-/";
         else
-            str += "   ";
+            str += "[ /";
 
         if(isIncrementable(it->first))
-            str += "[+]";
+            str += "+]";
         else
-            str += "   ";
+            str += " ]";
 
-        str += " " + it->second->toString() + "\n";
+        str += it->second->toStringCreation() + "\n";
     }
 
     char buff[16];

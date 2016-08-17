@@ -7,10 +7,13 @@
 
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
+
+#define USE_CONSOLE_UI 1
 
 static const std::string UNDEFINED_ID = "";
 
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 
 enum CharacterCreationStep
@@ -33,6 +36,9 @@ static const int ATTRIBUTE_DEFAULT_LOW_BOUNDARY = 3;
 static const int ATTRIBUTE_DEFAULT_HIGH_BOUNDARY = 18;
 static const int ATTRIBUTE_STARTING_UNASSIGNED_POINTS = 15;
 
+static const int TRAIT_NEUTRAL_SCORE = 0;
+static const int TRAIT_SCORE_ABSOLUTE_BOUNDARY = 100;
+
 static const int TRAITS_SET_SIZE = 7;
 static std::pair<std::string,std::string> TRAITS_SET_TRAIT_NAMES[TRAITS_SET_SIZE] =
     {std::make_pair("Lawful","Chaotic")
@@ -44,8 +50,11 @@ static std::pair<std::string,std::string> TRAITS_SET_TRAIT_NAMES[TRAITS_SET_SIZE
     ,std::make_pair("Thoughtful","Impulsive")
     };
 
-static const int TRAIT_NEUTRAL_SCORE = 0;
-static const int TRAIT_SCORE_ABSOLUTE_BOUNDARY = 100;
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
+
 
 
 #endif // CONFIG_H

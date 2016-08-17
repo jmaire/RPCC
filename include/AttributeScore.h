@@ -24,6 +24,7 @@ class AttributeScore
         void increasePoint(int p);
 
         std::string toString();
+        std::string toStringCreation();
 
     protected:
         std::string m_attributeID;

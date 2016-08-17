@@ -22,6 +22,7 @@ class AttributesSet
         bool isKeyUsed(std::string key);
         bool isIncrementable(std::string key);
         bool isDecrementable(std::string key);
+        int getNumberOfUnassignedPoints();
 
         void incrementPoint(std::string key);
         void decrementPoint(std::string key);
@@ -29,7 +30,7 @@ class AttributesSet
         //void randomAssignment();
 
         std::string toString();
-        std::string toStringSettings();
+        std::string toStringCreation();
 
     protected:
         std::map<std::string,AttributeScore*> m_asMap;

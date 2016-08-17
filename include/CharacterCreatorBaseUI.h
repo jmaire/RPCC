@@ -1,7 +1,8 @@
 #ifndef CHARACTERCREATORBASEUI_H
 #define CHARACTERCREATORBASEUI_H
 
-#include "CharacterCreator.h"
+#include "Character.h"
+#include "DataManager.h"
 
 class CharacterCreatorBaseUI
 {
@@ -12,6 +13,8 @@ class CharacterCreatorBaseUI
         static void selectGender(Character* ch);
         static void selectClass(Character* ch);
         static void selectName(Character* ch);
+
+        static void setAttributesScore(Character* ch);
 
     protected:
         CharacterCreatorBaseUI();
