@@ -4,6 +4,7 @@
 Race::Race(std::string id, std::string name)
 : Data(id)
 , m_name(name)
+, m_playable(false)
 {}
 
 Race::Race()
@@ -13,9 +14,19 @@ Race::Race()
 Race::~Race()
 {}
 
+void Race::setRacePlayable(bool playable)
+{
+    m_playable = playable;
+}
+
 std::string Race::getName()
 {
     return m_name;
+}
+
+bool Race::isPlayable()
+{
+    return m_playable;
 }
 
 std::vector<std::string> Race::getAvailableClass()

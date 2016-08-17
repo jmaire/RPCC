@@ -1,108 +1,72 @@
 #include "DataManager.h"
 #include "tools.h"
 
-/*static*/ std::map<std::string,Ability*> DataManager::m_abilityMap;
-/*static*/ std::map<std::string,Attribute*> DataManager::m_attributeMap;
-/*static*/ std::map<std::string,Class*> DataManager::m_classMap;
-/*static*/ std::map<std::string,Race*> DataManager::m_raceMap;
+/*static*/ DataMap DataManager::m_abilityMap;
+/*static*/ DataMap DataManager::m_attributeMap;
+/*static*/ DataMap DataManager::m_classMap;
+/*static*/ DataMap DataManager::m_raceMap;
 
-/*private*/ DataManager::DataManager() {}
+/*private*/ DataManager::DataManager()
+{}
 
 DataManager::~DataManager()
 {}
 
 void DataManager::clearAll()
 {
-    //TODO
-    std::map<std::string,Attribute*>::iterator it;
-    while(!m_attributeMap.empty())
-    {
-        it = m_attributeMap.begin();
-        m_attributeMap.erase(it);
-        delete it->second;
-    }
-}
-
-bool DataManager::isKeyFormatValid(std::string key)
-{
-    return key != UNDEFINED_ID;
+    m_abilityMap.clearDataMap();
+    m_attributeMap.clearDataMap();
+    m_classMap.clearDataMap();
+    m_raceMap.clearDataMap();
 }
 
 void DataManager::insereAbilityToMap(Ability* ab)
 {
-    std::string id = ab->getID();
-    if(!isKeyFormatValid(id))
-        return;
-
-    if(m_abilityMap.find(id) != m_abilityMap.end())
-        m_abilityMap[id]->setIDToUndefined();
-
-    m_abilityMap[id] = ab;
+    m_abilityMap.insereDataToMap(ab);
 }
 
 void DataManager::insereAttributeToMap(Attribute* att)
 {
-    std::string id = att->getID();
-    if(!isKeyFormatValid(id))
-        return;
-
-    if(m_attributeMap.find(id) != m_attributeMap.end())
-        m_attributeMap[id]->setIDToUndefined();
-
-    m_attributeMap[id] = att;
+    m_attributeMap.insereDataToMap(att);
 }
 
 void DataManager::insereClassToMap(Class* cl)
 {
-    std::string id = cl->getID();
-    if(!isKeyFormatValid(id))
-        return;
-
-    if(m_classMap.find(id) != m_classMap.end())
-        m_classMap[id]->setIDToUndefined();
-
-    m_classMap[id] = cl;
+    m_classMap.insereDataToMap(cl);
 }
 
 void DataManager::insereRaceToMap(Race* rc)
 {
-    std::string id = rc->getID();
-    if(!isKeyFormatValid(id))
-        return;
-
-    if(m_raceMap.find(id) != m_raceMap.end())
-        m_raceMap[id]->setIDToUndefined();
-
-    m_raceMap[id] = rc;
+    m_raceMap.insereDataToMap(rc);
 }
 
 Ability* DataManager::getAbilityByKey(std::string key)
 {
-    if(m_abilityMap.find(key) == m_abilityMap.end())
-        return nullptr;
-    return m_abilityMap.at(key);
+    return dynamic_cast<Ability*>(m_abilityMap.getDataByKey(key));
 }
 
 Attribute* DataManager::getAttributeByKey(std::string key)
 {
-    if(m_attributeMap.find(key) == m_attributeMap.end())
-        return nullptr;
-    return m_attributeMap.at(key);
+    return dynamic_cast<Attribute*>(m_attributeMap.getDataByKey(key));
 }
 
 Class* DataManager::getClassByKey(std::string key)
 {
-    if(m_classMap.find(key) == m_classMap.end())
-        return nullptr;
-    return m_classMap.at(key);
+    return dynamic_cast<Class*>(m_classMap.getDataByKey(key));
 }
 
 Race* DataManager::getRaceByKey(std::string key)
 {
-    if(m_raceMap.find(key) == m_raceMap.end())
-        return nullptr;
-    return m_raceMap.at(key);
+    return dynamic_cast<Race*>(m_raceMap.getDataByKey(key));
 }
 
+std::vector<Race*> DataManager::getRaceVector()
+{
+    std::vector<Race*> raceVector;
+    std::vector<Data*> dataVector = m_raceMap.toVector();
+    for(unsigned int i=0; i<dataVector.size(); i++)
+        if(Race* race = dynamic_cast<Race*>(dataVector.at(i)))
+            raceVector.push_back(race);
 
-
+    return raceVector;
+}

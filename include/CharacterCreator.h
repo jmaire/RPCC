@@ -2,11 +2,14 @@
 #define CHARACTERCREATOR_H
 
 #include "Character.h"
+#include "DataManager.h"
 
 class CharacterCreator
 {
     public:
-        virtual ~CharacterCreator(void);
+        virtual ~CharacterCreator();
+
+        std::vector<Race*> getAvailableRace();
 
         //static Character* createCharacter(void);
         static void doStep(Character *ch);
@@ -14,7 +17,7 @@ class CharacterCreator
         static void goToNextStep(Character *ch);
 
     private:
-        CharacterCreator(void);
+        CharacterCreator();
 
 };
 

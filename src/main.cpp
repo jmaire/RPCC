@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 
-#include "CharacterCreator.h"
+#include "CharacterCreatorConsoleUI.h"
 #include "DataLoader.h"
 //#include "Dice.h"
 
@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 {
     DataLoader::load();
     /////////////////////////////////////
-
+/*
     Race* r = DataManager::getRaceByKey("elf");
     Class* c = DataManager::getClassByKey("thief");
 
@@ -23,5 +23,8 @@ int main(int argc, char* argv[])
         std::cout << "\n-----------------------------\n" << ass.toString() << "\n";
         //std::cout << "\n augmentable? " << ass.isIncreasable(1);
         ass.incrementPoint("dex");
-    }
+    }*/
+    Character ch = Character();
+
+    CharacterCreatorConsoleUI::selectRace(&ch);
 }

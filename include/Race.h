@@ -15,7 +15,10 @@ class Race : public Data
 
         virtual ~Race();
 
+        void setRacePlayable(bool playable);
+
         std::string getName();
+        bool isPlayable();
         std::vector<std::string> getAvailableClass();
         std::pair<int,int> getAttributeBounds(std::string key);
         int getAttributeBonus(std::string key);
@@ -26,6 +29,7 @@ class Race : public Data
 
     protected:
         std::string m_name;
+        bool m_playable;
         std::vector<std::string> m_class_restriction;
         std::map<std::string,std::pair<int,int>> m_attributesBounds;
         std::map<std::string,int> m_attributesBonus;

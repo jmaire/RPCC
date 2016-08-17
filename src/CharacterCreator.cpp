@@ -1,13 +1,10 @@
-#include <time.h>
 #include "CharacterCreator.h"
 #include "DataManager.h"
 
-#include "iostream"
-
-CharacterCreator::CharacterCreator(void)
+CharacterCreator::CharacterCreator()
 {}
 
-CharacterCreator::~CharacterCreator(void)
+CharacterCreator::~CharacterCreator()
 {}
 
 void doStep(Character *ch)
@@ -33,8 +30,6 @@ void doStep(Character *ch)
     default:
         break;
     }
-
-
 }
 
 bool CharacterCreator::validStep(Character *ch)

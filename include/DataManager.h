@@ -2,6 +2,7 @@
 #define DATAMANAGER_H
 
 #include <map>
+#include "DataMap.h"
 #include "Ability.h"
 #include "Attribute.h"
 #include "Class.h"
@@ -15,8 +16,6 @@ class DataManager
         static void clearAll();
         //static bool checkDataIntegrity(); //TODO
 
-        static bool isKeyFormatValid(std::string key);
-
         static void insereAbilityToMap(Ability* ab);
         static void insereAttributeToMap(Attribute* att);
         static void insereClassToMap(Class* cl);
@@ -27,11 +26,13 @@ class DataManager
         static Class* getClassByKey(std::string key);
         static Race* getRaceByKey(std::string key);
 
+        static std::vector<Race*> getRaceVector();
+
     protected:
-        static std::map<std::string,Ability*> m_abilityMap;
-        static std::map<std::string,Attribute*> m_attributeMap;
-        static std::map<std::string,Class*> m_classMap;
-        static std::map<std::string,Race*> m_raceMap;
+        static DataMap m_abilityMap;
+        static DataMap m_attributeMap;
+        static DataMap m_classMap;
+        static DataMap m_raceMap;
 
     private:
         DataManager();
