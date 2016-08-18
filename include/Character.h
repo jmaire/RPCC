@@ -47,14 +47,14 @@ class Character
 
         std::string m_name;
         std::string m_portraitPath;
-        unsigned int m_level;
-        unsigned int m_experience;
+        //unsigned int m_level;
+        //unsigned int m_experience;
 
         Race* m_race;
         Gender m_gender;
         Class* m_class;
         AttributesSet m_attributesSet;
-        TraitsSet m_traits_set;
+        TraitsSet m_traitsSet;
 };
 
 #endif // CHARACTER_H

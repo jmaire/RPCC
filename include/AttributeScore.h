@@ -1,7 +1,7 @@
 #ifndef ATTRIBUTESCORE_H
 #define ATTRIBUTESCORE_H
 
-#include "config.h"
+#include "Attribute.h"
 #include "Class.h"
 #include "Race.h"
 

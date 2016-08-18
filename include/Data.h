@@ -7,6 +7,7 @@ class Data
 {
     public:
         virtual ~Data();
+        Data();
 
         std::string getID();
         void setIDToUndefined();
@@ -15,7 +16,6 @@ class Data
         std::string m_id;
 
         Data(std::string id);
-        Data();
 
 };
 

@@ -39,6 +39,9 @@ static const int ATTRIBUTE_STARTING_UNASSIGNED_POINTS = 15;
 static const int TRAIT_NEUTRAL_SCORE = 0;
 static const int TRAIT_SCORE_ABSOLUTE_BOUNDARY = 100;
 
+static const int WEAPON_PROFICIENCY_MAX_BOUNDARY = 5;
+
+
 static const int TRAITS_SET_SIZE = 7;
 static std::pair<std::string,std::string> TRAITS_SET_TRAIT_NAMES[TRAITS_SET_SIZE] =
     {std::make_pair("Lawful","Chaotic")

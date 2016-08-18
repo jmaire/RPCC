@@ -25,5 +25,5 @@ int main(int argc, char* argv[])
     }*/
     Character *ch = CharacterCreator::createCharacter();
 
-    std::cout << ch->toString();
+    std::cout << "\n" << ch->toString();
 }

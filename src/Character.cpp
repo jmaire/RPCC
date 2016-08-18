@@ -7,8 +7,8 @@ Character::Character()
 : m_creationStep(CREATION_START)
 , m_name("")
 , m_portraitPath("")
-, m_level(1)
-, m_experience(0)
+//, m_level(1)
+//, m_experience(0)
 , m_race(nullptr)
 , m_class(nullptr)
 {}
@@ -34,7 +34,7 @@ bool Character::isRaceValid()
 
 bool Character::isGenderValid()
 {
-    return  Gender::FEMALE == m_gender || Gender::MALE == m_gender;
+    return Gender::FEMALE == m_gender || Gender::MALE == m_gender;
 }
 
 bool Character::isClassValid()
@@ -80,9 +80,7 @@ void Character::setClass(Class* cl)
 std::vector<std::string> Character::getAvailableClass()
 {
     if(m_race!=nullptr)
-    {
         return m_race->getAvailableClass();
-    }
     return std::vector<std::string>();
 }
 
@@ -92,9 +90,7 @@ void Character::initAttributes()
     {
         m_attributesSet.setAttributeBonus(m_race);
         if(nullptr != m_class)
-        {
             m_attributesSet.setAttributeBounds(m_race,m_class);
-        }
     }
 }
 
@@ -107,7 +103,7 @@ std::string Character::toString()
 {
     std::string str = "Name: " + m_name
         + "\nRace: " + m_race->getName()
-        + "\nGender: " + ((int)m_gender==0 ? "Female" : "Male")
+        + "\nGender: " + GENDER_NAME[(unsigned int)m_gender]
         + "\nClass: " + m_class->getName()
         //+ "\nLevel: " + m_level + "(" + m_experience + ")"
         + "\nAttributes \n" + m_attributesSet.toString();

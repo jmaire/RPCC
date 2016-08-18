@@ -89,11 +89,11 @@ void Race::setAttributeBonus(std::string key, int bonus)
 
 std::vector<std::string> Race::getAvailableClass()
 {
-    return m_class_restriction;
+    return m_classRestriction;
 }
 
 void Race::addAvailableClass(std::string key)
 {
-    if(std::find(m_class_restriction.begin(), m_class_restriction.end(), key) == m_class_restriction.end())
-        m_class_restriction.push_back(key);
+    if(std::find(m_classRestriction.begin(), m_classRestriction.end(), key) == m_classRestriction.end())
+        m_classRestriction.push_back(key);
 }

@@ -1,7 +1,6 @@
 #ifndef DATAMANAGER_H
 #define DATAMANAGER_H
 
-#include <map>
 #include "DataMap.h"
 #include "Ability.h"
 #include "Attribute.h"
@@ -29,10 +28,10 @@ class DataManager
         static std::vector<Race*> getRaceVector();
 
     protected:
-        static DataMap m_abilityMap;
-        static DataMap m_attributeMap;
-        static DataMap m_classMap;
-        static DataMap m_raceMap;
+        static DataMap<Ability> m_abilityMap;
+        static DataMap<Attribute> m_attributeMap;
+        static DataMap<Class> m_classMap;
+        static DataMap<Race> m_raceMap;
 
     private:
         DataManager();

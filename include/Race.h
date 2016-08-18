@@ -37,7 +37,7 @@ class Race : public Data
     protected:
         std::string m_name;
         bool m_playable;
-        std::vector<std::string> m_class_restriction;
+        std::vector<std::string> m_classRestriction;
         std::map<std::string,int> m_attributesLowerBoundary;
         std::map<std::string,int> m_attributesHigherBoundary;
         std::map<std::string,int> m_attributesBonus;

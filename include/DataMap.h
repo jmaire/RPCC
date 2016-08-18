@@ -5,24 +5,25 @@
 #include <vector>
 #include "Data.h"
 
+template <typename T=Data>
 class DataMap
 {
     public:
         DataMap();
 
         virtual ~DataMap();
-        void clearDataMap();
+        void flushMap();
 
         bool isKeyFormatValid(std::string key);
+        void insereDataToMap(T* data);
+        T* getDataByKey(std::string key);
 
-        void insereDataToMap(Data* data);
-
-        Data* getDataByKey(std::string key);
-
-        std::vector<Data*> toVector();
+        std::vector<T*> toVector();
 
     protected:
-        std::map<std::string,Data*> m_dataMap;
+        std::map<std::string,T*> m_map;
 };
+
+#include "../src/DataMap.tpp"
 
 #endif // DATAMAP_H

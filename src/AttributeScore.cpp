@@ -10,7 +10,7 @@ AttributeScore::AttributeScore(std::string attributeID)
 {}
 
 AttributeScore::AttributeScore()
-: AttributeScore("")
+: AttributeScore(UNDEFINED_ID)
 {}
 
 AttributeScore::~AttributeScore()
@@ -70,7 +70,7 @@ std::string AttributeScore::toStringCreation()
     std::string str = "{" + m_attributeID + "}:";
 
     char buff[16];
-    sprintf(buff," %d -",m_score,m_bonus,getActualScore());
+    sprintf(buff," %d -",getActualScore());
     str += buff;
 
     Attribute* att = DataManager::getAttributeByKey(m_attributeID);
