@@ -35,3 +35,31 @@ void Class::setAttributeLowBoundary(std::string key, int boundary)
     m_attributesLowBoundary[key] = boundary;
 }
 
+#ifdef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
+int Class::getWeaponProficiencyMaxBoundary()
+{
+    return m_weaponProficiencyMaxBoundary;
+}
+
+void Class::setWeaponProficiencyMaxBoundary(int boundary)
+{
+    m_weaponProficiencyMaxBoundary = boundary;
+}
+#else
+bool Class::haveWeaponProficiencyMaxBoundary(std::string key)
+{
+    return m_weaponProficiencyMaxBoundary.find(key) != m_weaponProficiencyMaxBoundary.end();
+}
+
+int Class::getWeaponProficiencyMaxBoundary(std::string key)
+{
+    if(!haveWeaponProficiencyMaxBoundary(key))
+        return -1;
+    return m_weaponProficiencyMaxBoundary.at(key);
+}
+
+void Class::setWeaponProficiencyMaxBoundary(std::string key, int boundary)
+{
+    m_weaponProficiencyMaxBoundary[key] = boundary;
+}
+#endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY

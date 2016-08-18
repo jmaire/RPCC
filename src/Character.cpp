@@ -65,6 +65,7 @@ void Character::setName(std::string nm)
 void Character::setRace(Race* rc)
 {
     m_race = rc;
+    initAttributes();
 }
 
 void Character::setGender(Gender gd)
@@ -75,6 +76,7 @@ void Character::setGender(Gender gd)
 void Character::setClass(Class* cl)
 {
     m_class = cl;
+    initAttributes();
 }
 
 std::vector<std::string> Character::getAvailableClass()
@@ -97,6 +99,11 @@ void Character::initAttributes()
 AttributesSet* Character::getAttributesSet()
 {
     return &m_attributesSet;
+}
+
+WeaponProficiencySet* Character::getWeaponProficiencySet()
+{
+    return & m_wpSet;
 }
 
 std::string Character::toString()

@@ -15,6 +15,7 @@ class CharacterCreatorBaseUI
         static void selectName(Character* ch);
 
         static void setAttributesScore(Character* ch);
+        static void setWeaponProficiency(Character* ch);
 
     protected:
         CharacterCreatorBaseUI();

@@ -12,6 +12,7 @@ class DataLoader
         static void loadAttribute();
         static void loadClass();
         static void loadRace();
+        static void loadWeaponCategory();
 
     private:
         DataLoader();

@@ -1,4 +1,5 @@
 #include "tools.h"
+#include "Attribute.h"
 #include "AttributeScore.h"
 #include "DataManager.h"
 
@@ -42,9 +43,20 @@ bool AttributeScore::isDecrementable()
     return getActualScore() > m_bounds.first;
 }
 
-void AttributeScore::increasePoint(int p)
+bool AttributeScore::increment()
 {
-    m_score += p;
+    if(!isIncrementable())
+        return false;
+    m_score++;
+    return true;
+}
+
+bool AttributeScore::decrement()
+{
+    if(!isDecrementable())
+        return false;
+    m_score--;
+    return true;
 }
 
 std::string AttributeScore::toString()
@@ -76,6 +88,9 @@ std::string AttributeScore::toStringCreation()
     Attribute* att = DataManager::getAttributeByKey(m_attributeID);
     if(nullptr != att)
         str += att->getName();
+
+    sprintf(buff," [%d;%d]",m_bounds.first,m_bounds.second);
+    str += buff;
 
     return str;
 }

@@ -49,6 +49,12 @@ void CharacterCreator::doStep(Character *ch)
 #endif // USE_CONSOLE_UI
         break;
 
+    case WEAPONPROFICIENCY_SETTING:
+#if 1 == USE_CONSOLE_UI
+        CharacterCreatorConsoleUI::setWeaponProficiency(ch);
+#endif // USE_CONSOLE_UI
+        break;
+
     case NAME_SELECTION:
 #if 1 == USE_CONSOLE_UI
         CharacterCreatorConsoleUI::selectName(ch);
@@ -90,7 +96,8 @@ bool CharacterCreator::validStep(Character *ch)
         break;
 
     case ATTRIBUTES_SETTING:
-        isValid = ch->isAttributesSetValid();
+        //isValid = ch->isAttributesSetValid();
+        isValid = true;
         break;
 
     case NAME_SELECTION:

@@ -16,22 +16,22 @@ void DataLoader::loadAttribute()
 {
     Attribute* att;
     att = new Attribute("str","Strength");
-    DataManager::insereAttributeToMap(att);
+    DataManager::insereDataToMap(att);
 
     att = new Attribute("dex","Dexterity");
-    DataManager::insereAttributeToMap(att);
+    DataManager::insereDataToMap(att);
 
     att = new Attribute("con","Constitution");
-    DataManager::insereAttributeToMap(att);
+    DataManager::insereDataToMap(att);
 
     att = new Attribute("int","Intelligence");
-    DataManager::insereAttributeToMap(att);
+    DataManager::insereDataToMap(att);
 
     att = new Attribute("wis","Wisdom");
-    DataManager::insereAttributeToMap(att);
+    DataManager::insereDataToMap(att);
 
     att = new Attribute("cha","Charisma");
-    DataManager::insereAttributeToMap(att);
+    DataManager::insereDataToMap(att);
 }
 
 void DataLoader::loadClass()
@@ -39,15 +39,18 @@ void DataLoader::loadClass()
     Class* cl;
     cl = new Class("fighter","Fighter");
     cl->setAttributeLowBoundary("str",9);
-    DataManager::insereClassToMap(cl);
+    cl->setWeaponProficiencyMaxBoundary(5);
+    DataManager::insereDataToMap(cl);
 
     cl = new Class("mage","Mage");
     cl->setAttributeLowBoundary("int",9);
-    DataManager::insereClassToMap(cl);
+    cl->setWeaponProficiencyMaxBoundary(1);
+    DataManager::insereDataToMap(cl);
 
     cl = new Class("thief","Thief");
     cl->setAttributeLowBoundary("dex",9);
-    DataManager::insereClassToMap(cl);
+    cl->setWeaponProficiencyMaxBoundary(1);
+    DataManager::insereDataToMap(cl);
 }
 
 void DataLoader::loadRace()
@@ -57,7 +60,7 @@ void DataLoader::loadRace()
     rc->addAvailableClass("fighter");
     rc->addAvailableClass("mage");
     rc->addAvailableClass("thief");
-    DataManager::insereRaceToMap(rc);
+    DataManager::insereDataToMap(rc);
 
     rc = new Race("dwarf","Dwarf");
     rc->setAttributeLowerBoundary("str",8);
@@ -69,7 +72,7 @@ void DataLoader::loadRace()
     rc->setAttributeBonus("cha",-2);
     rc->addAvailableClass("fighter");
     rc->addAvailableClass("thief");
-    DataManager::insereRaceToMap(rc);
+    DataManager::insereDataToMap(rc);
 
     rc = new Race("elf","Elf");
     rc->setAttributeBounds("dex",7,19);
@@ -80,5 +83,18 @@ void DataLoader::loadRace()
     rc->setAttributeBonus("con",-1);
     rc->addAvailableClass("mage");
     rc->addAvailableClass("thief");
-    DataManager::insereRaceToMap(rc);
+    DataManager::insereDataToMap(rc);
+}
+
+void DataLoader::loadWeaponCategory()
+{
+    WeaponCategory* wc;
+    wc = new WeaponCategory("sword","Sword");
+    DataManager::insereDataToMap(wc);
+
+    wc = new WeaponCategory("axe","Axe");
+    DataManager::insereDataToMap(wc);
+
+    wc = new WeaponCategory("bow","Bow");
+    DataManager::insereDataToMap(wc);
 }

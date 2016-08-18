@@ -5,6 +5,7 @@
 #include "Class.h"
 #include "Race.h"
 #include "TraitsSet.h"
+#include "WeaponProficiencySet.h"
 
 enum class Gender
 {
@@ -38,6 +39,9 @@ class Character
         void initAttributes();
         AttributesSet* getAttributesSet();
 
+        void initWeaponProficiency();
+        WeaponProficiencySet* getWeaponProficiencySet();
+
         std::vector<std::string> getAvailableClass();
 
         std::string toString();
@@ -54,6 +58,7 @@ class Character
         Gender m_gender;
         Class* m_class;
         AttributesSet m_attributesSet;
+        WeaponProficiencySet m_wpSet;
         TraitsSet m_traitsSet;
 };
 

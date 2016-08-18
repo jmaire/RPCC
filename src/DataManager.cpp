@@ -1,12 +1,14 @@
 #include "DataManager.h"
 #include "tools.h"
 
-/*static*/ DataMap<Ability> DataManager::m_abilityMap;
-/*static*/ DataMap<Attribute> DataManager::m_attributeMap;
-/*static*/ DataMap<Class> DataManager::m_classMap;
-/*static*/ DataMap<Race> DataManager::m_raceMap;
+DataMap<Ability> DataManager::m_abilityMap;
+DataMap<Attribute> DataManager::m_attributeMap;
+DataMap<Class> DataManager::m_classMap;
+DataMap<Race> DataManager::m_raceMap;
+DataMap<Trait> DataManager::m_traitMap;
+DataMap<WeaponCategory> DataManager::m_weaponCategoryMap;
 
-/*private*/ DataManager::DataManager()
+DataManager::DataManager()
 {}
 
 DataManager::~DataManager()
@@ -20,25 +22,39 @@ void DataManager::clearAll()
     m_raceMap.flushMap();
 }
 
-void DataManager::insereAbilityToMap(Ability* ab)
+
+
+void DataManager::insereDataToMap(Ability* data)
 {
-    m_abilityMap.insereDataToMap(ab);
+    m_abilityMap.insereDataToMap(data);
 }
 
-void DataManager::insereAttributeToMap(Attribute* att)
+void DataManager::insereDataToMap(Attribute* data)
 {
-    m_attributeMap.insereDataToMap(att);
+    m_attributeMap.insereDataToMap(data);
 }
 
-void DataManager::insereClassToMap(Class* cl)
+void DataManager::insereDataToMap(Class* data)
 {
-    m_classMap.insereDataToMap(cl);
+    m_classMap.insereDataToMap(data);
 }
 
-void DataManager::insereRaceToMap(Race* rc)
+void DataManager::insereDataToMap(Race* data)
 {
-    m_raceMap.insereDataToMap(rc);
+    m_raceMap.insereDataToMap(data);
 }
+
+void DataManager::insereDataToMap(Trait* data)
+{
+    m_traitMap.insereDataToMap(data);
+}
+
+void DataManager::insereDataToMap(WeaponCategory* data)
+{
+    m_weaponCategoryMap.insereDataToMap(data);
+}
+
+///////////////////////////////////////////////////////////////
 
 Ability* DataManager::getAbilityByKey(std::string key)
 {
@@ -59,6 +75,18 @@ Race* DataManager::getRaceByKey(std::string key)
 {
     return m_raceMap.getDataByKey(key);
 }
+
+Trait* DataManager::getTraitByKey(std::string key)
+{
+    return m_traitMap.getDataByKey(key);
+}
+
+WeaponCategory* DataManager::getWeaponCategoryByKey(std::string key)
+{
+    return m_weaponCategoryMap.getDataByKey(key);
+}
+
+///////////////////////////////////////////////////////////////
 
 std::vector<Race*> DataManager::getRaceVector()
 {

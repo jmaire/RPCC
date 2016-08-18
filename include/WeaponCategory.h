@@ -6,7 +6,7 @@
 class WeaponCategory : public Data
 {
     public:
-        WeaponCategory(std::string id);
+        WeaponCategory(std::string id, std::string name);
         WeaponCategory();
 
         virtual ~WeaponCategory();

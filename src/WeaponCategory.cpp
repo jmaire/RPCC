@@ -1,11 +1,12 @@
 #include "WeaponCategory.h"
 
-WeaponCategory::WeaponCategory(std::string id)
+WeaponCategory::WeaponCategory(std::string id, std::string name)
 : Data(id)
+, m_name(name)
 {}
 
 WeaponCategory::WeaponCategory()
-: WeaponCategory(UNDEFINED_ID)
+: WeaponCategory(UNDEFINED_ID,"")
 {}
 
 WeaponCategory::~WeaponCategory()

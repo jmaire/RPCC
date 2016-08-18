@@ -1,7 +1,6 @@
 #ifndef ATTRIBUTESCORE_H
 #define ATTRIBUTESCORE_H
 
-#include "Attribute.h"
 #include "Class.h"
 #include "Race.h"
 
@@ -21,7 +20,8 @@ class AttributeScore
         bool isIncrementable();
         bool isDecrementable();
 
-        void increasePoint(int p);
+        bool increment();
+        bool decrement();
 
         std::string toString();
         std::string toStringCreation();

@@ -11,16 +11,26 @@ class WeaponProficiency
 
         virtual ~WeaponProficiency();
 
-        void setMaxBoundary(int boundary);
+        int getActualScore();
 
+        #ifndef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
+        void setMaxBoundary(int boundary);
         bool isIncrementable();
         bool isDecrementable();
+        #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
 
-        void increasePoint(int p);
+        bool increment();
+        bool decrement();
+
+        std::string toStringCreation();
 
     protected:
         std::string m_weaponCategoryID;
-        int m_score, m_maxBoundary;
+        int m_score;
+
+        #ifndef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
+        int m_maxBoundary;
+        #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
 
 };
 

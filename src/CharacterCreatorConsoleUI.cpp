@@ -116,10 +116,41 @@ void CharacterCreatorConsoleUI::setAttributesScore(Character* ch)
         if('-'==command.at(0))
         {
             if(ass->isDecrementable(key))
-                ass->decrementPoint(key);
+                ass->decrementByID(key);
         }
         else if('+'==command.at(0))
             if(ass->isIncrementable(key))
-                ass->incrementPoint(key);
+                ass->incrementByID(key);
+    }
+}
+
+void CharacterCreatorConsoleUI::setWeaponProficiency(Character* ch)
+{
+    WeaponProficiencySet* wps = ch->getWeaponProficiencySet();
+
+    while(1)
+    {
+        std::cout << wps->toStringCreation();
+
+        std::cout << "\nEntrez: ";
+        std::string command;
+        std::cin >> command;
+
+        if("q" == command)
+            break;
+
+        if(command.size()<2)
+            continue;
+
+        std::string key = command.substr(1,command.size()-1);
+
+        if('-'==command.at(0))
+        {
+            if(wps->isDecrementable(key))
+                wps->decrementByID(key);
+        }
+        else if('+'==command.at(0))
+            if(wps->isIncrementable(key))
+                wps->incrementByID(key);
     }
 }

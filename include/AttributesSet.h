@@ -5,8 +5,8 @@
 #include <vector>
 
 #include "AttributeScore.h"
-#include "Race.h"
 #include "Class.h"
+#include "Race.h"
 
 class AttributesSet
 {
@@ -24,8 +24,8 @@ class AttributesSet
         bool isDecrementable(std::string key);
         int getNumberOfUnassignedPoints();
 
-        void incrementPoint(std::string key);
-        void decrementPoint(std::string key);
+        void incrementByID(std::string key);
+        void decrementByID(std::string key);
 
         //void randomAssignment();
 
@@ -33,7 +33,7 @@ class AttributesSet
         std::string toStringCreation();
 
     protected:
-        std::map<std::string,AttributeScore*> m_asMap;
+        std::map<std::string,AttributeScore> m_asMap;
         int m_unassignedPoints;
 
 };
