@@ -1,26 +1,21 @@
 #ifndef TRAITSCORE_H
 #define TRAITSCORE_H
 
+#include "CharacteristicScore.h"
 #include "Trait.h"
 
-class TraitScore
+class TraitScore : CharacteristicScore
 {
     public:
-        TraitScore(Trait* tr, int sc);
-        TraitScore(Trait* tr);
-        TraitScore(void);
+        TraitScore(std::string traitID);
+        TraitScore();
 
-        virtual ~TraitScore(void);
+        virtual ~TraitScore();
 
-        int getScore(void);
-        void setScore(int sc);
-        void increaseScore(int i);
-
-        std::vector<Ability*> getKnownAbilities(void);
+        std::vector<Ability*> getKnownAbilities();
 
     protected:
-        Trait* m_trait;
-        int m_score;
+        std::string m_traitID;
 
 };
 

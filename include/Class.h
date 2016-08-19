@@ -27,6 +27,9 @@ class Class : public Data
         void setWeaponProficiencyMaxBoundary(std::string key, int boundary);
         #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
 
+        void setStartingWeaponProficiency(unsigned int swp);
+        unsigned int getStartingWeaponProficiency();
+
     protected:
         std::string m_name;
         std::map<std::string,int> m_attributesLowBoundary;
@@ -36,6 +39,7 @@ class Class : public Data
         std::map<std::string,int> m_weaponProficiencyMaxBoundary;
         #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
 
+        unsigned int m_startingWP;
 };
 
 #endif // CLASS_H

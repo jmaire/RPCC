@@ -92,3 +92,8 @@ std::vector<Race*> DataManager::getRaceVector()
 {
     return m_raceMap.toVector();
 }
+
+std::vector<WeaponCategory*> DataManager::getWeaponCategoryVector()
+{
+    return m_weaponCategoryMap.toVector();
+}

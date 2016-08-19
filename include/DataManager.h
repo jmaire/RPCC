@@ -34,6 +34,7 @@ class DataManager
         static WeaponCategory* getWeaponCategoryByKey(std::string key);
 
         static std::vector<Race*> getRaceVector();
+        static std::vector<WeaponCategory*> getWeaponCategoryVector();
 
     protected:
         static DataMap<Ability> m_abilityMap;

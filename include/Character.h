@@ -58,8 +58,8 @@ class Character
         Gender m_gender;
         Class* m_class;
         AttributesSet m_attributesSet;
-        WeaponProficiencySet m_wpSet;
         TraitsSet m_traitsSet;
+        WeaponProficiencySet m_wpSet;
 };
 
 #endif // CHARACTER_H

@@ -7,12 +7,10 @@
 #include "AttributesSet.h"
 
 
-AttributesSet::AttributesSet(std::vector<std::string> attributes)
-: m_unassignedPoints(ATTRIBUTE_STARTING_UNASSIGNED_POINTS)
-{
-    for(unsigned int i=0; i<attributes.size(); i++)
-        m_csMap[attributes[i]] = AttributeScore(attributes[i]);
-}
+AttributesSet::AttributesSet(std::vector<std::string> a_attributeID)
+: CharacteristicSet(a_attributeID)
+, m_unassignedPoints(ATTRIBUTE_STARTING_UNASSIGNED_POINTS)
+{}
 
 AttributesSet::AttributesSet()
 : AttributesSet({"str","dex","con","int","wis","cha"}) //TODO

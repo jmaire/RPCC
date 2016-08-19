@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Character.h"
+#include "DataManager.h"
 
 Character::Character()
 : m_creationStep(CREATION_START)
@@ -11,7 +12,11 @@ Character::Character()
 //, m_experience(0)
 , m_race(nullptr)
 , m_class(nullptr)
-{}
+{
+    std::vector<WeaponCategory*> a_wc = DataManager::getWeaponCategoryVector();
+    for(unsigned int i=0; i<a_wc.size(); i++)
+        m_wpSet.insereID(a_wc.at(i)->getID());
+}
 
 Character::~Character()
 {}

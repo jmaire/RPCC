@@ -1,16 +1,12 @@
 #include "TraitsSet.h"
 
-TraitsSet::TraitsSet(std::vector<Trait*> trts)
-{
-    for(std::vector<Trait*>::iterator it = trts.begin() ; it != trts.end(); ++it)
-    {
-        m_traits.push_back(TraitScore(*it));
-    }
-}
-
-
-TraitsSet::TraitsSet(void)
+TraitsSet::TraitsSet(std::vector<std::string> a_traitID)
+: CharacteristicSet(a_traitID)
 {}
 
-/*virtual*/ TraitsSet::~TraitsSet(void)
+TraitsSet::TraitsSet()
+: TraitsSet(std::vector<std::string>())
+{}
+
+TraitsSet::~TraitsSet()
 {}

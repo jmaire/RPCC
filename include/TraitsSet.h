@@ -1,19 +1,18 @@
 #ifndef TRAITSSET_H
 #define TRAITSSET_H
 
-#include "config.h"
+#include "CharacteristicSet.h"
 #include "TraitScore.h"
 
-class TraitsSet
+class TraitsSet : public CharacteristicSet<TraitScore>
 {
     public:
-        TraitsSet(std::vector<Trait*> trts);
-        TraitsSet(void);
+        TraitsSet(std::vector<std::string> a_traitID);
+        TraitsSet();
 
-        virtual ~TraitsSet(void);
+        virtual ~TraitsSet();
 
     protected:
-        std::vector<TraitScore> m_traits;
 
 };
 

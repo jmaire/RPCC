@@ -1,19 +1,15 @@
 #include "WeaponProficiencySet.h"
 
 WeaponProficiencySet::WeaponProficiencySet(std::vector<std::string> a_weaponID)
-: CharacteristicSet()
-, m_unassignedPoints(8)
+: CharacteristicSet(a_weaponID)
+, m_unassignedPoints(0)
 #ifdef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
 , m_maxBoundary(WEAPON_PROFICIENCY_MAX_BOUNDARY)
 #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
-{
-    for(unsigned int i=0; i<a_weaponID.size(); i++)
-        m_csMap[a_weaponID[i]] = WeaponProficiency(a_weaponID[i]);
-}
+{}
 
 WeaponProficiencySet::WeaponProficiencySet()
-//: WeaponProficiencySet(std::vector<std::string>())
-: WeaponProficiencySet({"axe","bow","sword"})
+: WeaponProficiencySet(std::vector<std::string>())
 {}
 
 WeaponProficiencySet::~WeaponProficiencySet()
@@ -30,6 +26,8 @@ void WeaponProficiencySet::setWeaponProficiencyMaxBoundary(Class* cl)
             it->second.setMaxBoundary(cl->getWeaponProficiencyMaxBoundary(it->first));
     }
     #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
+
+    m_unassignedPoints = cl->getStartingWeaponProficiency();
 }
 
 #ifdef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY

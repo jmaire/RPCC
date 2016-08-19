@@ -8,7 +8,8 @@
 
 int main(int argc, char* argv[])
 {
-    DataLoader::load();
+    DataLoader::loadData();
+
     /////////////////////////////////////
 /*
     Race* r = DataManager::getRaceByKey("elf");

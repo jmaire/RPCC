@@ -100,6 +100,11 @@ bool CharacterCreator::validStep(Character *ch)
         isValid = true;
         break;
 
+    case WEAPONPROFICIENCY_SETTING:
+        //isValid = ch->isAttributesSetValid();
+        isValid = true;
+        break;
+
     case NAME_SELECTION:
         isValid = ch->isNameValid();
         break;

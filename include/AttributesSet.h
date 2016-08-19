@@ -11,7 +11,7 @@
 class AttributesSet : public CharacteristicSet<AttributeScore>
 {
     public:
-        AttributesSet(std::vector<std::string> attributes);
+        AttributesSet(std::vector<std::string> a_attributeID);
         AttributesSet();
 
         virtual ~AttributesSet();

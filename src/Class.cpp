@@ -63,3 +63,14 @@ void Class::setWeaponProficiencyMaxBoundary(std::string key, int boundary)
     m_weaponProficiencyMaxBoundary[key] = boundary;
 }
 #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
+
+void Class::setStartingWeaponProficiency(unsigned int swp)
+{
+    m_startingWP = swp;
+}
+
+unsigned int Class::getStartingWeaponProficiency()
+{
+    return m_startingWP;
+}
+

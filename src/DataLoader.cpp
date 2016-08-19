@@ -1,15 +1,18 @@
 #include "DataLoader.h"
 
-/*private*/ DataLoader::DataLoader() {}
+DataLoader::DataLoader()
+{}
 
 DataLoader::~DataLoader()
 {}
 
-void DataLoader::load()
+void DataLoader::loadData()
 {
     loadAttribute();
     loadClass();
     loadRace();
+    loadTrait();
+    loadWeaponCategory();
 }
 
 void DataLoader::loadAttribute()
@@ -40,16 +43,19 @@ void DataLoader::loadClass()
     cl = new Class("fighter","Fighter");
     cl->setAttributeLowBoundary("str",9);
     cl->setWeaponProficiencyMaxBoundary(5);
+    cl->setStartingWeaponProficiency(4);
     DataManager::insereDataToMap(cl);
 
     cl = new Class("mage","Mage");
     cl->setAttributeLowBoundary("int",9);
     cl->setWeaponProficiencyMaxBoundary(1);
+    cl->setStartingWeaponProficiency(1);
     DataManager::insereDataToMap(cl);
 
     cl = new Class("thief","Thief");
     cl->setAttributeLowBoundary("dex",9);
     cl->setWeaponProficiencyMaxBoundary(1);
+    cl->setStartingWeaponProficiency(2);
     DataManager::insereDataToMap(cl);
 }
 
@@ -84,6 +90,19 @@ void DataLoader::loadRace()
     rc->addAvailableClass("mage");
     rc->addAvailableClass("thief");
     DataManager::insereDataToMap(rc);
+}
+
+void DataLoader::loadTrait()
+{
+    Trait* tr;
+    tr = new Trait("law-cha","Lawful","Chaotic");
+    DataManager::insereDataToMap(tr);
+
+    tr = new Trait("spi-mat","Spiritual","Materialistic");
+    DataManager::insereDataToMap(tr);
+
+    tr = new Trait("for-vind","Forgiving","Vindictive");
+    DataManager::insereDataToMap(tr);
 }
 
 void DataLoader::loadWeaponCategory()

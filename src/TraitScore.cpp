@@ -1,37 +1,23 @@
+#include "DataManager.h"
 #include "TraitScore.h"
 
-TraitScore::TraitScore(Trait* tr, int sc)
-: m_trait(tr)
-, m_score(sc)
+TraitScore::TraitScore(std::string traitID)
+: CharacteristicScore()
+, m_traitID(traitID)
 {}
 
-TraitScore::TraitScore(Trait* tr)
-: TraitScore(tr,0)
+TraitScore::TraitScore()
+: TraitScore(UNDEFINED_ID)
 {}
 
-TraitScore::TraitScore(void)
-: TraitScore(nullptr,0)
+TraitScore::~TraitScore()
 {}
 
-/*virtual*/ TraitScore::~TraitScore(void)
-{}
-
-int TraitScore::getScore(void)
+std::vector<Ability*> TraitScore::getKnownAbilities()
 {
-    return m_score;
-}
+    Trait* trait = DataManager::getTraitByKey(m_traitID);
+    if(nullptr == trait)
+        return std::vector<Ability*>();
 
-void TraitScore::setScore(int sc)
-{
-    m_score = sc;
-}
-
-void TraitScore::increaseScore(int i)
-{
-    m_score += i;
-}
-
-std::vector<Ability*> TraitScore::getKnownAbilities(void)
-{
-    return m_trait->getAvailableAbilities(m_score);
+    return trait->getAvailableAbilities(m_score);
 }
