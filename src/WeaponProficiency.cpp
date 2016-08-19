@@ -3,8 +3,8 @@
 #include "WeaponProficiency.h"
 
 WeaponProficiency::WeaponProficiency(std::string weaponCategoryID)
-: m_weaponCategoryID(weaponCategoryID)
-, m_score(0)
+: CharacteristicScore()
+, m_weaponCategoryID(weaponCategoryID)
 #ifndef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
 , m_maxBoundary(WEAPON_PROFICIENCY_MAX_BOUNDARY)
 #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
@@ -17,46 +17,39 @@ WeaponProficiency::WeaponProficiency()
 WeaponProficiency::~WeaponProficiency()
 {}
 
-int WeaponProficiency::getActualScore()
-{
-    return m_score;
-}
-
 #ifndef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
 void WeaponProficiency::setMaxBoundary(int boundary)
 {
     m_maxBoundary = boundary;
 }
 
-bool WeaponProficiency::isIncrementable()
+bool WeaponProficiency::isScoreIncrementable()
 {
-    return m_score < m_maxBoundary;
+    return getActualScore() < m_maxBoundary;
 }
 
-bool WeaponProficiency::isDecrementable()
+bool WeaponProficiency::isScoreDecrementable()
 {
-    return m_score >= 1;
+    return getActualScore() > 0;
 }
 #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
 
-bool WeaponProficiency::increment()
+bool WeaponProficiency::incrementScore()
 {
     #ifndef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
     if(!isIncrementable())
         return false;
     #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
-    m_score++;
-    return true;
+    return increaseScore(1);
 }
 
-bool WeaponProficiency::decrement()
+bool WeaponProficiency::decrementScore()
 {
     #ifndef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
     if(!isDecrementable())
         return false;
     #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
-    m_score--;
-    return true;
+    return increaseScore(-1);
 }
 
 std::string WeaponProficiency::toStringCreation()

@@ -11,7 +11,7 @@ AttributesSet::AttributesSet(std::vector<std::string> attributes)
 : m_unassignedPoints(ATTRIBUTE_STARTING_UNASSIGNED_POINTS)
 {
     for(unsigned int i=0; i<attributes.size(); i++)
-        m_asMap[attributes[i]] = AttributeScore(attributes[i]);
+        m_csMap[attributes[i]] = AttributeScore(attributes[i]);
 }
 
 AttributesSet::AttributesSet()
@@ -23,7 +23,7 @@ AttributesSet::~AttributesSet()
 
 void AttributesSet::setAttributeBounds(Race* rc, Class* cl)
 {
-    for(std::map<std::string,AttributeScore>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
+    for(std::map<std::string,AttributeScore>::iterator it=m_csMap.begin(); it!=m_csMap.end(); ++it)
     {
         int lowerBoundary = ATTRIBUTE_DEFAULT_LOW_BOUNDARY;
         if(cl->haveAttributeLowBoundary(it->first))
@@ -41,25 +41,20 @@ void AttributesSet::setAttributeBounds(Race* rc, Class* cl)
 
 void AttributesSet::setAttributeBonus(Race* rc)
 {
-    for(std::map<std::string,AttributeScore>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
+    for(std::map<std::string,AttributeScore>::iterator it=m_csMap.begin(); it!=m_csMap.end(); ++it)
     {
-        m_asMap.at(it->first).setBonus(rc->getAttributeBonus(it->first));
+        m_csMap.at(it->first).setBonus(rc->getAttributeBonus(it->first));
     }
-}
-
-bool AttributesSet::isKeyUsed(std::string key)
-{
-    return m_asMap.find(key) != m_asMap.end();
 }
 
 bool AttributesSet::isIncrementable(std::string key)
 {
-    return isKeyUsed(key) && m_asMap.at(key).isIncrementable();
+    return isKeyUsed(key) && m_csMap.at(key).isIncrementable();
 }
 
 bool AttributesSet::isDecrementable(std::string key)
 {
-    return isKeyUsed(key) && m_asMap.at(key).isDecrementable();
+    return isKeyUsed(key) && m_csMap.at(key).isDecrementable();
 }
 
 int AttributesSet::getNumberOfUnassignedPoints()
@@ -70,14 +65,14 @@ int AttributesSet::getNumberOfUnassignedPoints()
 void AttributesSet::incrementByID(std::string key)
 {
     if(isIncrementable(key) && m_unassignedPoints>=1)
-        if(m_asMap.at(key).increment())
+        if(m_csMap.at(key).incrementScore())
             m_unassignedPoints--;
 }
 
 void AttributesSet::decrementByID(std::string key)
 {
     if(isDecrementable(key))
-        if(m_asMap.at(key).decrement())
+        if(m_csMap.at(key).decrementScore())
             m_unassignedPoints++;
 }
 
@@ -109,7 +104,7 @@ void AttributesSet::randomAssignment()
 std::string AttributesSet::toString()
 {
     std::string str = "";
-    for(std::map<std::string,AttributeScore>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
+    for(std::map<std::string,AttributeScore>::iterator it=m_csMap.begin(); it!=m_csMap.end(); ++it)
     {
         str += it->second.toString() + "\n";
     }
@@ -124,7 +119,7 @@ std::string AttributesSet::toString()
 std::string AttributesSet::toStringCreation()
 {
     std::string str = "";
-    for(std::map<std::string,AttributeScore>::iterator it=m_asMap.begin(); it!=m_asMap.end(); ++it)
+    for(std::map<std::string,AttributeScore>::iterator it=m_csMap.begin(); it!=m_csMap.end(); ++it)
     {
         if(isDecrementable(it->first))
             str += "[-/";

@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "CharacterCreator.h"
+#include "CharacteristicSet.h"
 #include "DataLoader.h"
 
 int main(int argc, char* argv[])

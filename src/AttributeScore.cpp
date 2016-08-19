@@ -4,8 +4,8 @@
 #include "DataManager.h"
 
 AttributeScore::AttributeScore(std::string attributeID)
-: m_attributeID(attributeID)
-, m_score(ATTRIBUTE_NEUTRAL_SCORE)
+: CharacteristicScore(ATTRIBUTE_NEUTRAL_SCORE)
+, m_attributeID(attributeID)
 , m_bonus(0)
 , m_bounds(std::make_pair(ATTRIBUTE_DEFAULT_LOW_BOUNDARY,ATTRIBUTE_DEFAULT_HIGH_BOUNDARY))
 {}
@@ -43,20 +43,18 @@ bool AttributeScore::isDecrementable()
     return getActualScore() > m_bounds.first;
 }
 
-bool AttributeScore::increment()
+bool AttributeScore::incrementScore()
 {
     if(!isIncrementable())
         return false;
-    m_score++;
-    return true;
+    return increaseScore(1);
 }
 
-bool AttributeScore::decrement()
+bool AttributeScore::decrementScore()
 {
     if(!isDecrementable())
         return false;
-    m_score--;
-    return true;
+    return increaseScore(-1);
 }
 
 std::string AttributeScore::toString()

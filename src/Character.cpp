@@ -77,6 +77,7 @@ void Character::setClass(Class* cl)
 {
     m_class = cl;
     initAttributes();
+    initWeaponProficiency();
 }
 
 std::vector<std::string> Character::getAvailableClass()
@@ -100,6 +101,13 @@ AttributesSet* Character::getAttributesSet()
 {
     return &m_attributesSet;
 }
+
+void Character::initWeaponProficiency()
+{
+    if(nullptr != m_class)
+        m_wpSet.setWeaponProficiencyMaxBoundary(m_class);
+}
+
 
 WeaponProficiencySet* Character::getWeaponProficiencySet()
 {

@@ -1,9 +1,9 @@
 #ifndef WEAPONPROFICIENCY_H
 #define WEAPONPROFICIENCY_H
 
-#include "config.h"
+#include "CharacteristicScore.h"
 
-class WeaponProficiency
+class WeaponProficiency : public CharacteristicScore
 {
     public:
         WeaponProficiency(std::string weaponCategoryID);
@@ -11,22 +11,19 @@ class WeaponProficiency
 
         virtual ~WeaponProficiency();
 
-        int getActualScore();
-
         #ifndef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
         void setMaxBoundary(int boundary);
-        bool isIncrementable();
-        bool isDecrementable();
+        bool isScoreIncrementable();
+        bool isScoreDecrementable();
         #endif // WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
 
-        bool increment();
-        bool decrement();
+        bool incrementScore();
+        bool decrementScore();
 
         std::string toStringCreation();
 
     protected:
         std::string m_weaponCategoryID;
-        int m_score;
 
         #ifndef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
         int m_maxBoundary;

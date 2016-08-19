@@ -1,10 +1,11 @@
 #ifndef ATTRIBUTESCORE_H
 #define ATTRIBUTESCORE_H
 
+#include "CharacteristicScore.h"
 #include "Class.h"
 #include "Race.h"
 
-class AttributeScore
+class AttributeScore : public CharacteristicScore
 {
     public:
         AttributeScore(std::string attributeID);
@@ -20,15 +21,15 @@ class AttributeScore
         bool isIncrementable();
         bool isDecrementable();
 
-        bool increment();
-        bool decrement();
+        bool incrementScore();
+        bool decrementScore();
 
         std::string toString();
         std::string toStringCreation();
 
     protected:
         std::string m_attributeID;
-        int m_score, m_bonus;
+        int m_bonus;
         std::pair<int,int> m_bounds;
 
 };

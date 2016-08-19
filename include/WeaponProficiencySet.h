@@ -1,13 +1,12 @@
 #ifndef WEAPONPROFICIENCYSET_H
 #define WEAPONPROFICIENCYSET_H
 
-#include <map>
 #include <vector>
-
+#include "CharacteristicSet.h"
 #include "Class.h"
 #include "WeaponProficiency.h"
 
-class WeaponProficiencySet
+class WeaponProficiencySet : public CharacteristicSet<WeaponProficiency>
 {
     public:
         WeaponProficiencySet(std::vector<std::string> a_weaponID);
@@ -16,8 +15,6 @@ class WeaponProficiencySet
         virtual ~WeaponProficiencySet();
 
         void setWeaponProficiencyMaxBoundary(Class* cl);
-
-        bool isKeyUsed(std::string id);
 
         #ifdef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
         void setMaxBoundary(int boundary);
@@ -32,7 +29,7 @@ class WeaponProficiencySet
         std::string toStringCreation();
 
     protected:
-        std::map<std::string,WeaponProficiency> m_wpMap;
+        //std::map<std::string,WeaponProficiency> m_wpMap;
         int m_unassignedPoints;
 
         #ifdef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY

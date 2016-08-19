@@ -1,14 +1,14 @@
 #ifndef ATTRIBUTES_SET_H
 #define ATTRIBUTES_SET_H
 
-#include <map>
 #include <vector>
 
 #include "AttributeScore.h"
+#include "CharacteristicSet.h"
 #include "Class.h"
 #include "Race.h"
 
-class AttributesSet
+class AttributesSet : public CharacteristicSet<AttributeScore>
 {
     public:
         AttributesSet(std::vector<std::string> attributes);
@@ -19,7 +19,6 @@ class AttributesSet
         void setAttributeBounds(Race* rc, Class* cl);
         void setAttributeBonus(Race* rc);
 
-        bool isKeyUsed(std::string key);
         bool isIncrementable(std::string key);
         bool isDecrementable(std::string key);
         int getNumberOfUnassignedPoints();
@@ -33,7 +32,6 @@ class AttributesSet
         std::string toStringCreation();
 
     protected:
-        std::map<std::string,AttributeScore> m_asMap;
         int m_unassignedPoints;
 
 };
