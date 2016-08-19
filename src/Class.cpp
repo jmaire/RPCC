@@ -35,6 +35,17 @@ void Class::setAttributeLowBoundary(std::string key, int boundary)
     m_attributesLowBoundary[key] = boundary;
 }
 
+std::vector<std::string> Class::getAvailableWC()
+{
+    return m_weaponCategoryAvailable;
+}
+
+void Class::addAvailableWC(std::string id)
+{
+    if(std::find(m_weaponCategoryAvailable.begin(), m_weaponCategoryAvailable.end(), id) == m_weaponCategoryAvailable.end())
+        m_weaponCategoryAvailable.push_back(id);
+}
+
 #ifdef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
 int Class::getWeaponProficiencyMaxBoundary()
 {

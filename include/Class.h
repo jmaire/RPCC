@@ -2,6 +2,7 @@
 #define CLASS_H
 
 #include <map>
+#include <vector>
 #include "Data.h"
 
 class Class : public Data
@@ -18,6 +19,9 @@ class Class : public Data
         int getAttributeLowBoundary(std::string key);
         void setAttributeLowBoundary(std::string key, int boundary);
 
+        std::vector<std::string> getAvailableWC();
+        void addAvailableWC(std::string id);
+
         #ifdef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
         int getWeaponProficiencyMaxBoundary();
         void setWeaponProficiencyMaxBoundary(int boundary);
@@ -33,6 +37,7 @@ class Class : public Data
     protected:
         std::string m_name;
         std::map<std::string,int> m_attributesLowBoundary;
+        std::vector<std::string> m_weaponCategoryAvailable;
         #ifdef WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
         int m_weaponProficiencyMaxBoundary;
         #else

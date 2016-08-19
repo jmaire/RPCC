@@ -8,13 +8,13 @@
 #include "Class.h"
 #include "Race.h"
 
-class AttributesSet : public CharacteristicSet<AttributeScore>
+class AttributeSet : public CharacteristicSet<AttributeScore>
 {
     public:
-        AttributesSet(std::vector<std::string> a_attributeID);
-        AttributesSet();
+        AttributeSet(std::vector<std::string> a_attributeID);
+        AttributeSet();
 
-        virtual ~AttributesSet();
+        virtual ~AttributeSet();
 
         void setAttributeBounds(Race* rc, Class* cl);
         void setAttributeBonus(Race* rc);

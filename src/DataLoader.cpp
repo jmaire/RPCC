@@ -44,18 +44,28 @@ void DataLoader::loadClass()
     cl->setAttributeLowBoundary("str",9);
     cl->setWeaponProficiencyMaxBoundary(5);
     cl->setStartingWeaponProficiency(4);
+    cl->addAvailableWC("axe");
+    cl->addAvailableWC("bow");
+    cl->addAvailableWC("dagger");
+    cl->addAvailableWC("hammer");
+    cl->addAvailableWC("sword");
     DataManager::insereDataToMap(cl);
 
     cl = new Class("mage","Mage");
     cl->setAttributeLowBoundary("int",9);
     cl->setWeaponProficiencyMaxBoundary(1);
     cl->setStartingWeaponProficiency(1);
+    cl->addAvailableWC("dagger");
+    cl->addAvailableWC("wand");
     DataManager::insereDataToMap(cl);
 
     cl = new Class("thief","Thief");
     cl->setAttributeLowBoundary("dex",9);
     cl->setWeaponProficiencyMaxBoundary(1);
     cl->setStartingWeaponProficiency(2);
+    cl->addAvailableWC("bow");
+    cl->addAvailableWC("dagger");
+    cl->addAvailableWC("sword");
     DataManager::insereDataToMap(cl);
 }
 
@@ -108,12 +118,21 @@ void DataLoader::loadTrait()
 void DataLoader::loadWeaponCategory()
 {
     WeaponCategory* wc;
-    wc = new WeaponCategory("sword","Sword");
-    DataManager::insereDataToMap(wc);
-
     wc = new WeaponCategory("axe","Axe");
     DataManager::insereDataToMap(wc);
 
     wc = new WeaponCategory("bow","Bow");
+    DataManager::insereDataToMap(wc);
+
+    wc = new WeaponCategory("dagger","Dagger");
+    DataManager::insereDataToMap(wc);
+
+    wc = new WeaponCategory("hammer","Hammer");
+    DataManager::insereDataToMap(wc);
+
+    wc = new WeaponCategory("sword","Sword");
+    DataManager::insereDataToMap(wc);
+
+    wc = new WeaponCategory("wand","Wand");
     DataManager::insereDataToMap(wc);
 }

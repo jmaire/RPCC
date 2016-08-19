@@ -1,10 +1,10 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include "AttributesSet.h"
+#include "AttributeSet.h"
 #include "Class.h"
 #include "Race.h"
-#include "TraitsSet.h"
+#include "TraitSet.h"
 #include "WeaponProficiencySet.h"
 
 enum class Gender
@@ -37,7 +37,7 @@ class Character
         void setClass(Class* cl);
 
         void initAttributes();
-        AttributesSet* getAttributesSet();
+        AttributeSet* getAttributesSet();
 
         void initWeaponProficiency();
         WeaponProficiencySet* getWeaponProficiencySet();
@@ -57,8 +57,8 @@ class Character
         Race* m_race;
         Gender m_gender;
         Class* m_class;
-        AttributesSet m_attributesSet;
-        TraitsSet m_traitsSet;
+        AttributeSet m_attributesSet;
+        TraitSet m_traitsSet;
         WeaponProficiencySet m_wpSet;
 };
 

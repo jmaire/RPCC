@@ -95,7 +95,7 @@ void CharacterCreatorConsoleUI::selectName(Character* ch)
 
 void CharacterCreatorConsoleUI::setAttributesScore(Character* ch)
 {
-    AttributesSet* ass = ch->getAttributesSet();
+    AttributeSet* ass = ch->getAttributesSet();
 
     while(1)
     {

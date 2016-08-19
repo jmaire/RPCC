@@ -4,22 +4,22 @@
 #include <iostream>
 
 #include "DataManager.h"
-#include "AttributesSet.h"
+#include "AttributeSet.h"
 
 
-AttributesSet::AttributesSet(std::vector<std::string> a_attributeID)
+AttributeSet::AttributeSet(std::vector<std::string> a_attributeID)
 : CharacteristicSet(a_attributeID)
 , m_unassignedPoints(ATTRIBUTE_STARTING_UNASSIGNED_POINTS)
 {}
 
-AttributesSet::AttributesSet()
-: AttributesSet({"str","dex","con","int","wis","cha"}) //TODO
+AttributeSet::AttributeSet()
+: AttributeSet({"str","dex","con","int","wis","cha"}) //TODO
 {}
 
-AttributesSet::~AttributesSet()
+AttributeSet::~AttributeSet()
 {}
 
-void AttributesSet::setAttributeBounds(Race* rc, Class* cl)
+void AttributeSet::setAttributeBounds(Race* rc, Class* cl)
 {
     for(std::map<std::string,AttributeScore>::iterator it=m_csMap.begin(); it!=m_csMap.end(); ++it)
     {
@@ -37,7 +37,7 @@ void AttributesSet::setAttributeBounds(Race* rc, Class* cl)
     }
 }
 
-void AttributesSet::setAttributeBonus(Race* rc)
+void AttributeSet::setAttributeBonus(Race* rc)
 {
     for(std::map<std::string,AttributeScore>::iterator it=m_csMap.begin(); it!=m_csMap.end(); ++it)
     {
@@ -45,29 +45,29 @@ void AttributesSet::setAttributeBonus(Race* rc)
     }
 }
 
-bool AttributesSet::isIncrementable(std::string key)
+bool AttributeSet::isIncrementable(std::string key)
 {
     return isKeyUsed(key) && m_csMap.at(key).isIncrementable();
 }
 
-bool AttributesSet::isDecrementable(std::string key)
+bool AttributeSet::isDecrementable(std::string key)
 {
     return isKeyUsed(key) && m_csMap.at(key).isDecrementable();
 }
 
-int AttributesSet::getNumberOfUnassignedPoints()
+int AttributeSet::getNumberOfUnassignedPoints()
 {
     return m_unassignedPoints;
 }
 
-void AttributesSet::incrementByID(std::string key)
+void AttributeSet::incrementByID(std::string key)
 {
     if(isIncrementable(key) && m_unassignedPoints>=1)
         if(m_csMap.at(key).incrementScore())
             m_unassignedPoints--;
 }
 
-void AttributesSet::decrementByID(std::string key)
+void AttributeSet::decrementByID(std::string key)
 {
     if(isDecrementable(key))
         if(m_csMap.at(key).decrementScore())
@@ -99,7 +99,7 @@ void AttributesSet::randomAssignment()
     }
 }
 */
-std::string AttributesSet::toString()
+std::string AttributeSet::toString()
 {
     std::string str = "";
     for(std::map<std::string,AttributeScore>::iterator it=m_csMap.begin(); it!=m_csMap.end(); ++it)
@@ -114,7 +114,7 @@ std::string AttributesSet::toString()
     return str;
 }
 
-std::string AttributesSet::toStringCreation()
+std::string AttributeSet::toStringCreation()
 {
     std::string str = "";
     for(std::map<std::string,AttributeScore>::iterator it=m_csMap.begin(); it!=m_csMap.end(); ++it)

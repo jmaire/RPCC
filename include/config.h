@@ -43,22 +43,10 @@ static const int TRAIT_SCORE_ABSOLUTE_BOUNDARY = 100;
 #define WEAPON_PROFICIENCY_GLOBAL_BOUNDARY
 static const int WEAPON_PROFICIENCY_MAX_BOUNDARY = 5;
 
-static const int TRAITS_SET_SIZE = 7;
-static std::pair<std::string,std::string> TRAITS_SET_TRAIT_NAMES[TRAITS_SET_SIZE] =
-    {std::make_pair("Lawful","Chaotic")
-    ,std::make_pair("Spiritual","Materialistic")
-    ,std::make_pair("Independent","Obedient")
-    ,std::make_pair("Compassionate","Heartless")
-    ,std::make_pair("Forgiving","Vindictive")
-    ,std::make_pair("Altruistic","Egotistical")
-    ,std::make_pair("Thoughtful","Impulsive")
-    };
 
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
-
-
 
 
 #endif // CONFIG_H

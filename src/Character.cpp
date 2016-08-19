@@ -13,9 +13,7 @@ Character::Character()
 , m_race(nullptr)
 , m_class(nullptr)
 {
-    std::vector<WeaponCategory*> a_wc = DataManager::getWeaponCategoryVector();
-    for(unsigned int i=0; i<a_wc.size(); i++)
-        m_wpSet.insereID(a_wc.at(i)->getID());
+
 }
 
 Character::~Character()
@@ -102,15 +100,21 @@ void Character::initAttributes()
     }
 }
 
-AttributesSet* Character::getAttributesSet()
+AttributeSet* Character::getAttributesSet()
 {
     return &m_attributesSet;
 }
 
 void Character::initWeaponProficiency()
 {
-    if(nullptr != m_class)
-        m_wpSet.setWeaponProficiencyMaxBoundary(m_class);
+    if(nullptr == m_class)
+        return;
+
+    std::vector<std::string> a_wcID = m_class->getAvailableWC();
+    for(unsigned int i=0; i<a_wcID.size(); i++)
+        m_wpSet.insereID(a_wcID.at(i));
+
+    m_wpSet.setWeaponProficiencyMaxBoundary(m_class);
 }
 
 
