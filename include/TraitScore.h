@@ -4,19 +4,22 @@
 #include "CharacteristicScore.h"
 #include "Trait.h"
 
-class TraitScore : CharacteristicScore
+namespace rpcc
 {
-    public:
-        TraitScore(std::string traitID);
-        TraitScore();
+    class TraitScore : CharacteristicScore
+    {
+        public:
+            TraitScore(std::string traitID);
+            TraitScore();
 
-        virtual ~TraitScore();
+            virtual ~TraitScore();
 
-        std::vector<Ability*> getKnownAbilities();
+            std::vector<Ability*> getKnownAbilities();
 
-    protected:
-        std::string m_traitID;
+        protected:
+            std::string m_traitID;
 
-};
+    };
+}
 
 #endif // TRAITSCORE_H

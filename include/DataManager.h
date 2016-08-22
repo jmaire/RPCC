@@ -9,43 +9,46 @@
 #include "Trait.h"
 #include "WeaponCategory.h"
 
-class DataManager
+namespace rpcc
 {
-    public:
-        void initDataManager();
+    class DataManager
+    {
+        public:
+            void initDataManager();
 
-        virtual ~DataManager();
+            virtual ~DataManager();
 
-        static void clearAll();
-        //static bool checkDataIntegrity(); //TODO
+            static void clearAll();
+            //static bool checkDataIntegrity(); //TODO
 
-        static void insereDataToMap(Ability* data);
-        static void insereDataToMap(Attribute* data);
-        static void insereDataToMap(Class* data);
-        static void insereDataToMap(Race* data);
-        static void insereDataToMap(Trait* data);
-        static void insereDataToMap(WeaponCategory* data);
+            static void insereDataToMap(Ability* data);
+            static void insereDataToMap(Attribute* data);
+            static void insereDataToMap(Class* data);
+            static void insereDataToMap(Race* data);
+            static void insereDataToMap(Trait* data);
+            static void insereDataToMap(WeaponCategory* data);
 
-        static Ability* getAbilityByKey(std::string key);
-        static Attribute* getAttributeByKey(std::string key);
-        static Class* getClassByKey(std::string key);
-        static Race* getRaceByKey(std::string key);
-        static Trait* getTraitByKey(std::string key);
-        static WeaponCategory* getWeaponCategoryByKey(std::string key);
+            static Ability* getAbilityByKey(std::string key);
+            static Attribute* getAttributeByKey(std::string key);
+            static Class* getClassByKey(std::string key);
+            static Race* getRaceByKey(std::string key);
+            static Trait* getTraitByKey(std::string key);
+            static WeaponCategory* getWeaponCategoryByKey(std::string key);
 
-        static std::vector<Race*> getRaceVector();
-        static std::vector<WeaponCategory*> getWeaponCategoryVector();
+            static std::vector<Race*> getRaceVector();
+            static std::vector<WeaponCategory*> getWeaponCategoryVector();
 
-    protected:
-        static DataMap<Ability> m_abilityMap;
-        static DataMap<Attribute> m_attributeMap;
-        static DataMap<Class> m_classMap;
-        static DataMap<Race> m_raceMap;
-        static DataMap<Trait> m_traitMap;
-        static DataMap<WeaponCategory> m_weaponCategoryMap;
+        protected:
+            static DataMap<Ability> m_abilityMap;
+            static DataMap<Attribute> m_attributeMap;
+            static DataMap<Class> m_classMap;
+            static DataMap<Race> m_raceMap;
+            static DataMap<Trait> m_traitMap;
+            static DataMap<WeaponCategory> m_weaponCategoryMap;
 
-    private:
-        DataManager();
-};
+        private:
+            DataManager();
+    };
+}
 
 #endif // DATAMANAGER_H

@@ -1,18 +1,18 @@
 #include "Ability.h"
 
-Ability::Ability(std::string id, std::string name)
+rpcc::Ability::Ability(std::string id, std::string name)
 : Data(id)
 , m_name(name)
 {}
 
-Ability::Ability()
+rpcc::Ability::Ability()
 : Ability(UNDEFINED_ID,"")
 {}
 
-Ability::~Ability()
+rpcc::Ability::~Ability()
 {}
 
-std::string Ability::getName()
+std::string rpcc::Ability::getName()
 {
     return m_name;
 }

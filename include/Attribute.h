@@ -3,19 +3,22 @@
 
 #include "Data.h"
 
-class Attribute : public Data
+namespace rpcc
 {
-    public:
-        Attribute(std::string id, std::string name);
-        Attribute();
+    class Attribute : public Data
+    {
+        public:
+            Attribute(std::string id, std::string name);
+            Attribute();
 
-        virtual ~Attribute();
+            virtual ~Attribute();
 
-        std::string getName();
+            std::string getName();
 
-    protected:
-        std::string m_name, m_description;
+        protected:
+            std::string m_name, m_description;
 
-};
+    };
+}
 
 #endif // ATTRIBUTE_H

@@ -1,23 +1,26 @@
 #include "DataManager.h"
 #include "TraitScore.h"
 
-TraitScore::TraitScore(std::string traitID)
-: CharacteristicScore()
-, m_traitID(traitID)
-{}
-
-TraitScore::TraitScore()
-: TraitScore(UNDEFINED_ID)
-{}
-
-TraitScore::~TraitScore()
-{}
-
-std::vector<Ability*> TraitScore::getKnownAbilities()
+namespace rpcc
 {
-    Trait* trait = DataManager::getTraitByKey(m_traitID);
-    if(nullptr == trait)
-        return std::vector<Ability*>();
+    TraitScore::TraitScore(std::string traitID)
+    : CharacteristicScore()
+    , m_traitID(traitID)
+    {}
 
-    return trait->getAvailableAbilities(m_score);
+    TraitScore::TraitScore()
+    : TraitScore(UNDEFINED_ID)
+    {}
+
+    TraitScore::~TraitScore()
+    {}
+
+    std::vector<Ability*> TraitScore::getKnownAbilities()
+    {
+        Trait* trait = DataManager::getTraitByKey(m_traitID);
+        if(nullptr == trait)
+            return std::vector<Ability*>();
+
+        return trait->getAvailableAbilities(m_score);
+    }
 }

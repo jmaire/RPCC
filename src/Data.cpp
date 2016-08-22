@@ -1,22 +1,25 @@
 #include "Data.h"
 
-Data::Data(std::string id)
-: m_id(id)
-{}
-
-Data::Data()
-: Data(UNDEFINED_ID)
-{}
-
-Data::~Data()
-{}
-
-std::string Data::getID()
+namespace rpcc
 {
-    return m_id;
-}
+    Data::Data(std::string id)
+    : m_id(id)
+    {}
 
-void Data::setIDToUndefined()
-{
-    m_id = UNDEFINED_ID;
+    Data::Data()
+    : Data(UNDEFINED_ID)
+    {}
+
+    Data::~Data()
+    {}
+
+    std::string Data::getID()
+    {
+        return m_id;
+    }
+
+    void Data::setIDToUndefined()
+    {
+        m_id = UNDEFINED_ID;
+    }
 }

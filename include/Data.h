@@ -4,19 +4,22 @@
 #include <vector>
 #include "config.h"
 
-class Data
+namespace rpcc
 {
-    public:
-        virtual ~Data();
+    class Data
+    {
+        public:
+            virtual ~Data();
 
-        std::string getID();
-        void setIDToUndefined();
+            std::string getID();
+            void setIDToUndefined();
 
-    protected:
-        std::string m_id;
+        protected:
+            std::string m_id;
 
-        Data();
-        Data(std::string id);
-};
+            Data();
+            Data(std::string id);
+    };
+}
 
 #endif // DATA_H

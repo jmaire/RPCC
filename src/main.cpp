@@ -6,6 +6,8 @@
 #include "CharacteristicSet.h"
 #include "DataLoader.h"
 
+using namespace rpcc;
+
 #if USED_UI == WINDOWS_GUI
 #include <windows.h>
 #include "CharacterCreatorWindowsGUI.h"

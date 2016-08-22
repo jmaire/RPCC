@@ -3,21 +3,24 @@
 
 #include "config.h"
 
-class CharacteristicScore
+namespace rpcc
 {
-    public:
-        virtual ~CharacteristicScore();
+    class CharacteristicScore
+    {
+        public:
+            virtual ~CharacteristicScore();
 
-        virtual int getActualScore();
+            virtual int getActualScore();
 
-    protected:
-        int m_score;
+        protected:
+            int m_score;
 
-        CharacteristicScore(int score);
-        CharacteristicScore();
+            CharacteristicScore(int score);
+            CharacteristicScore();
 
-        virtual bool isScoreIncreasable(int op);
-        bool increaseScore(int op);
-};
+            virtual bool isScoreIncreasable(int op);
+            bool increaseScore(int op);
+    };
+}
 
 #endif // CHARACTERISTICSCORE_H

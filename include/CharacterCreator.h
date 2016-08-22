@@ -7,30 +7,33 @@
 #include "CharacterCreatorWindowsGUI.h"
 #endif // USED_UI
 
-class CharacterCreator
+namespace rpcc
 {
-    public:
-        virtual ~CharacterCreator();
+    class CharacterCreator
+    {
+        public:
+            virtual ~CharacterCreator();
 
-        static Character* createCharacter();
-        static void doStep(Character *ch);
-        static bool validStep(Character *ch);
-        static bool isCreationFinish(Character *ch);
-        static void goToNextStep(Character *ch);
+            static Character* createCharacter();
+            static void doStep(Character *ch);
+            static bool validStep(Character *ch);
+            static bool isCreationFinish(Character *ch);
+            static void goToNextStep(Character *ch);
 
-        #if USED_UI == WINDOWS_GUI
-        static void setMainParameters(HINSTANCE hInst, HINSTANCE hPrevInst, char * cmdParam, int cmdShow);
-        #endif // USED_UI
+            #if USED_UI == WINDOWS_GUI
+            static void setMainParameters(HINSTANCE hInst, HINSTANCE hPrevInst, char * cmdParam, int cmdShow);
+            #endif // USED_UI
 
-    protected:
-        #if USED_UI == CONSOLE_UI
-        static CharacterCreatorConsoleUI m_ui;
-        #elif USED_UI == WINDOWS_GUI
-        static CharacterCreatorWindowsGUI m_ui;
-        #endif // USED_UI
+        protected:
+            #if USED_UI == CONSOLE_UI
+            static CharacterCreatorConsoleUI m_ui;
+            #elif USED_UI == WINDOWS_GUI
+            static CharacterCreatorWindowsGUI m_ui;
+            #endif // USED_UI
 
-    private:
-        CharacterCreator();
-};
+        private:
+            CharacterCreator();
+    };
+}
 
 #endif // CHARACTERCREATOR_H

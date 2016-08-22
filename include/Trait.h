@@ -5,22 +5,25 @@
 #include "Data.h"
 #include "Ability.h"
 
-class Trait : public Data
+namespace rpcc
 {
-    public:
-        Trait(std::string id, std::string leftL, std::string rightL);
-        Trait();
+    class Trait : public Data
+    {
+        public:
+            Trait(std::string id, std::string leftL, std::string rightL);
+            Trait();
 
-        virtual ~Trait();
+            virtual ~Trait();
 
-        void addAbility(int requiredScore, Ability* ab);
+            void addAbility(int requiredScore, Ability* ab);
 
-        std::vector<Ability*> getAvailableAbilities(int score);
+            std::vector<Ability*> getAvailableAbilities(int score);
 
-    protected:
-        std::string m_leftLabel, m_rightLabel;
-        std::vector<std::pair<int,Ability*>> m_abilityMap;
+        protected:
+            std::string m_leftLabel, m_rightLabel;
+            std::vector<std::pair<int,Ability*>> m_abilityMap;
 
-};
+    };
+}
 
 #endif // TRAIT_H

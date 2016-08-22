@@ -5,25 +5,28 @@
 #include <vector>
 #include "Data.h"
 
-template <typename T=Data>
-class DataMap
+namespace rpcc
 {
-    public:
-        DataMap();
+    template <typename T=Data>
+    class DataMap
+    {
+        public:
+            DataMap();
 
-        virtual ~DataMap();
-        void flushMap();
+            virtual ~DataMap();
+            void flushMap();
 
-        bool isKeyFormatValid(std::string key);
-        void insereDataToMap(T* data);
-        T* getDataByKey(std::string key);
+            bool isKeyFormatValid(std::string key);
+            void insereDataToMap(T* data);
+            T* getDataByKey(std::string key);
 
-        std::vector<T*> toVector();
+            std::vector<T*> toVector();
 
-    protected:
-        std::map<std::string,T*> m_map;
-};
+        protected:
+            std::map<std::string,T*> m_map;
+    };
 
-#include "../src/DataMap.tpp"
+    #include "../src/DataMap.tpp"
+}
 
 #endif // DATAMAP_H

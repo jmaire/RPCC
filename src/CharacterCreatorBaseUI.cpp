@@ -1,7 +1,10 @@
 #include "CharacterCreatorBaseUI.h"
 
-CharacterCreatorBaseUI::CharacterCreatorBaseUI()
-{}
+namespace rpcc
+{
+    CharacterCreatorBaseUI::CharacterCreatorBaseUI()
+    {}
 
-CharacterCreatorBaseUI::~CharacterCreatorBaseUI()
-{}
+    CharacterCreatorBaseUI::~CharacterCreatorBaseUI()
+    {}
+}

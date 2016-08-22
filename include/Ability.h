@@ -3,19 +3,22 @@
 
 #include "Data.h"
 
-class Ability : public Data
+namespace rpcc
 {
-    public:
-        Ability(std::string id, std::string name);
-        Ability();
+    class Ability : public Data
+    {
+        public:
+            Ability(std::string id, std::string name);
+            Ability();
 
-        virtual ~Ability();
+            virtual ~Ability();
 
-        std::string getName();
+            std::string getName();
 
-    protected:
-        std::string m_name, m_description;
+        protected:
+            std::string m_name, m_description;
 
-};
+    };
+}
 
 #endif // ABILITY_H

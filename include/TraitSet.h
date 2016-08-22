@@ -4,16 +4,17 @@
 #include "CharacteristicSet.h"
 #include "TraitScore.h"
 
-class TraitSet : public CharacteristicSet<TraitScore>
+
+namespace rpcc
 {
-    public:
-        TraitSet(std::vector<std::string> a_traitID);
-        TraitSet();
+    class TraitSet : public CharacteristicSet<TraitScore>
+    {
+        public:
+            TraitSet(std::vector<std::string> a_traitID);
+            TraitSet();
 
-        virtual ~TraitSet();
-
-    protected:
-
-};
+            virtual ~TraitSet();
+    };
+}
 
 #endif // TRAITSET_H

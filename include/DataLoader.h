@@ -3,20 +3,23 @@
 
 #include "DataManager.h"
 
-class DataLoader
+namespace rpcc
 {
-    public:
-        virtual ~DataLoader();
+    class DataLoader
+    {
+        public:
+            virtual ~DataLoader();
 
-        static void loadData();
-        static void loadAttribute();
-        static void loadClass();
-        static void loadRace();
-        static void loadTrait();
-        static void loadWeaponCategory();
+            static void loadData();
+            static void loadAttribute();
+            static void loadClass();
+            static void loadRace();
+            static void loadTrait();
+            static void loadWeaponCategory();
 
-    private:
-        DataLoader();
-};
+        private:
+            DataLoader();
+    };
+}
 
 #endif // DATALOADER_H

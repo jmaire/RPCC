@@ -3,19 +3,21 @@
 
 #include "Data.h"
 
-class WeaponCategory : public Data
+namespace rpcc
 {
-    public:
-        WeaponCategory(std::string id, std::string name);
-        WeaponCategory();
+    class WeaponCategory : public Data
+    {
+        public:
+            WeaponCategory(std::string id, std::string name);
+            WeaponCategory();
 
-        virtual ~WeaponCategory();
+            virtual ~WeaponCategory();
 
-        std::string getName();
+            std::string getName();
 
-    protected:
-        std::string m_name;
-
-};
+        protected:
+            std::string m_name;
+    };
+}
 
 #endif // WEAPONCATEGORY_H

@@ -8,32 +8,35 @@
 #include "Class.h"
 #include "Race.h"
 
-class AttributeSet : public CharacteristicSet<AttributeScore>
+namespace rpcc
 {
-    public:
-        AttributeSet(std::vector<std::string> a_attributeID);
-        AttributeSet();
+    class AttributeSet : public CharacteristicSet<AttributeScore>
+    {
+        public:
+            AttributeSet(std::vector<std::string> a_attributeID);
+            AttributeSet();
 
-        virtual ~AttributeSet();
+            virtual ~AttributeSet();
 
-        void setAttributeBounds(Race* rc, Class* cl);
-        void setAttributeBonus(Race* rc);
+            void setAttributeBounds(Race* rc, Class* cl);
+            void setAttributeBonus(Race* rc);
 
-        bool isIncrementable(std::string key);
-        bool isDecrementable(std::string key);
-        int getNumberOfUnassignedPoints();
+            bool isIncrementable(std::string key);
+            bool isDecrementable(std::string key);
+            int getNumberOfUnassignedPoints();
 
-        void incrementByID(std::string key);
-        void decrementByID(std::string key);
+            void incrementByID(std::string key);
+            void decrementByID(std::string key);
 
-        //void randomAssignment();
+            //void randomAssignment();
 
-        std::string toString();
-        std::string toStringCreation();
+            std::string toString();
+            std::string toStringCreation();
 
-    protected:
-        int m_unassignedPoints;
+        protected:
+            int m_unassignedPoints;
 
-};
+    };
+}
 
 #endif // ATTRIBUTES_SET_H
