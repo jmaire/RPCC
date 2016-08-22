@@ -1,0 +1,17 @@
+<race id="elf">
+	<name en="Elf" fr="Elfe"/>
+	<availableClass>
+		<class id="mage"/>
+		<class id="thief"/>
+	</availableClass>
+	<attributeBounds>
+		<attribute id="dex" min="7" max="19">
+		<attribute id="con" min="6" max="17">
+		<attribute id="int" min="8">
+		<attribute id="cha" min="8">
+	</attributeBounds>
+	<attributeBonus>
+		<attribute id="dex" bonus="1">
+		<attribute id="con" bonus="-1">
+	</attributeBonus>
+</race>

@@ -5,7 +5,7 @@
 #include <windows.h>
 #include "CharacterCreatorBaseUI.h"
 
-LRESULT CALLBACK WindowProcedure(HWND hwnd, unsigned int message, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK WindowProcedure(HWND, unsigned int, WPARAM, LPARAM);
 
 class WinClass
 {

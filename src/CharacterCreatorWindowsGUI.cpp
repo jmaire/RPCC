@@ -5,7 +5,7 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, unsigned int message, WPARAM wParam,
     switch (message)
     {
         case WM_DESTROY:
-            ::PostQuitMessage (0);
+            ::PostQuitMessage(0);
             return 0;
     }
     return ::DefWindowProc (hwnd, message, wParam, lParam );

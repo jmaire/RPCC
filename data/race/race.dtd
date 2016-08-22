@@ -1,0 +1,17 @@
+<!ELEMENT race (name, availableClass?, attributeBounds?, attributeBonus?)>
+	<!ATTLIST race id CDATA>
+	
+	<!ELEMENT name EMPTY>
+		<!ATTLIST name en CDATA>
+		<!ATTLIST name fr CDATA>
+
+	<!ELEMENT availableClass (attribute*)>
+		<!ELEMENT attribute>
+			<!ATTLIST attribute id CDATA>
+			<!ATTLIST attribute min CDATA>
+			<!ATTLIST attribute max CDATA>
+			
+	<!ELEMENT attributeBonus (attribute*)>
+		<!ELEMENT attribute>
+			<!ATTLIST attribute id CDATA>
+			<!ATTLIST attribute bonus CDATA>

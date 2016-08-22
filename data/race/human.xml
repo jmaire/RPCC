@@ -1,0 +1,8 @@
+<race id="human">
+	<name en="Human" fr="Humain"/>
+	<availableClass>
+		<class id="fighter"/>
+		<class id="mage"/>
+		<class id="thief"/>
+	</availableClass>
+</race>

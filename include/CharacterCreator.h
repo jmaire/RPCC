@@ -1,8 +1,11 @@
 #ifndef CHARACTERCREATOR_H
 #define CHARACTERCREATOR_H
 
+#if USED_UI == CONSOLE_UI
 #include "CharacterCreatorConsoleUI.h"
+#elif USED_UI == WINDOWS_GUI
 #include "CharacterCreatorWindowsGUI.h"
+#endif // USED_UI
 
 class CharacterCreator
 {

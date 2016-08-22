@@ -1,0 +1,18 @@
+<race id="dwarf">
+	<name en="Dwarf" fr="Nain"/>
+	<availableClass>
+		<class id="fighter"/>
+		<class id="thief"/>
+	</availableClass>
+	<attributeBounds>
+		<attribute id="str" min="8">
+		<attribute id="dex" max="17">
+		<attribute id="con" min="12" max="19">
+		<attribute id="cha" min="2" max="16">
+	</attributeBounds>
+	<attributeBonus>
+		<attribute id="dex" bonus="-1">
+		<attribute id="con" bonus="1">
+		<attribute id="cha" bonus="-2">
+	</attributeBonus>
+</race>
