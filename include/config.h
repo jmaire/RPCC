@@ -8,7 +8,9 @@
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 
-#define USE_CONSOLE_UI 1
+#define CONSOLE_UI 0
+#define WINDOWS_GUI 1
+#define USED_UI WINDOWS_GUI
 
 static const std::string UNDEFINED_ID = "";
 

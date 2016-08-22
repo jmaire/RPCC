@@ -9,13 +9,13 @@ class CharacterCreatorBaseUI
     public:
         virtual ~CharacterCreatorBaseUI();
 
-        static void selectRace(Character* ch);
-        static void selectGender(Character* ch);
-        static void selectClass(Character* ch);
-        static void selectName(Character* ch);
+        virtual void selectRace(Character* ch)=0;
+        virtual void selectGender(Character* ch)=0;
+        virtual void selectClass(Character* ch)=0;
+        virtual void selectName(Character* ch)=0;
 
-        static void setAttributesScore(Character* ch);
-        static void setWeaponProficiency(Character* ch);
+        virtual void setAttributesScore(Character* ch)=0;
+        virtual void setWeaponProficiency(Character* ch)=0;
 
     protected:
         CharacterCreatorBaseUI();

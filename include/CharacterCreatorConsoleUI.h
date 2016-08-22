@@ -1,3 +1,4 @@
+#if USED_UI == CONSOLE_UI
 #ifndef CHARACTERCREATORCONSOLEUI_H
 #define CHARACTERCREATORCONSOLEUI_H
 
@@ -6,18 +7,17 @@
 class CharacterCreatorConsoleUI : public CharacterCreatorBaseUI
 {
     public:
+        CharacterCreatorConsoleUI();
         virtual ~CharacterCreatorConsoleUI();
 
-        static void selectRace(Character* ch);
-        static void selectGender(Character* ch);
-        static void selectClass(Character* ch);
-        static void selectName(Character* ch);
+        void selectRace(Character* ch);
+        void selectGender(Character* ch);
+        void selectClass(Character* ch);
+        void selectName(Character* ch);
 
-        static void setAttributesScore(Character* ch);
-        static void setWeaponProficiency(Character* ch);
-
-    private:
-        CharacterCreatorConsoleUI();
+        void setAttributesScore(Character* ch);
+        void setWeaponProficiency(Character* ch);
 };
 
 #endif // CHARACTERCREATORCONSOLEUI_H
+#endif // USED_UI

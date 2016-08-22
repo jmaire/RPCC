@@ -2,6 +2,7 @@
 #define CHARACTERCREATOR_H
 
 #include "CharacterCreatorConsoleUI.h"
+#include "CharacterCreatorWindowsGUI.h"
 
 class CharacterCreator
 {
@@ -14,9 +15,19 @@ class CharacterCreator
         static bool isCreationFinish(Character *ch);
         static void goToNextStep(Character *ch);
 
+        #if USED_UI == WINDOWS_GUI
+        static void setMainParameters(HINSTANCE hInst, HINSTANCE hPrevInst, char * cmdParam, int cmdShow);
+        #endif // USED_UI
+
+    protected:
+        #if USED_UI == CONSOLE_UI
+        static CharacterCreatorConsoleUI m_ui;
+        #elif USED_UI == WINDOWS_GUI
+        static CharacterCreatorWindowsGUI m_ui;
+        #endif // USED_UI
+
     private:
         CharacterCreator();
-
 };
 
 #endif // CHARACTERCREATOR_H

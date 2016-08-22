@@ -1,6 +1,12 @@
 #include "CharacterCreator.h"
 #include "DataManager.h"
 
+#if USED_UI == CONSOLE_UI
+CharacterCreatorConsoleUI CharacterCreator::m_ui;
+#elif USED_UI == WINDOWS_GUI
+CharacterCreatorWindowsGUI CharacterCreator::m_ui;
+#endif // USED_UI
+
 CharacterCreator::CharacterCreator()
 {}
 
@@ -26,39 +32,27 @@ void CharacterCreator::doStep(Character *ch)
         break;
 
     case RACE_SELECTION:
-#if 1 == USE_CONSOLE_UI
-        CharacterCreatorConsoleUI::selectRace(ch);
-#endif // USE_CONSOLE_UI
+        m_ui.selectRace(ch);
         break;
 
     case GENDER_SELECTION:
-#if 1 == USE_CONSOLE_UI
-        CharacterCreatorConsoleUI::selectGender(ch);
-#endif // USE_CONSOLE_UI
+        m_ui.selectGender(ch);
         break;
 
     case CLASS_SELECTION:
-#if 1 == USE_CONSOLE_UI
-        CharacterCreatorConsoleUI::selectClass(ch);
-#endif // USE_CONSOLE_UI
+        m_ui.selectClass(ch);
         break;
 
     case ATTRIBUTES_SETTING:
-#if 1 == USE_CONSOLE_UI
-        CharacterCreatorConsoleUI::setAttributesScore(ch);
-#endif // USE_CONSOLE_UI
+        m_ui.setAttributesScore(ch);
         break;
 
     case WEAPONPROFICIENCY_SETTING:
-#if 1 == USE_CONSOLE_UI
-        CharacterCreatorConsoleUI::setWeaponProficiency(ch);
-#endif // USE_CONSOLE_UI
+        m_ui.setWeaponProficiency(ch);
         break;
 
     case NAME_SELECTION:
-#if 1 == USE_CONSOLE_UI
-        CharacterCreatorConsoleUI::selectName(ch);
-#endif // USE_CONSOLE_UI
+        m_ui.selectName(ch);
         break;
 
     case CREATION_DONE:
@@ -128,3 +122,10 @@ void CharacterCreator::goToNextStep(Character *ch)
 {
     ch->goToNextCreationStep();
 }
+
+#if USED_UI == WINDOWS_GUI
+void CharacterCreator::setMainParameters(HINSTANCE hInst, HINSTANCE hPrevInst, char * cmdParam, int cmdShow)
+{
+    m_ui.initWindow(hInst,cmdShow);
+}
+#endif // USED_UI
