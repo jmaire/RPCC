@@ -13,7 +13,6 @@ namespace rpcc
         loadAttribute();
         loadClass();
         loadRace();
-        loadTrait();
         loadWeaponCategory();
     }
 
@@ -102,19 +101,6 @@ namespace rpcc
         rc->addAvailableClass("mage");
         rc->addAvailableClass("thief");
         DataManager::insereDataToMap(rc);
-    }
-
-    void DataLoader::loadTrait()
-    {
-        Trait* tr;
-        tr = new Trait("law-cha","Lawful","Chaotic");
-        DataManager::insereDataToMap(tr);
-
-        tr = new Trait("spi-mat","Spiritual","Materialistic");
-        DataManager::insereDataToMap(tr);
-
-        tr = new Trait("for-vind","Forgiving","Vindictive");
-        DataManager::insereDataToMap(tr);
     }
 
     void DataLoader::loadWeaponCategory()

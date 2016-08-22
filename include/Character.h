@@ -4,7 +4,6 @@
 #include "AttributeSet.h"
 #include "Class.h"
 #include "Race.h"
-#include "TraitSet.h"
 #include "WeaponProficiencySet.h"
 
 namespace rpcc
@@ -60,7 +59,6 @@ namespace rpcc
             Gender m_gender;
             Class* m_class;
             AttributeSet m_attributesSet;
-            TraitSet m_traitsSet;
             WeaponProficiencySet m_wpSet;
     };
 }

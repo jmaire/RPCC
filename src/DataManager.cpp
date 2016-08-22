@@ -7,7 +7,6 @@ namespace rpcc
     DataMap<Attribute> DataManager::m_attributeMap;
     DataMap<Class> DataManager::m_classMap;
     DataMap<Race> DataManager::m_raceMap;
-    DataMap<Trait> DataManager::m_traitMap;
     DataMap<WeaponCategory> DataManager::m_weaponCategoryMap;
 
     DataManager::DataManager()
@@ -46,11 +45,6 @@ namespace rpcc
         m_raceMap.insereDataToMap(data);
     }
 
-    void DataManager::insereDataToMap(Trait* data)
-    {
-        m_traitMap.insereDataToMap(data);
-    }
-
     void DataManager::insereDataToMap(WeaponCategory* data)
     {
         m_weaponCategoryMap.insereDataToMap(data);
@@ -76,11 +70,6 @@ namespace rpcc
     Race* DataManager::getRaceByKey(std::string key)
     {
         return m_raceMap.getDataByKey(key);
-    }
-
-    Trait* DataManager::getTraitByKey(std::string key)
-    {
-        return m_traitMap.getDataByKey(key);
     }
 
     WeaponCategory* DataManager::getWeaponCategoryByKey(std::string key)

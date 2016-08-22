@@ -14,7 +14,6 @@ namespace rpcc
             static void loadAttribute();
             static void loadClass();
             static void loadRace();
-            static void loadTrait();
             static void loadWeaponCategory();
 
         private:
