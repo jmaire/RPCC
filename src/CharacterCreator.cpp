@@ -3,11 +3,7 @@
 
 namespace rpcc
 {
-    #if USED_UI == CONSOLE_UI
     CharacterCreatorConsoleUI CharacterCreator::m_ui;
-    #elif USED_UI == WINDOWS_GUI
-    CharacterCreatorWindowsGUI CharacterCreator::m_ui;
-    #endif // USED_UI
 
     CharacterCreator::CharacterCreator()
     {}
@@ -124,11 +120,4 @@ namespace rpcc
     {
         ch->goToNextCreationStep();
     }
-
-    #if USED_UI == WINDOWS_GUI
-    void CharacterCreator::setMainParameters(HINSTANCE hInst, HINSTANCE hPrevInst, char * cmdParam, int cmdShow)
-    {
-        m_ui.initWindow(hInst,cmdShow);
-    }
-    #endif // USED_UI
 }
